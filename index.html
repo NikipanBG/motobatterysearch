@@ -10,280 +10,153 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-        body { 
-            background-color: #000000; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ЦЕНТРИРАН КОНТЕЙНЕР */
-        .main-container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* СТИЛ ЗА МЕНЮТАТА (BOLD & LARGE КАТО НА СНИМКАТА) */
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; }
+        .main-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
         select { 
-            background-color: #111111 !important; 
-            border: 2px solid #333333 !important; 
-            color: #ffffff !important; 
-            font-weight: 900 !important; 
-            font-size: 1.3rem !important; 
-            padding: 16px !important;
-            width: 100%;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            background: #111 !important; border: 2px solid #333 !important; 
+            color: #fff !important; font-weight: 900 !important; font-size: 1.2rem !important; 
+            padding: 14px !important; width: 100%; border-radius: 4px;
         }
+        select:focus { border-color: #ff0000 !important; outline: none; }
         
-        select:focus { border-color: #ff0000 !important; outline: none; background-color: #1a1a1a !important; }
-        select:disabled { opacity: 0.15; cursor: not-allowed; }
-
         .red-accent { color: #ff0000; }
-        
-        .card-glass { 
-            background: #111; 
-            border: 2px solid #222; 
-            border-radius: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .card-glass.active { border-color: #ff0000; background: #1a0000; }
-        
-        .tab-btn { 
-            cursor: pointer; padding: 20px 30px; font-weight: 900; font-size: 1.2rem;
-            text-transform: uppercase; border-bottom: 4px solid transparent; color: #555; transition: 0.3s;
-        }
+        .tab-btn { cursor: pointer; padding: 15px 25px; font-weight: 900; text-transform: uppercase; border-bottom: 4px solid transparent; color: #555; transition: 0.3s; }
         .tab-btn.active { border-color: #ff0000; color: #fff; }
         
-        .step-circle { 
-            background: #ff0000; width: 35px; height: 35px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-weight: 900;
-        }
-
-        .spec-label { color: #ff0000; font-size: 10px; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-value { font-weight: 800; font-size: 1.15rem; color: #fff; text-transform: uppercase; }
-        
-        .result-card {
-            background: linear-gradient(145deg, #111, #050505);
-            border-left: 8px solid #ff0000;
-        }
+        .result-box { background: #111; border-left: 6px solid #ff0000; border-radius: 4px; }
+        .spec-item { border-bottom: 1px solid #222; padding: 10px 0; display: flex; justify-content: space-between; }
+        .spec-label { color: #ff0000; font-size: 11px; font-weight: 900; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <header class="bg-black border-b-2 border-red-600 p-6 shadow-2xl">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="text-4xl font-black tracking-tighter italic uppercase">
-                АВТОЗОНА <span class="red-accent">33</span> ЕООД
-            </div>
-            <div class="flex gap-8 mt-4 md:mt-0 font-black text-sm uppercase italic">
-                <span><i class="fas fa-phone red-accent mr-2"></i> 0888 33 33 33</span>
-                <span><i class="fas fa-envelope red-accent mr-2"></i> OFFICE@AUTOZONA33.COM</span>
-            </div>
-        </div>
+    <header class="bg-black border-b-2 border-red-600 p-6 text-center">
+        <h1 class="text-4xl font-black italic">АВТОЗОНА <span class="red-accent">33</span></h1>
     </header>
 
-    <main class="main-container py-12">
-        
-        <div class="flex justify-center mb-12 border-b border-zinc-900">
-            <div id="tab1" class="tab-btn active" onclick="switchTab(1)">Търсене по Мотор</div>
-            <div id="tab2" class="tab-btn" onclick="switchTab(2)">Търсене по Характеристики</div>
+    <main class="main-container">
+        <div class="flex justify-center mb-10 border-b border-zinc-900">
+            <div id="tab1" class="tab-btn active" onclick="switchTab(1)">По Мотор</div>
+            <div id="tab2" class="tab-btn" onclick="switchTab(2)">По Характеристики</div>
         </div>
 
-        <div id="mode-model" class="space-y-12">
-            <div>
-                <div class="flex items-center mb-8">
-                    <div class="step-circle mr-4">1</div>
-                    <h2 class="text-2xl font-black uppercase italic">Избери категория</h2>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="card-glass p-8 text-center active" onclick="selectCat('Moto', this)">
-                        <i class="fas fa-motorcycle text-4xl mb-3 red-accent"></i>
-                        <p class="font-black text-sm uppercase">Мотор</p>
-                    </div>
-                    <div class="card-glass p-8 text-center" onclick="selectCat('ATV', this)">
-                        <i class="fas fa-truck-monster text-4xl mb-3 red-accent"></i>
-                        <p class="font-black text-sm uppercase">ATV</p>
-                    </div>
-                    <div class="card-glass p-8 text-center" onclick="selectCat('Snow', this)">
-                        <i class="fas fa-snowflake text-4xl mb-3 red-accent"></i>
-                        <p class="font-black text-sm uppercase">Сноумобил</p>
-                    </div>
-                    <div class="card-glass p-8 text-center" onclick="selectCat('Jet', this)">
-                        <i class="fas fa-water text-4xl mb-3 red-accent"></i>
-                        <p class="font-black text-sm uppercase">Джет</p>
-                    </div>
-                </div>
+        <div id="mode-model" class="space-y-6">
+            <select id="brand" onchange="updateCC()"><option value="">Марка Мотор</option></select>
+            <div class="grid grid-cols-2 gap-4">
+                <select id="cc" onchange="updateModels()" disabled><option value="">CC</option></select>
+                <select id="model" onchange="updateYears()" disabled><option value="">Модел</option></select>
             </div>
-
-            <div class="space-y-10">
-                <div>
-                    <div class="flex items-center mb-4"><div class="step-circle mr-4">2</div><h2 class="text-xl font-black uppercase italic">Марка</h2></div>
-                    <select id="brand" onchange="updateCC()"><option value="">Избери Марка (Brand)</option></select>
-                </div>
-                <div>
-                    <div class="flex items-center mb-4"><div class="step-circle mr-4">3</div><h2 class="text-xl font-black uppercase italic">Кубатура и Модел</h2></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <select id="cc" onchange="updateModels()" disabled><option value="">Кубатура (CC)</option></select>
-                        <select id="model" onchange="updateYears()" disabled><option value="">Модел (Model)</option></select>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-center mb-4"><div class="step-circle mr-4">4</div><h2 class="text-xl font-black uppercase italic">Година</h2></div>
-                    <select id="year" onchange="findByMotor()" disabled><option value="">Година (Year)</option></select>
-                </div>
-            </div>
+            <select id="year" onchange="findBattery()" disabled><option value="">Година</option></select>
         </div>
 
-        <div id="mode-specs" class="hidden space-y-10">
-            <div class="bg-zinc-950 p-10 rounded-xl border border-zinc-900 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div><label class="spec-label">Волтаж (V)</label><select id="s-volts" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Дължина (mm)</label><select id="s-length" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Ширина (mm)</label><select id="s-width" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Височина (mm)</label><select id="s-height" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Поляритет</label><select id="s-pole" onchange="filterBySpecs()"><option value="">Всички</option><option value="L+">L+</option><option value="R+">R+</option></select></div>
-                <div><label class="spec-label">Капацитет (Ah)</label><select id="s-ah" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-            </div>
+        <div id="mode-specs" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 bg-zinc-950 p-6 rounded-lg">
+            <div><label class="spec-label">Волтаж (V)</label><select id="s-v" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+            <div><label class="spec-label">Дължина (L)</label><select id="s-l" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+            <div><label class="spec-label">Ширина (W)</label><select id="s-w" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+            <div><label class="spec-label">Височина (H)</label><select id="s-h" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+            <div><label class="spec-label">Капацитет (Ah)</label><select id="s-ah" onchange="filterSpecs()"><option value="">Всички</option></select></div>
         </div>
 
-        <div id="result" class="hidden mt-16 p-10 rounded-lg result-card shadow-2xl">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+        <div id="result" class="hidden mt-10 p-8 result-box">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-6">
                 <div class="flex-1">
-                    <p class="text-red-500 font-black uppercase text-sm italic mb-2 tracking-widest">ПРЕПОРЪЧАН МОДЕЛ:</p>
-                    <h2 id="res-code" class="text-7xl font-black italic tracking-tighter mb-8 italic">--</h2>
-                    <div id="res-details" class="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 border-t border-white/10 pt-8">
-                        </div>
+                    <p class="text-zinc-500 text-[10px] font-black tracking-widest">ПРЕПОРЪЧАН МОДЕЛ</p>
+                    <h2 id="res-code" class="text-6xl font-black italic red-accent mb-6">--</h2>
+                    <div id="res-list" class="space-y-1"></div>
                 </div>
-                <div class="w-full md:w-auto text-center md:text-right flex flex-col justify-between h-full">
-                    <div class="mb-6">
-                        <p class="text-zinc-500 font-bold uppercase text-[10px] mb-1">ЦЕНА (RRP)</p>
-                        <div id="res-price" class="text-5xl font-black red-accent italic tracking-tighter">-- лв.</div>
-                    </div>
-                    <button class="bg-red-600 text-white px-16 py-6 rounded-sm font-black text-2xl hover:bg-red-700 transition uppercase italic shadow-lg active:scale-95">КУПИ СЕГА</button>
+                <div class="text-center md:text-right min-w-[200px]">
+                    <p class="text-zinc-500 text-[10px] font-black">ЦЕНА (RRP)</p>
+                    <div id="res-price" class="text-4xl font-black mb-6 tracking-tighter">-- лв.</div>
+                    <button class="bg-red-600 text-white w-full py-4 font-black uppercase italic hover:bg-red-700">КУПИ</button>
                 </div>
-            </div>
-        </div>
-
-        <div class="mt-32">
-            <h3 class="text-center text-zinc-700 font-black uppercase text-[11px] tracking-[0.5em] mb-12 italic">ОФИЦИАЛНИ МАРКИ</h3>
-            <div class="flex flex-wrap justify-center items-center gap-16 grayscale opacity-40 hover:opacity-100 transition-all duration-700">
-                <div class="font-black italic text-4xl">YUASA</div>
-                <div class="font-black italic text-4xl text-red-600 uppercase tracking-tighter">LANDPORT</div>
-                <div class="font-black italic text-4xl text-blue-700">VARTA</div>
-                <div class="font-black italic text-4xl text-yellow-500 uppercase">EXIDE</div>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 border-t border-zinc-900 text-center text-zinc-800 font-black uppercase text-[10px] tracking-widest italic">
-        © 2026 АВТОЗОНА 33 ЕООД. ВСИЧКИ ПРАВА ЗАПАЗЕНИ.
-    </footer>
-
     <script>
-        // 1. КОНФИГУРАЦИЯ НА ЛИНКОВЕ
-        const csvCatalogUrl = 'ЛИНК_КАТАЛОГ_CSV'; // ЗАМЕНИ С ТВОЯ ЛИНК
-        const csvProductsUrl = 'https://docs.google.com/spreadsheets/d/1SwekeJHO4VIEZds8vEJk-WiI4nBzY76L/export?format=csv';
+        // ИЗПОЛЗВАМЕ ФАЙЛОВЕТЕ ОТ СЪЩАТА ПАПКА В GITHUB
+        const csvCatalog = 'catalog.csv';
+        const csvProducts = 'products.csv';
 
-        let catalogData = [], productData = [];
+        let dataCatalog = [], dataProducts = [];
 
-        // 2. ИНИЦИАЛИЗАЦИЯ
         window.onload = () => {
-            Papa.parse(csvCatalogUrl, { download: true, header: true, skipEmptyLines: true, complete: res => { catalogData = res.data; populateMotorBrands(); }});
-            Papa.parse(csvProductsUrl, { download: true, header: true, skipEmptyLines: true, complete: res => { productData = res.data; populateSpecFilters(); }});
+            Papa.parse(csvCatalog, { download: true, header: true, complete: res => { dataCatalog = res.data; fillBrands(); }});
+            Papa.parse(csvProducts, { download: true, header: true, complete: res => { dataProducts = res.data; fillSpecs(); }});
         };
 
-        // 3. ПОКАЗВАНЕ НА РЕЗУЛТАТИ
-        function showFinalResult(code) {
-            const d = productData.find(i => i.Battery_Code && i.Battery_Code.trim() === code.trim());
-            if(!d) return;
+        function showResult(code) {
+            // Намираме продукта, като чистим интервалите от кода
+            const p = dataProducts.find(i => i.Part_No && i.Part_No.trim() === code.trim());
+            if(!p) return;
 
             document.getElementById('res-code').innerText = code;
-            document.getElementById('res-price').innerText = `${d.RRP || '--'} лв.`;
+            document.getElementById('res-price').innerText = (p.RRP || '--') + ' лв.';
             
-            document.getElementById('res-details').innerHTML = `
-                <div><span class="spec-label">Марка</span><span class="spec-value">${d.Brand || '-'}</span></div>
-                <div><span class="spec-label">Размери (mm)</span><span class="spec-value">${d.Length}x${d.Width}x${d.Height}</span></div>
-                <div><span class="spec-label">Волтаж / Ah</span><span class="spec-value">${d.Voltage}V / ${d.Capacity}Ah</span></div>
-                <div><span class="spec-label">Стартов ток (A)</span><span class="spec-value">${d.CCA}A</span></div>
-                <div><span class="spec-label">Поляритет</span><span class="spec-value">${d.Pole}</span></div>
-                <div><span class="spec-label">Тегло / EAN</span><span class="spec-value">${d['Battery Weight (kg)'] || '-'}kg / ${d.EAN || '-'}</span></div>
+            // Динамично извеждане на данни според твоите заглавия от снимката
+            document.getElementById('res-list').innerHTML = `
+                <div class="spec-item"><span class="spec-label">Волтаж</span> <span>${p['Voltage (V)']}V</span></div>
+                <div class="spec-item"><span class="spec-label">Капацитет (Ah)</span> <span>${p['Capacity 20h (Ah)']} Ah</span></div>
+                <div class="spec-item"><span class="spec-label">Размери (L/W/H)</span> <span>${p.L}x${p.W}x${p.H} mm</span></div>
+                <div class="spec-item"><span class="spec-label">Тегло</span> <span>${p['Battery Weight (kg)']} kg</span></div>
+                <div class="spec-item"><span class="spec-label">EAN</span> <span>${p.EAN || '-'}</span></div>
             `;
             document.getElementById('result').classList.remove('hidden');
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 4. ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ
-        function filterBySpecs() {
-            const v = document.getElementById('s-volts').value, l = document.getElementById('s-length').value,
-                  w = document.getElementById('s-width').value, h = document.getElementById('s-height').value,
-                  p = document.getElementById('s-pole').value, ah = document.getElementById('s-ah').value;
-
-            const match = productData.find(i => 
-                (!v || String(i.Voltage) === v) && 
-                (!l || String(i.Length) === l) && 
-                (!w || String(i.Width) === w) && 
-                (!h || String(i.Height) === h) && 
-                (!p || i.Pole === p) && 
-                (!ah || String(i.Capacity) === ah)
-            );
-
-            match ? showFinalResult(match.Battery_Code) : document.getElementById('result').classList.add('hidden');
+        // --- ЛОГИКА ТЪРСЕНЕ ПО МОТОР ---
+        function fillBrands() {
+            const brands = [...new Set(dataCatalog.map(i => i.Brand))].filter(Boolean).sort();
+            const sel = document.getElementById('brand');
+            brands.forEach(b => sel.add(new Option(b, b)));
+        }
+        function updateCC() {
+            const b = document.getElementById('brand').value;
+            const sel = document.getElementById('cc'); sel.innerHTML = '<option value="">CC</option>';
+            sel.disabled = !b;
+            if(b) {
+                const ccs = [...new Set(dataCatalog.filter(i => i.Brand === b).map(i => i.CC))].filter(Boolean).sort((a,b)=>a-b);
+                ccs.forEach(c => sel.add(new Option(c, c)));
+            }
+        }
+        function updateModels() {
+            const b = document.getElementById('brand').value, c = document.getElementById('cc').value;
+            const sel = document.getElementById('model'); sel.innerHTML = '<option value="">Модел</option>';
+            sel.disabled = !c;
+            if(c) {
+                const ms = [...new Set(dataCatalog.filter(i => i.Brand === b && i.CC === c).map(i => i.Model))].filter(Boolean).sort();
+                ms.forEach(m => sel.add(new Option(m, m)));
+            }
+        }
+        function updateYears() {
+            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value;
+            const sel = document.getElementById('year'); sel.innerHTML = '<option value="">Година</option>';
+            sel.disabled = !m;
+            if(m) {
+                const ys = [...new Set(dataCatalog.filter(i => i.Brand === b && i.CC === c && i.Model === m).map(i => i.Year))].filter(Boolean).sort((a,b)=>b-a);
+                ys.forEach(y => sel.add(new Option(y, y)));
+            }
+        }
+        function findBattery() {
+            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value, y = document.getElementById('year').value;
+            const match = dataCatalog.find(i => i.Brand === b && i.CC === c && i.Model === m && i.Year === y);
+            if(match) showResult(match.Battery_Code);
         }
 
-        // 5. ПОМОЩНИ ФУНКЦИИ (МЕНЮТА)
-        function populateSpecFilters() {
+        // --- ЛОГИКА ТЪРСЕНЕ ПО СПЕЦИФИКАЦИИ ---
+        function fillSpecs() {
             const fill = (id, col) => {
-                const vals = [...new Set(productData.map(i => i[col]))].filter(Boolean).sort((a,b)=>a-b);
+                const vals = [...new Set(dataProducts.map(i => i[col]))].filter(Boolean).sort((a,b)=>a-b);
                 const sel = document.getElementById(id);
                 vals.forEach(v => sel.add(new Option(v, v)));
             };
-            fill('s-volts', 'Voltage'); fill('s-length', 'Length'); fill('s-width', 'Width'); fill('s-height', 'Height'); fill('s-ah', 'Capacity');
+            fill('s-v', 'Voltage (V)'); fill('s-l', 'L'); fill('s-w', 'W'); fill('s-h', 'H'); fill('s-ah', 'Capacity 20h (Ah)');
         }
-
-        function populateMotorBrands() { 
-            const brands = [...new Set(catalogData.map(i => i.Brand))].filter(Boolean).sort(); 
-            const sel = document.getElementById('brand'); 
-            brands.forEach(b => sel.add(new Option(b, b))); 
-        }
-
-        function updateCC() { 
-            const brand = document.getElementById('brand').value; 
-            const sel = document.getElementById('cc'); sel.innerHTML = '<option value="">Кубатура (CC)</option>'; sel.disabled = !brand;
-            if(brand) { 
-                const ccs = [...new Set(catalogData.filter(i => i.Brand === brand).map(i => i.CC))].filter(Boolean).sort((a,b)=>a-b); 
-                ccs.forEach(c => sel.add(new Option(c, c))); 
-            } 
-        }
-
-        function updateModels() { 
-            const brand = document.getElementById('brand').value, cc = document.getElementById('cc').value;
-            const sel = document.getElementById('model'); sel.innerHTML = '<option value="">Модел (Model)</option>'; sel.disabled = !cc;
-            if(cc) { 
-                const ms = [...new Set(catalogData.filter(i => i.Brand === brand && i.CC === cc).map(i => i.Model))].filter(Boolean).sort(); 
-                ms.forEach(m => sel.add(new Option(m, m))); 
-            } 
-        }
-
-        function updateYears() { 
-            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value;
-            const sel = document.getElementById('year'); sel.innerHTML = '<option value="">Година (Year)</option>'; sel.disabled = !m;
-            if(m) { 
-                const ys = [...new Set(catalogData.filter(i => i.Brand === b && i.CC === c && i.Model === m).map(i => i.Year))].filter(Boolean).sort((a,b)=>b-a); 
-                ys.forEach(y => sel.add(new Option(y, y))); 
-            } 
-        }
-
-        function findByMotor() { 
-            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, 
-                  m = document.getElementById('model').value, y = document.getElementById('year').value; 
-            const match = catalogData.find(i => i.Brand === b && i.CC === c && i.Model === m && i.Year === y); 
-            if(match) showFinalResult(match.Battery_Code); 
+        function filterSpecs() {
+            const v = document.getElementById('s-v').value, l = document.getElementById('s-l').value, w = document.getElementById('s-w').value, h = document.getElementById('s-h').value, ah = document.getElementById('s-ah').value;
+            const match = dataProducts.find(i => (!v || i['Voltage (V)'] === v) && (!l || i.L === l) && (!w || i.W === w) && (!h || i.H === h) && (!ah || i['Capacity 20h (Ah)'] === ah));
+            match ? showResult(match.Part_No) : document.getElementById('result').classList.add('hidden');
         }
 
         function switchTab(id) {
@@ -292,11 +165,6 @@
             document.getElementById('tab1').classList.toggle('active', id === 1);
             document.getElementById('tab2').classList.toggle('active', id === 2);
             document.getElementById('result').classList.add('hidden');
-        }
-
-        function selectCat(cat, el) {
-            document.querySelectorAll('.card-glass').forEach(i => i.classList.remove('active'));
-            el.classList.add('active');
         }
     </script>
 </body>
