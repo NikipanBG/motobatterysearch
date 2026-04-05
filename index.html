@@ -24,6 +24,8 @@
         .battery-card { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 16px; transition: all 0.2s; cursor: pointer; }
         .battery-card:hover { border-color: #ff0000; background: #2a1a1a; transform: translateY(-2px); }
         .battery-card.selected { border-color: #ff0000; background: #2a1a1a; box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+        .clear-btn { background: #333; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; border: none; }
+        .clear-btn:hover { background: #ff0000; }
     </style>
 </head>
 <body>
@@ -98,10 +100,18 @@
         <!-- РЕЖИМ 2: ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ -->
         <div id="mode-specs" class="hidden space-y-10">
             <div class="bg-zinc-950 p-10 rounded-xl border border-zinc-900">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-black text-white">Филтриране по параметри</h3>
+                    <button class="clear-btn" onclick="clearAllFilters()">🗑️ Изчисти всички филтри</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                     <div>
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Дължина (mm)</label>
                         <select id="s-length" onchange="applySpecFilters()"><option value="">Всички</option></select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Ширина (mm)</label>
+                        <select id="s-width" onchange="applySpecFilters()"><option value="">Всички</option></select>
                     </div>
                     <div>
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Височина (mm)</label>
@@ -175,6 +185,7 @@
         let productData = [];
         let currentFilters = {
             length: '',
+            width: '',
             height: '',
             polarity: '',
             ah: '',
@@ -198,7 +209,7 @@
                 console.log("Заредени продукти:", results.data.length);
                 productData = results.data.filter(row => row.Battery_Code && row.Battery_Code !== "Battery_Code");
                 populateSpecFilters();
-                applySpecFilters(); // показва всички при старт
+                applySpecFilters();
             }});
         };
 
@@ -293,6 +304,7 @@
             };
             
             fillSelect('s-length', getUniqueSorted('Length (mm)'));
+            fillSelect('s-width', getUniqueSorted('Width (mm)'));
             fillSelect('s-height', getUniqueSorted('Height (mm)'));
             fillSelect('s-ah', getUniqueSorted('Capacity (Ah)'));
             fillSelect('s-cca', getUniqueSorted('CCA (A)'));
@@ -304,20 +316,30 @@
                 polarities.forEach(v => polSel.add(new Option(v, v)));
             }
         }
+        
+        function clearAllFilters() {
+            document.getElementById('s-length').value = '';
+            document.getElementById('s-width').value = '';
+            document.getElementById('s-height').value = '';
+            document.getElementById('s-polarity').value = '';
+            document.getElementById('s-ah').value = '';
+            document.getElementById('s-cca').value = '';
+            applySpecFilters();
+        }
 
         function applySpecFilters() {
-            // Взема текущите стойности на филтрите
             currentFilters = {
                 length: document.getElementById('s-length').value,
+                width: document.getElementById('s-width').value,
                 height: document.getElementById('s-height').value,
                 polarity: document.getElementById('s-polarity').value,
                 ah: document.getElementById('s-ah').value,
                 cca: document.getElementById('s-cca').value
             };
             
-            // Филтриране
             let filtered = productData.filter(batt => {
                 if(currentFilters.length && String(batt['Length (mm)']) !== currentFilters.length) return false;
+                if(currentFilters.width && String(batt['Width (mm)']) !== currentFilters.width) return false;
                 if(currentFilters.height && String(batt['Height (mm)']) !== currentFilters.height) return false;
                 if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
                 if(currentFilters.ah && String(batt['Capacity (Ah)']) !== currentFilters.ah) return false;
@@ -325,10 +347,8 @@
                 return true;
             });
             
-            // Показване на резултатите
             displayBatteryList(filtered);
             
-            // Автоматично избиране на първия резултат, ако има такъв
             if(filtered.length > 0) {
                 selectBattery(filtered[0].Battery_Code);
             } else {
@@ -361,13 +381,11 @@
                             <div class="text-green-400 font-bold">${batt.Price || '---'}</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 mt-3 text-xs text-gray-400">
-                        <div>📏 ${batt['Length (mm)'] || '?'}×?×${batt['Height (mm)'] || '?'} mm</div>
+                    <div class="grid grid-cols-4 gap-2 mt-3 text-xs text-gray-400">
+                        <div>📏 ${batt['Length (mm)'] || '?'}×${batt['Width (mm)'] || '?'}×${batt['Height (mm)'] || '?'} mm</div>
                         <div>⚡ ${batt['Capacity (Ah)'] || '?'} Ah</div>
                         <div>🔋 ${batt['CCA (A)'] || '?'} CCA</div>
                         <div>🔌 ${batt.Polarity || 'стандартен'}</div>
-                        <div>📦 ${batt['Case Type'] || '-'}</div>
-                        <div>🌍 ${batt['Country of origin'] || '-'}</div>
                     </div>
                 </div>
             `).join('');
@@ -375,7 +393,6 @@
         
         function selectBattery(code) {
             selectedBatteryCode = code;
-            // Маркиране на избрания елемент в списъка
             document.querySelectorAll('.battery-card').forEach(card => {
                 card.classList.remove('selected');
             });
@@ -386,7 +403,6 @@
                     break;
                 }
             }
-            // Показване на детайлите
             showFinalResult(code);
         }
 
@@ -395,13 +411,14 @@
             if(details) {
                 document.getElementById('res-code').innerText = details.Battery_Code;
                 let length = details['Length (mm)'] || "?";
+                let width = details['Width (mm)'] || "?";
                 let height = details['Height (mm)'] || "?";
                 let ah = details['Capacity (Ah)'] || "?";
                 let cca = details['CCA (A)'] || "?";
                 let polarity = details.Polarity || "стандартен";
                 let price = details.Price || "";
                 
-                document.getElementById('res-dims').innerHTML = `Размер: ${length}×?×${height} mm | Поляритет: ${polarity} | ${ah}Ah | ${cca} CCA`;
+                document.getElementById('res-dims').innerHTML = `Размер: ${length}×${width}×${height} mm | Поляритет: ${polarity} | ${ah}Ah | ${cca} CCA`;
                 if(price) {
                     document.getElementById('res-price').innerHTML = `Цена: ${price}`;
                 } else {
