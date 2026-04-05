@@ -1,308 +1,239 @@
-ADLY	49	CAT	Cat 50 | KW: 3/PK: 5 | 01.2007 -	 YB4L-B
-ADLY	95	CAT	Cat 100 | KW: 6/PK: 8 | 01.2007 -	 YB4L-B
-ADLY	124	CAT	Cat 125 B | KW: 6/PK: 8 | 01.2007 -	
-AGRALE 	49	FORCE	Force 50 | KW: 3/PK: 4 | 01.1998 - 12.1998	 12N24-3
-AGRALE 	90	FORCE	Force 90 | KW: 5/PK: 7 | 01.1998 - 12.2000	 12N24-3
-AGRALE 	124	SST	SST 13.5 | KW: 10/PK: 14 | 01.1988 - 12.1997	 12N24-3
-AGRALE 	904	MONSTER	Monster 900 | KW: 54/PK: 73 | 01.1993 - 12.1999	 12N24-3
-APRILIA 	49	AMICO	Amico 25 CatCon. (MK) | KW: 1/PK: 1 | 01.1994 - 12.2001	 YB4L-B
-APRILIA 	49	AMICO	Amico 50 CatCon. (GC) | KW: 2/PK: 3 | 01.1990 - 12.1994	 YB4L-B
-APRILIA 	49	AMICO	Amico 50 GL CatCon. (HV) | KW: 2/PK: 3 | 01.1993 - 12.1999	 YB4L-B
-APRILIA 	49	AMICO	Amico 50 LX CatCon. | KW: 2/PK: 3 | 01.1995 - 12.1996	 YB4L-B
-APRILIA 	49	AMICO	Amico 50 Sport CatCon. | KW: 2/PK: 3 | 01.1992 - 12.1993	 YB4L-B
-APRILIA 	49	AREA	Area 51 CatCon. (MY) | KW: 3/PK: 4 | 01.1998 - 12.2003	 YB4L-B
-APRILIA 	49	AREA	Area 51 Replica (MY) | KW: 3/PK: 4 | 01.2000 - 12.2003	 YB4L-B
-APRILIA 	49	AREA	Area 51 SBK CatCon. (MY) | KW: 3/PK: 4 | 01.2000 - 12.2002	 YB4L-B
-APRILIA 	49	ET	ET 50 | KW: 4/PK: 5 | 01.1987 -	 YB4L-B
-APRILIA 	49	ET	ET 50 Tuareg | KW: 4/PK: 5 | 01.1987 -	 YB4L-B
-APRILIA 	49	GULLIVER	Gulliver AC CatCon. (LH) | KW: 3/PK: 4 | 01.1995 - 12.1998	 YB4L-B
-APRILIA 	49	GULLIVER	Gulliver LC CatCon. (LH) | KW: 3/PK: 4 | 01.1997 - 12.1999	 YB4L-B
-APRILIA 	49	HABANA	Habana 50 CatCon. (PK) | KW: 2/PK: 3 | 01.1999 - 12.2001	 YB4L-B
-APRILIA 	49	HABANA	Habana 50 Custom CatCon. (PK) | KW: 2/PK: 3 | 01.1999 - 12.2001	 YB4L-B
-APRILIA 	49	MC	MC Gulliver CatCon. (LH) | KW: 3/PK: 4 | 01.1996 - 12.1999	 YB4L-B
-APRILIA 	49	MOJITO	Mojito 50 CatCon. (TF) | KW: 2/PK: 3 | 01.1999 - 12.2003	 YB4L-B
-APRILIA 	49	MOJITO	Mojito 50 Custom CatCon. (TF) | KW: 2/PK: 3 | 01.1999 - 12.2004	 YB4L-B
-APRILIA 	49	MOJITO	Mojito 50 Custom CatCon. (TF) | KW: 3/PK: 4 | 01.2005 - 12.2013	 YB4L-B
-APRILIA 	49	RALLY	Rally 50 (MD) | KW: 2/PK: 3 | 01.1990 - 12.1996	 YB4L-B
-APRILIA 	49	RALLY	Rally 50 (MD) | KW: 3/PK: 4 | 01.1990 - 12.1996	 YB4L-B
-APRILIA 	49	RALLY	Rally 50 AC CatCon. (MD) | KW: 3/PK: 4 | 01.1995 - 12.2003	 YB4L-B
-APRILIA 	49	RALLY	Rally 50 LC CatCon. (MD) | KW: 3/PK: 4 | 01.1997 - 12.1998	 YB4L-B
-APRILIA 	49	SCARABEO	Scarabeo 50 4T | KW: 3/PK: 4 | 01.2003 - 12.2006	 YB9B
-APRILIA 	49	SCARABEO	Scarabeo 50 Ditech | KW: 4/PK: 5 | 01.2000 - 12.2007	
-APRILIA 	49	SCARABEO	Scarabeo 50 Street | KW: 3/PK: 4 | 01.2005 - 12.2010	 YB9B
-APRILIA 	49	SCARABEO	Scarabeo AC 50 CatCon. (MS) | KW: 2/PK: 3 | 01.1994 - 12.2001	 YB4L-B
-APRILIA 	49	SCARABEO	Scarabeo AC Ditech (SC) | KW: 3/PK: 4 | 01.2003 - 12.2004	 YB4L-B
-APRILIA 	49	SCARABEO	Scarabeo AC Ditech | KW: 4/PK: 5 | 01.2003 - 12.2004	 YB4L-B
-APRILIA 	49	SONIC	Sonic AC CatCon. (PB) | KW: 2/PK: 3 | 01.1998 - 12.2001	 YB4L-B
-APRILIA 	49	SONIC	Sonic LC CatCon. (PB) | KW: 2/PK: 3 | 01.1998 - 12.1999	 YB4L-B
-APRILIA 	49	SONIC	Sonic LC CatCon. (PB) | KW: 3/PK: 4 | 01.1998 - 12.1999	 YB4L-B
-APRILIA 	49	SPORTCITY	Sportcity One 2T | KW: 4/PK: 5 | 06.2008 - 12.2013	 YB4L-B
-APRILIA 	49	SR	SR 50 CatCon. () | KW: 2/PK: 3 | 01.1993 - 12.1997	 YB4L-B
-APRILIA 	49	SR	SR 50 LC CatCon. () | KW: 3/PK: 4 | 01.1996 - 12.1997	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Ditech (RL) | KW: 4/PK: 5 | 01.2001 - 12.2004	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Ditech Racing (RL) | KW: 2/PK: 3 | 01.2001 - 12.2003	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Ditech Racing (RL) | KW: 3/PK: 4 | 01.2001 - 12.2003	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Ditech Replica | KW: 4/PK: 5 | 01.2003 - 12.2004	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Ditech Sport Pro (LC) | KW: 4/PK: 5 | 01.2003 - 12.2003	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Funster (RL) | KW: 3/PK: 4 | 01.2003 - 12.2004	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Funster Racing (RL) | KW: 3/PK: 4 | 01.2004 - 12.2004	 YB9B
-APRILIA 	49	SR	SR 50 LC Racing CatCon. | KW: 2/PK: 3 | 01.1999 - 12.2001	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Sport CatCon. (RL) | KW: 2/PK: 3 | 01.2000 - 12.2002	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Sport CatCon. | KW: 3/PK: 4 | 01.2000 - 12.2002	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Sport Ditech (RL) | KW: 2/PK: 3 | 01.2001 - 12.2003	 YB4L-B
-APRILIA 	49	SR	SR 50 LC Sport Ditech (RL) | KW: 3/PK: 4 | 01.2001 - 12.2003	 YB4L-B
-APRILIA 	49	SR	SR 50 Motard (C50) | KW: 3/PK: 4 | 09.2010 -	 YB9B
-APRILIA 	49	SR	SR 50 Netscaper CatCon. (MZ) | KW: 3/PK: 4 | 01.1997 - 12.1998	 YB4L-B
-APRILIA 	49	SR	SR 50 R (VF) | KW: 3/PK: 4 | 01.2005 -	 YB9B
-APRILIA 	49	SR	SR 50 R Alitalia Replica (VF) | KW: 3/PK: 4 | 06.2010 - 12.2013	 YB9B
-APRILIA 	49	SR	SR 50 R Factory (VF) | KW: 4/PK: 5 | 01.2005 - 12.2013	 YB9B
-APRILIA 	49	SR	SR 50 R Factory Alitalia Replica (VF) | KW: 4/PK: 5 | 06.2010 - 12.2013	 YB9B
-APRILIA 	49	SR	SR 50 Stelth CatCon. (MZ) | KW: 3/PK: 4 | 01.1997 - 12.1999	 YB4L-B
-APRILIA 	49	SR	SR 50 Street (VF) | KW: 3/PK: 4 | 01.2005 -	 YB9B
-APRILIA 	49	SR	SR 50 WWW CatCon. (LY) | KW: 3/PK: 4 | 01.1997 - 12.2002	 YB4L-B
-APRILIA 	50	AF-1	AF-1 50 | KW: 3/PK: 4 | 01.1988 - 12.1992	 YB4L-B
-APRILIA 	50	AF-1	AF-1 50 Futura | KW: 2/PK: 3 | 01.1988 - 12.1992	 YB4L-B
-APRILIA 	50	AF-1	AF-1 50 Replica | KW: 2/PK: 3 | 01.1987 - 12.1990	 YB4L-B
-APRILIA 	50	CLASSIC	Classic 50 (GI) | KW: 2/PK: 2 | 01.1993 - 12.1998	 YB4L-B
-APRILIA 	50	ET	ET 50 | KW: 3/PK: 4 | 01.1988 -	 YB4L-B
-APRILIA 	50	ET	ET 50 Fire | KW: 3/PK: 4 | 01.1989 -	 YB4L-B
-APRILIA 	50	EUROPA	Europa | KW: 2/PK: 3 | 01.1990 -	 YB4L-B
-APRILIA 	50	MX	MX 50 (ST) | KW: 6/PK: 8 | 01.2003 - 12.2005	 YB4L-B
-APRILIA 	50	RED ROSE	Red Rose 50 (GI) | KW: 2/PK: 3 | 01.1988 - 12.1994	 YB4L-B
-APRILIA 	50	RED ROSE	Red Rose 50 (GI) | KW: 2/PK: 3 | 01.1990 - 12.1994	 YB4L-B
-APRILIA 	50	RS	RS 50 (HP) | KW: 2/PK: 3 | 01.1994 - 12.1997	 YB4L-B
-APRILIA 	50	RS	RS 50 Extre (HP) | KW: 2/PK: 3 | 01.1993 - 12.1997	 YB4L-B
-APRILIA 	50	RS	RS 50 Replica (PG) | KW: 2/PK: 3 | 01.1999 - 12.2001	 YB4L-B
-APRILIA 	50	RS	RS 50 Replica (PL) | KW: 2/PK: 3 | 01.2006 - 12.2010	
-APRILIA 	50	RS	RS 50 Replica (SE) | KW: 2/PK: 3 | 01.2002 - 12.2003	 YB4L-B
-APRILIA 	50	RS	RS 50 Replica (SE) | KW: 2/PK: 3 | 01.2004 - 12.2005	 YB4L-B
-APRILIA 	50	RS4	RS4 50 | KW: 2/PK: 3 | 04.2015 -	
-APRILIA 	50	RX	RX 50 (ST) | KW: 2/PK: 3 | 01.1990 - 12.1994	 YB4L-B
-APRILIA 	50	RX	RX 50 (ST) | KW: 3/PK: 4 | 01.1990 -	 YB4L-B
-APRILIA 	50	SPORTCITY	Sportcity One 4T | KW: 2/PK: 3 | 06.2008 - 12.2010	 YB4L-B
-APRILIA 	50	TUAREG	Tuareg 50 | KW: 3/PK: 4 | 01.1988 -	 YB4L-B
-APRILIA 	96	SCARABEO	Scarabeo 100 4T | KW: 10/PK: 14 | 01.2006 - 12.2010	 YB9B
-APRILIA 	96	SCARABEO	Scarabeo 100 4T | KW: 5/PK: 7 | 01.2014 -	 YB9B
-APRILIA 	96	SCARABEO	Scarabeo 100 RE 4T | KW: 6/PK: 8 | 01.2001 - 12.2004	 YB9B
-APRILIA 	124	AF-1	AF-1 125 | KW: 20/PK: 27 | 01.1988 - 12.1992	 YB4L-B
-APRILIA 	124	AF-1	AF-1 125 Futura | KW: 18/PK: 24 | 01.1989 - 12.1992	 YB4L-B
-APRILIA 	124	AF-1	AF-1 125 Replica | KW: 18/PK: 24 | 01.1992 - 12.1992	 YB4L-B
-APRILIA 	124	AF-1	AF-1 125 Replica | KW: 20/PK: 27 | 01.1990 - 12.1992	 YB4L-B
-APRILIA 	124	AF-1	AF-1 125 Sinesi Replica | KW: 20/PK: 27 | 01.1988 - 12.1989	 YB4L-B
-APRILIA 	124	AF-1	AF-1 125 Sport Pro | KW: 18/PK: 24 | 01.1992 - 12.1993	 YB4L-B
-APRILIA 	124	ATLANTIC	Atlantic 125 (SP) | KW: 10/PK: 14 | 01.2003 - 12.2013	 YB12AL-A
-APRILIA 	124	ATLANTIC	Atlantic 125 (SP) | KW: 7/PK: 10 | 01.2003 - 12.2013	 YB9B
-APRILIA 	124	HABANA	Habana 125 (PM) | KW: 8/PK: 10 | 01.2000 - 12.2001	
-APRILIA 	124	HABANA	Habana 125 Custom (PM) | KW: 8/PK: 10 | 01.2000 - 12.2001	
-APRILIA 	124	MOJITO	Mojito 125 | KW: 6/PK: 9 | 01.2000 -	
-APRILIA 	124	MOJITO	Mojito 125 Custom (RY) | KW: 7/PK: 10 | 06.2007 - 12.2013	
-APRILIA 	124	RS	RS 125 (KC) | KW: 11/PK: 15 | 01.2017 -	
-APRILIA 	124	RS	RS 125 (MP) | KW: 23/PK: 31 | 01.1995 - 12.1997	 YB9B
-APRILIA 	124	RS	RS 125 Extre (GS) | KW: 11/PK: 15 | 01.1992 - 12.1994	 YB9B
-APRILIA 	124	RS	RS 125 Extre (GS) | KW: 23/PK: 31 | 01.1992 - 12.1995	 YB9B
-APRILIA 	124	RS	RS 125 Replica (GS) | KW: 11/PK: 15 | 01.1992 - 12.1994	 YB9B
-APRILIA 	124	RX	RX 125 | KW: 6/PK: 8 | 01.1985 -	 YB9B
-APRILIA 	124	SPORTCITY	Sportcity 125 (VB) | KW: 9/PK: 12 | 01.2005 - 12.2008	
-APRILIA 	124	SPORTCITY	Sportcity 125 | KW: 11/PK: 15 | 01.2004 -	
-APRILIA 	124	SPORTCITY	Sportcity 125 One | KW: 7/PK: 10 | 12.2005 - 12.2013	
-APRILIA 	124	SPORTCITY	Sportcity CUBE 125 | KW: 11/PK: 15 | 06.2008 - 12.2013	
-APRILIA 	124	SPORTCITY	Sportcity CUBE 125 Black Line | KW: 11/PK: 15 | 06.2010 - 12.2013	
-APRILIA 	124	SR	SR 125 (PX) | KW: 10/PK: 13 | 01.1999 - 12.2002	
-APRILIA 	124	SR	SR 125 Motard (M70) | KW: 7/PK: 10 | 09.2010 -	 YB9B
-APRILIA 	124	SR	SR 125 Racing (PX) | KW: 10/PK: 13 | 01.2000 - 12.2002	
-APRILIA 	124	SR X	SR x 125 i.e | KW: 11/PK: 15 | 01.2012 -	
-APRILIA 	124	TUAREG	Tuareg 125 | KW: 18/PK: 24 | 01.1985 - 12.1992	 YB9B
-APRILIA 	125	CLASSIC	Classic 125 | KW: 8/PK: 11 | 01.1997 - 12.2001	 YB9B
-APRILIA 	125	ETX	ETX 125 (PH) | KW: 11/PK: 15 | 01.1998 - 12.2003	 YB9B
-APRILIA 	125	LEONARDO	Leonardo 125 () | KW: 9/PK: 12 | 01.1996 - 12.2001	 YB12AL-A
-APRILIA 	125	LEONARDO	Leonardo 125 ST (TB) | KW: 9/PK: 12 | 01.2002 - 12.2004	 YB12AL-A
-APRILIA 	125	MX	MX 125 (TZ) | KW: 11/PK: 15 | 01.2004 - 12.2007	 YB4L-B
-APRILIA 	125	MX	MX 125 (TZ) | KW: 18/PK: 24 | 01.2004 - 12.2007	 YB4L-B
-APRILIA 	125	PEGASO	Pegaso 125 | KW: 18/PK: 24 | 01.1992 - 12.1995	 YB9B
-APRILIA 	125	RED ROSE	Red Rose 125 (BC) | KW: 20/PK: 27 | 01.1989 - 12.1992	 YB9B
-APRILIA 	125	RED ROSE	Red Rose 125 (BC) | KW: 20/PK: 27 | 01.1993 - 12.1997	 YB9B
-APRILIA 	125	RS	RS 125 (MP) | KW: 11/PK: 15 | 01.1995 - 12.2001	 YB9B
-APRILIA 	125	RS	RS 125 (MP) | KW: 18/PK: 24 | 01.1995 - 12.1998	 YB9B
-APRILIA 	125	RS	RS 125 (PY) | KW: 11/PK: 15 | 01.2010 - 12.2012	 YB9B
-APRILIA 	125	RS	RS 125 (PY) | KW: 21/PK: 29 | 02.2006 -	 YB9B
-APRILIA 	125	RS	RS 125 (PY) | KW: 5/PK: 7 | 02.2006 -	 YB9B
-APRILIA 	125	RS	RS 125 (RD) | KW: 11/PK: 15 | 01.2007 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 (RD) | KW: 17/PK: 23 | 01.2007 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 (RD) | KW: 22/PK: 29 | 01.2007 - 12.2007	 YB9B
-APRILIA 	125	RS	RS 125 Extre (MP) | KW: 22/PK: 29 | 01.1995 - 12.2001	 YB9B
-APRILIA 	125	RS	RS 125 Extre (PY) | KW: 22/PK: 29 | 01.2010 - 12.2012	 YB9B
-APRILIA 	125	RS	RS 125 Extre (RD) | KW: 22/PK: 29 | 01.2007 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Extre (SF) | KW: 22/PK: 29 | 01.2002 - 12.2006	 YB9B
-APRILIA 	125	RS	RS 125 Replica (GS) | KW: 23/PK: 31 | 01.1992 - 12.1994	 YB9B
-APRILIA 	125	RS	RS 125 Replica (MP) | KW: 22/PK: 29 | 01.1995 - 12.2001	 YB9B
-APRILIA 	125	RS	RS 125 Replica (PY) | KW: 22/PK: 29 | 01.2010 - 12.2012	 YB9B
-APRILIA 	125	RS	RS 125 Replica (RD) | KW: 22/PK: 29 | 01.2007 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Replica (SF) | KW: 22/PK: 29 | 01.2002 - 12.2006	 YB9B
-APRILIA 	125	RS	RS 125 Spain's No. 1-Replica (SF) | KW: 11/PK: 15 | 01.2007 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Spain's No. 1-Replica (SF) | KW: 17/PK: 23 | 01.2008 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Spain's No. 1-Replica (SF) | KW: 22/PK: 29 | 01.2007 - 12.2007	 YB9B
-APRILIA 	125	RS	RS 125 Talsci-Replica (RD) | KW: 11/PK: 15 | 07.2008 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Talsci-Replica (RD) | KW: 17/PK: 23 | 07.2008 - 12.2009	 YB9B
-APRILIA 	125	RS	RS 125 Tuono (SF) | KW: 22/PK: 29 | 01.2003 - 12.2004	 YB9B
-APRILIA 	125	RS4	RS4 125 | KW: 11/PK: 15 | 04.2011 -	
-APRILIA 	125	RS4	RS4 125 SBK Replica 2012 | KW: 11/PK: 15 | 06.2012 -	
-APRILIA 	125	RX	RX 125 | KW: 11/PK: 15 | 04.2008 -	 YB4L-B
-APRILIA 	125	RX	RX 125 | KW: 17/PK: 23 | 04.2008 - 12.2013	 YB4L-B
-APRILIA 	125	SCARABEO	Scarabeo 125 (PC) | KW: 9/PK: 12 | 01.1999 - 12.2003	 YB12AL-A
-APRILIA 	125	SCARABEO	Scarabeo 125 (RB) | KW: 11/PK: 15 | 03.2008 -	
-APRILIA 	125	SCARABEO	Scarabeo 125 (SD) | KW: 9/PK: 12 | 01.2002 - 12.2002	 YB12AL-A
-APRILIA 	125	SCARABEO	Scarabeo 125 (TD) | KW: 10/PK: 13 | 01.2003 - 12.2007	 YB12AL-A
-APRILIA 	125	SCARABEO	Scarabeo 125 Touring (PC) | KW: 9/PK: 12 | 01.2000 - 12.2003	 YB12AL-A
-APRILIA 	125	SX	SX 125 (SX125MY) | KW: 11/PK: 15 | 05.2008 - 12.2011	 YB4L-B
-APRILIA 	125	SX	SX 125 (SX125MY) | KW: 16/PK: 22 | 05.2008 - 12.2010	 YB4L-B
-APRILIA 	150	SR	SR 150 (PX) | KW: 11/PK: 15 | 01.1999 - 12.2000	
-APRILIA 	151	LEONARDO	Leonardo 150 () | KW: 10/PK: 14 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	151	LEONARDO	Leonardo 150 (TB) | KW: 10/PK: 13 | 01.2002 -	 YB12AL-A
-APRILIA 	151	MOJITO	Mojito 150 (RY) | KW: 8/PK: 11 | 01.2004 -	
-APRILIA 	151	SCARABEO	Scarabeo 150 (PC) | KW: 7/PK: 10 | 01.1999 - 12.2004	 YB12AL-A
-APRILIA 	181	SCARABEO	Scarabeo 200 (RB) | KW: 14/PK: 19 | 03.2008 -	 YB12AL-A
-APRILIA 	197	SPORTCITY	Sportcity 200 | KW: 19/PK: 25 | 01.2004 - 12.2008	
-APRILIA 	198	ATLANTIC	Atlantic 200 (SP) | KW: 14/PK: 19 | 01.2002 - 12.2005	 YB12AL-A
-APRILIA 	198	SCARABEO	Scarabeo 200 (SD) | KW: 13/PK: 18 | 01.2001 -	 YB12AL-A
-APRILIA 	198	SCARABEO	Scarabeo 200 (TD) | KW: 13/PK: 18 | 01.2003 -	 YB12AL-A
-APRILIA 	198	SPORTCITY	Sportcity 200 | KW: 13/PK: 18 | 01.2006 - 12.2007	
-APRILIA 	199	SPORTCITY	Sportcity CUBE 200 | KW: 15/PK: 20 | 05.2006 -	
-APRILIA 	244	ATLANTIC	Atlantic 250 (SP) | KW: 15/PK: 20 | 01.2004 - 12.2009	 YB12AL-A
-APRILIA 	244	ATLANTIC	Atlantic 250 i.e. | KW: 15/PK: 20 | 01.2006 - 12.2009	 YB12AL-A2
-APRILIA 	244	SCARABEO	Scarabeo 250 (TD) | KW: 16/PK: 22 | 01.2004 - 12.2006	 YB12AL-A
-APRILIA 	244	SCARABEO	Scarabeo 250 (VR) | KW: 16/PK: 22 | 01.2007 -	
-APRILIA 	244	SPORTCITY	Sportcity 250 i.e. | KW: 17/PK: 23 | 01.2005 - 12.2009	
-APRILIA 	244	SPORTCITY	Sportcity CUBE 250 | KW: 17/PK: 23 | 05.2006 -	
-APRILIA 	249	RS	RS 250 (LD) | KW: 40/PK: 54 | 01.1995 - 12.1996	 YB4L-B
-APRILIA 	249	RS	RS 250 (LD) | KW: 40/PK: 55 | 01.1997 - 12.2002	 YB4L-B
-APRILIA 	249	RS	RS 250 Replica (LD) | KW: 40/PK: 54 | 01.2000 - 12.2002	 YB4L-B
-APRILIA 	249	RX	RX 250 | KW: 13/PK: 18 | 01.1985 -	 YB9B
-APRILIA 	249	RX	RX 250 Tuareg Ralley | KW: 13/PK: 18 | 01.1985 -	 YB9B
-APRILIA 	250	LEONARDO	Leonardo 250 (PD) | KW: 14/PK: 19 | 01.1999 - 12.2001	 YB12AL-A
-APRILIA 	250	LEONARDO	Leonardo 250 | KW: 14/PK: 19 | 01.2002 -	 YB12AL-A
-APRILIA 	265	LEONARDO	Leonardo 300 | KW: 15/PK: 20 | 01.2005 - 12.2006	 YB12AL-A
-APRILIA 	278	ATLANTIC	Atlantic 300 i.e. (SPG) | KW: 17/PK: 23 | 03.2010 -	 YB12AL-A
-APRILIA 	278	CUBE	Cube 300 i.e. | KW: 17/PK: 23 | 06.2008 - 12.2013	
-APRILIA 	278	CUBE	Cube 300 i.e. Black Line | KW: 17/PK: 23 | 06.2010 - 12.2013	
-APRILIA 	278	SCARABEO	Scarabeo 300 (VR) | KW: 16/PK: 22 | 01.2009 - 12.2012	
-APRILIA 	278	SR X	SR x 300 i.e. | KW: 16/PK: 22 | 01.2012 -	
-APRILIA 	280	SPORTCITY	Sportcity Street 300 | KW: 16/PK: 22 | 07.2008 -	
-APRILIA 	349	WIND	6.35 Tuareg Wind | KW: 20/PK: 27 | 01.1986 - 12.1988	 YB14L-A2
-APRILIA 	349	ETX	ETX 350 | KW: 20/PK: 27 | 01.1985 - 12.1988	 YB14L-A2
-APRILIA 	349	ETX	ETX 6.35 | KW: 20/PK: 27 | 01.1988 -	 YB14L-A2
-APRILIA 	399	ATLANTIC	Atlantic 400 Sprint | KW: 25/PK: 34 | 01.2006 - 12.2009	
-APRILIA 	399	SCARABEO	Scarabeo 400 i.e. (VR) | KW: 25/PK: 34 | 01.2006 - 12.2011	
-APRILIA 	449	RXV	RXV 450 (VP) | KW: 14/PK: 19 | 01.2007 - 12.2007	
-APRILIA 	449	RXV	RXV 450 (VP) | KW: 25/PK: 34 | 01.2006 - 12.2006	 YB9B
-APRILIA 	449	RXV	RXV 450 (VPT) | KW: 13/PK: 18 | 01.2008 - 12.2010	
-APRILIA 	449	SXV	SXV 450 (VS) | KW: 25/PK: 34 | 01.2006 - 12.2006	
-APRILIA 	449	SXV	SXV 450 | KW: 14/PK: 19 | 01.2007 - 12.2007	
-APRILIA 	449	SXV	SXV 450 Replica | KW: 14/PK: 19 | 01.2006 - 12.2011	
-APRILIA 	459	ATLANTIC	Atlantic 500 (PT) | KW: 29/PK: 39 | 01.2002 -	 YB14L-A2
-APRILIA 	459	ATLANTIC	Atlantic 500 Sprint (VL) | KW: 28/PK: 38 | 01.2005 - 12.2010	 YB14L-A2
-APRILIA 	460	SCARABEO	Scarabeo 500 (RT) | KW: 28/PK: 38 | 05.2003 - 12.2004	 YB14L-A2
-APRILIA 	460	SCARABEO	Scarabeo 500 | KW: 29/PK: 39 | 01.2006 - 12.2012	
-APRILIA 	460	SCARABEO	Scarabeo 500 GT ABS | KW: 29/PK: 39 | 01.2002 - 12.2007	 YB14L-A2
-APRILIA 	493	SCARABEO	Scarabeo 500 i.e. (VR) | KW: 29/PK: 39 | 01.2008 - 12.2012	
-APRILIA 	553	RXV	RXV 550 (VP) | KW: 25/PK: 34 | 01.2006 - 12.2006	 YB9B
-APRILIA 	553	RXV	RXV 550 (VPX) | KW: 14/PK: 19 | 01.2009 -	 YB4L-B
-APRILIA 	553	RXV	RXV 550 | KW: 15/PK: 20 | 01.2007 - 12.2007	
-APRILIA 	553	SXV	SXV 550 | KW: 15/PK: 20 | 01.2007 - 12.2007	
-APRILIA 	562	PEGASO	Pegaso 600 (FP) | KW: 33/PK: 45 | 01.1988 - 12.1991	 YB14L-A2
-APRILIA 	562	PEGASO	Pegaso 600 (FP) | KW: 35/PK: 48 | 01.1990 -	 YB14L-A2
-APRILIA 	562	WIND	Tuareg Wind 600 | KW: 33/PK: 45 | 01.1988 - 12.1991	 YB14L-A2
-APRILIA 	562	WIND	Tuareg Wind 600 | KW: 35/PK: 48 | 01.1988 - 12.1991	 YB14L-A2
-APRILIA 	649	MOTO	Moto 6.5 (MH) | KW: 31/PK: 42 | 01.1995 - 12.2000	 YB12AL-A2
-APRILIA 	652	PEGASO	Pegaso 650 (GA) | KW: 25/PK: 34 | 01.1992 - 12.1996	 YB14L-A2
-APRILIA 	652	PEGASO	Pegaso 650 (GA) | KW: 34/PK: 46 | 01.1992 - 12.1996	 YB14L-A2
-APRILIA 	652	PEGASO	Pegaso 650 | KW: 36/PK: 49 | 01.1992 - 12.1996	 YB14L-A2
-APRILIA 	652	PEGASO	Pegaso 650 CatCon. () | KW: 25/PK: 34 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 CatCon. () | KW: 34/PK: 46 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 CatCon. (RW) | KW: 36/PK: 49 | 01.2001 - 12.2004	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 Garda () | KW: 25/PK: 34 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 Garda () | KW: 34/PK: 46 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 Garda () | KW: 36/PK: 49 | 01.1997 - 12.2000	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 I.E. (RW) | KW: 25/PK: 34 | 01.2001 - 12.2004	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 I.E. (RW) | KW: 36/PK: 49 | 01.2001 - 12.2004	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 I.E. Garda (RW) | KW: 25/PK: 34 | 01.2001 - 12.2004	 YB12AL-A
-APRILIA 	652	PEGASO	Pegaso 650 I.E. Garda (RW) | KW: 36/PK: 49 | 01.2001 - 12.2004	 YB12AL-A
-APRILIA 	660	PEGASO	Pegaso 650 (VD) | KW: 35/PK: 48 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Factory (VD) | KW: 25/PK: 34 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Factory (VD) | KW: 35/PK: 48 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Strada (VD) | KW: 25/PK: 34 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Strada (VD) | KW: 35/PK: 48 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Trail (VD) | KW: 25/PK: 34 | 01.2005 - 12.2009	
-APRILIA 	660	PEGASO	Pegaso 650 Trail (VD) | KW: 35/PK: 48 | 01.2005 - 12.2009	
-APRILIA 	749	DORSODURO	Dorsoduro 750 (M551M) | KW: 67/PK: 91 | 05.2008 - 12.2013	
-APRILIA 	749	DORSODURO	Dorsoduro 750 ABS | KW: 67/PK: 91 | 01.2014 -	
-APRILIA 	749	DORSODURO	Dorsoduro 750 Factory (M551M) | KW: 67/PK: 91 | 05.2010 - 12.2013	
-APRILIA 	749	SL	SL 750 Shiver | KW: 70/PK: 95 | 07.2007 - 12.2013	
-APRILIA 	749	SL	SL 750 Shiver ABS | KW: 35/PK: 48 | 01.2014 -	
-APRILIA 	749	SL	SL 750 Shiver ABS | KW: 70/PK: 95 | 01.2014 -	
-APRILIA 	749	SL	SL 750 Shiver ABS | KW: 70/PK: 95 | 07.2007 - 12.2013	
-APRILIA 	749	SL	SL 750 Shiver GT | KW: 70/PK: 95 | 01.2009 - 12.2013	
-APRILIA 	750	SHIVER	Shiver 750 (RA) | KW: 25/PK: 34 | 07.2007 -	
-APRILIA 	750	SHIVER	Shiver 750 (RA) | KW: 70/PK: 95 | 07.2007 -	
-APRILIA 	839	NA	na 850 | KW: 56/PK: 76 | 11.2007 - 12.2013	
-APRILIA 	839	NA	na 850 GT | KW: 56/PK: 77 | 04.2009 - 12.2013	
-APRILIA 	839	NA	na 850 GT ABS | KW: 56/PK: 76 | 01.2014 -	
-APRILIA 	839	SRV	SRV 850 i.e. | KW: 56/PK: 76 | 06.2012 - 12.2013	
-APRILIA 	839	SRV	SRV 850 i.e. ABS | KW: 56/PK: 77 | 01.2014 -	
-APRILIA 	896	DORSODURO	Dorsoduro 900 | KW: 35/PK: 48 | 01.2017 -	
-APRILIA 	896	DORSODURO	Dorsoduro 900 | KW: 70/PK: 95 | 01.2017 -	
-APRILIA 	896	SHIVER	Shiver 900 | KW: 35/PK: 48 | 01.2017 -	
-APRILIA 	896	SHIVER	Shiver 900 | KW: 70/PK: 95 | 01.2017 -	
-APRILIA 	998	ETV	ETV 1000 Caponord (PS) | KW: 72/PK: 98 | 01.1998 - 12.2004	
-APRILIA 	998	ETV	ETV 1000 Caponord ABS (PS) | KW: 72/PK: 98 | 01.2004 - 12.2007	
-APRILIA 	998	ETV	ETV 1000 Caponord Rally (PS) | KW: 72/PK: 98 | 01.2004 - 12.2004	
-APRILIA 	998	ETV	ETV 1000 Raid ABS | KW: 72/PK: 98 | 01.2006 - 01.2006	
-APRILIA 	998	RST	RST 1000 Futura | KW: 72/PK: 98 | 01.2001 - 12.2003	
-APRILIA 	998	RST	RST 1000 Futura | KW: 78/PK: 106 | 01.2001 - 12.2003	
-APRILIA 	998	RST	RST 1000 Futura | KW: 84/PK: 114 | 01.2001 - 12.2003	
-APRILIA 	998	RSV	RSV 1000 R (RR) | KW: 105/PK: 143 | 01.2004 - 12.2010	
-APRILIA 	998	RSV	RSV 1000 R Factory (RR) | KW: 102/PK: 139 | 01.2004 - 12.2005	
-APRILIA 	998	RSV	RSV 1000 R Factory (RR) | KW: 105/PK: 143 | 01.2006 - 12.2011	
-APRILIA 	998	RSV	RSV Mille (ME) | KW: 72/PK: 98 | 01.1998 - 12.2000	
-APRILIA 	998	RSV	RSV Mille (ME) | KW: 87/PK: 118 | 01.1998 - 12.2000	
-APRILIA 	998	RSV	RSV Mille (ME) | KW: 92/PK: 125 | 01.1998 - 12.2000	
-APRILIA 	998	RSV	RSV Mille R (ME) | KW: 87/PK: 118 | 01.2000 - 12.2000	
-APRILIA 	998	RSV	RSV Mille R (RP) | KW: 92/PK: 125 | 01.2001 - 12.2003	
-APRILIA 	998	RSV	RSV Mille R (RR) | KW: 102/PK: 139 | 01.2004 - 12.2005	
-APRILIA 	998	RSV	RSV Mille SP | KW: 107/PK: 146 | 01.2000 - 12.2000	
-APRILIA 	998	SL	SL Falco (PA) | KW: 87/PK: 118 | 01.2000 - 12.2003	
-APRILIA 	998	SL	SL SL Falco Edition (PA) | KW: 87/PK: 118 | 01.2001 - 12.2002	
-APRILIA 	998	TUONO	Tuono (RP) | KW: 96/PK: 131 | 01.2003 - 12.2003	
-APRILIA 	998	TUONO	Tuono R (RP) | KW: 92/PK: 125 | 01.2004 - 12.2005	
-APRILIA 	998	TUONO	Tuono R (RR) | KW: 102/PK: 139 | 01.2006 - 12.2011	
-APRILIA 	998	TUONO	Tuono R (RR) | KW: 72/PK: 98 | 01.2006 - 12.2011	
-APRILIA 	998	TUONO	Tuono R (RR) | KW: 78/PK: 106 | 01.2006 - 12.2011	
-APRILIA 	998	TUONO	Tuono R (RR) | KW: 98/PK: 133 | 01.2006 - 12.2006	
-APRILIA 	998	TUONO	Tuono R Dayona Replica | KW: 102/PK: 139 | 06.2007 - 12.2007	
-APRILIA 	998	TUONO	Tuono R Factory (RP) | KW: 92/PK: 125 | 01.2004 - 12.2005	
-APRILIA 	998	TUONO	Tuono R Factory (RR) | KW: 102/PK: 139 | 05.2006 - 12.2011	
-APRILIA 	999	RSV4	RSV4 ABS | KW: 135/PK: 184 | 01.2014 -	
-APRILIA 	999	RSV4	RSV4 Factory (RK) | KW: 78/PK: 106 | 03.2009 - 12.2011	
-APRILIA 	999	RSV4	RSV4 Factory | KW: 132/PK: 180 | 03.2009 - 12.2011	
-APRILIA 	999	RSV4	RSV4 Factory ABS | KW: 135/PK: 184 | 01.2014 -	
-APRILIA 	999	RSV4	RSV4 Factory APRC | KW: 132/PK: 180 | 01.2011 - 12.2013	
-APRILIA 	999	RSV4	RSV4 R | KW: 132/PK: 180 | 04.2011 - 12.2013	
-APRILIA 	999	RSV4	RSV4 R | KW: 132/PK: 180 | 09.2009 - 12.2011	
-APRILIA 	999	RSV4	RSV4 RF 1000 (KE) | KW: 148/PK: 201 | 01.2017 -	
-APRILIA 	999	RSV4	RSV4 RF 1000 (RK) | KW: 148/PK: 201 | 01.2015 -	
-APRILIA 	999	RSV4	RSV4 RR 1000 (KE) | KW: 148/PK: 201 | 01.2017 -	
-APRILIA 	999	RSV4	RSV4 RR 1000 (RK) | KW: 148/PK: 201 | 01.2015 -	
-APRILIA 	999	TUONO	Tuono V4 (TY) | KW: 78/PK: 106 | 04.2011 - 12.2013	
-APRILIA 	999	TUONO	Tuono V4 | KW: 125/PK: 170 | 06.2013 -	
-APRILIA 	999	TUONO	Tuono V4 Factory (TY) | KW: 78/PK: 106 | 04.2011 - 12.2013	
-APRILIA 	999	TUONO	Tuono V4 Factory | KW: 125/PK: 170 | 06.2013 -	
-APRILIA 	999	TUONO	Tuono V4 R | KW: 123/PK: 167 | 04.2011 - 12.2013	
-APRILIA 	999	TUONO	Tuono V4 R APRC | KW: 123/PK: 167 | 01.2014 -	
-APRILIA 	999	TUONO	Tuono V4 R APRC | KW: 123/PK: 167 | 04.2011 - 12.2013	
-APRILIA 	1077	TUONO	Tuono V4 Factory | KW: 129/PK: 175 | 01.2014 -	
-APRILIA 	1077	TUONO	Tuono V4 Factory | KW: 78/PK: 106 | 01.2014 -	
-APRILIA 	1077	TUONO	Tuono V4 RR | KW: 129/PK: 175 | 01.2014 -	
-APRILIA 	1077	TUONO	Tuono V4 RR | KW: 78/PK: 106 | 01.2014 -	
-APRILIA 	1197	CAPONORD	Caponord 1200 (VK) | KW: 92/PK: 125 | 01.2013 -	
-APRILIA 	1197	CAPONORD	Caponord 1200 Rally (VK) | KW: 92/PK: 125 | 01.2013 -	
-APRILIA 	1197	DORSODURO	Dorsoduro 1200 | KW: 96/PK: 131 | 10.2010 - 12.2013	
-APRILIA 	1197	DORSODURO	Dorsoduro 1200 ABS/ATC | KW: 96/PK: 131 | 10.2010 -	
+ { Brand: "APRILIA", CC: "49", Model: "SR 50", Year: "1993-1997", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "49", Model: "SR 50 LC", Year: "1996-1997", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "50", Model: "RS 50", Year: "1994-1997", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "124", Model: "RS 125", Year: "1995-1997", Battery_Code: "YB9B" },
+        { Brand: "APRILIA", CC: "124", Model: "RS 125", Year: "2006-2010", Battery_Code: "YTX5-3" },
+        { Brand: "APRILIA", CC: "125", Model: "RS 125", Year: "2007-2009", Battery_Code: "YB9B" },
+        { Brand: "APRILIA", CC: "125", Model: "RS 125", Year: "2010-2012", Battery_Code: "YB9B" },
+        { Brand: "APRILIA", CC: "125", Model: "Tuono 125", Year: "2003-2004", Battery_Code: "YB9B" },
+        { Brand: "APRILIA", CC: "125", Model: "RX 125", Year: "2008-2013", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "125", Model: "SX 125", Year: "2008-2011", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "250", Model: "RS 250", Year: "1995-2002", Battery_Code: "YB4L-B" },
+        { Brand: "APRILIA", CC: "650", Model: "Pegaso 650", Year: "1992-1996", Battery_Code: "YB14L-A2" },
+        { Brand: "APRILIA", CC: "650", Model: "Pegaso 650", Year: "1997-2000", Battery_Code: "YB12AL-A" },
+        { Brand: "APRILIA", CC: "660", Model: "Pegaso 650", Year: "2005-2009", Battery_Code: "YTX12-4" },
+        { Brand: "APRILIA", CC: "998", Model: "RSV Mille", Year: "1998-2000", Battery_Code: "YTX12-4" },
+        { Brand: "APRILIA", CC: "998", Model: "RSV 1000 R", Year: "2004-2010", Battery_Code: "YTX14-4" },
+        { Brand: "APRILIA", CC: "998", Model: "Tuono", Year: "2003-2011", Battery_Code: "YTX12-4" },
+        { Brand: "APRILIA", CC: "999", Model: "RSV4", Year: "2009-2011", Battery_Code: "YTZ10S-WC" },
+        { Brand: "APRILIA", CC: "999", Model: "RSV4", Year: "2011-2013", Battery_Code: "YTX12-4" },
+        { Brand: "APRILIA", CC: "999", Model: "Tuono V4", Year: "2011-2013", Battery_Code: "YTZ12S-WC" },
+        { Brand: "BMW", CC: "125", Model: "C1", Year: "1999-2003", Battery_Code: "YB14L-A2" },
+        { Brand: "BMW", CC: "650", Model: "F 650", Year: "1993-2000", Battery_Code: "YB12AL-A" },
+        { Brand: "BMW", CC: "650", Model: "G 650 X", Year: "2006-2007", Battery_Code: "YTX12-4" },
+        { Brand: "BMW", CC: "798", Model: "F 800 GS", Year: "2006-2012", Battery_Code: "YTX14-4" },
+        { Brand: "BMW", CC: "798", Model: "F 800 R", Year: "2005-2014", Battery_Code: "YTX14-4" },
+        { Brand: "BMW", CC: "1170", Model: "R 1200 GS", Year: "2004-2012", Battery_Code: "YTX14-4" },
+        { Brand: "BMW", CC: "1170", Model: "R 1200 GS", Year: "2013-", Battery_Code: "YTX14-4" },
+        { Brand: "BMW", CC: "999", Model: "S 1000 RR", Year: "2008-2011", Battery_Code: "YTZ10S-WC" },
+        { Brand: "BMW", CC: "999", Model: "S 1000 RR", Year: "2011-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "DUCATI", CC: "600", Model: "Monster 600", Year: "1994-2001", Battery_Code: "YB16AL-A" },
+        { Brand: "DUCATI", CC: "620", Model: "Monster 620", Year: "2001-2006", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "696", Model: "Monster 696", Year: "2007-2013", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "748", Model: "748", Year: "1995-2002", Battery_Code: "YB16AL-A" },
+        { Brand: "DUCATI", CC: "749", Model: "749", Year: "2003-2006", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "803", Model: "Monster 796", Year: "2010-2013", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "821", Model: "Monster 821", Year: "2014-", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "848", Model: "848", Year: "2007-2010", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "916", Model: "916", Year: "1994-1998", Battery_Code: "YB16AL-A" },
+        { Brand: "DUCATI", CC: "996", Model: "996", Year: "1998-2001", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "998", Model: "998", Year: "2001-2004", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "999", Model: "999", Year: "2002-2006", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "1078", Model: "Monster 1100", Year: "2009-2011", Battery_Code: "YT12B-4" },
+        { Brand: "DUCATI", CC: "1098", Model: "1098", Year: "2007-2008", Battery_Code: "YTX14-4" },
+        { Brand: "DUCATI", CC: "1198", Model: "1198", Year: "2009-2011", Battery_Code: "YT12B-4" },
+        { Brand: "HONDA", CC: "50", Model: "CBR 125 R", Year: "2003-2006", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "50", Model: "CBR 125 R", Year: "2006-2010", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "125", Model: "CBR 125 R", Year: "2011-2013", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "125", Model: "CB 125 F", Year: "2015-", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "125", Model: "MSX 125", Year: "2013-", Battery_Code: "YB4L-B" },
+        { Brand: "HONDA", CC: "125", Model: "PCX 125", Year: "2010-", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "125", Model: "SH 125", Year: "2001-2004", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "125", Model: "SH 125", Year: "2013-", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "125", Model: "XL 125 V", Year: "2001-2009", Battery_Code: "6N4C-1B" },
+        { Brand: "HONDA", CC: "250", Model: "CBR 250 R", Year: "2011-2013", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "250", Model: "CRF 250 L", Year: "2013-", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "250", Model: "NX 250", Year: "1988-1990", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "300", Model: "CBR 300 R", Year: "2014-", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "400", Model: "CB 400 Super Four", Year: "1992-2007", Battery_Code: "YTX9-4" },
+        { Brand: "HONDA", CC: "400", Model: "VFR 400 R", Year: "1990-1993", Battery_Code: "YTX7A-4" },
+        { Brand: "HONDA", CC: "450", Model: "CRF 450 X", Year: "2005-", Battery_Code: "YTX5-3" },
+        { Brand: "HONDA", CC: "500", Model: "CB 500 F", Year: "2013-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "500", Model: "CBR 500 R", Year: "2013-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "500", Model: "CMX 500 Rebel", Year: "2017-", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "600", Model: "CBR 600 F", Year: "1986-1990", Battery_Code: "YTX9-4" },
+        { Brand: "HONDA", CC: "600", Model: "CBR 600 RR", Year: "2003-2013", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "600", Model: "CB 600 F Hornet", Year: "1998-2004", Battery_Code: "YTX7-3" },
+        { Brand: "HONDA", CC: "650", Model: "CBR 650 F", Year: "2014-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "650", Model: "NC 700 X", Year: "2011-2013", Battery_Code: "YTZ12S-WC" },
+        { Brand: "HONDA", CC: "650", Model: "NC 750 X", Year: "2013-", Battery_Code: "YTZ12S-WC" },
+        { Brand: "HONDA", CC: "700", Model: "NC 700 X", Year: "2011-2013", Battery_Code: "YTZ12S-WC" },
+        { Brand: "HONDA", CC: "750", Model: "CB 750 Seven Fifty", Year: "1992-2003", Battery_Code: "YB14L-A2" },
+        { Brand: "HONDA", CC: "750", Model: "VFR 750 F", Year: "1988-1999", Battery_Code: "YB14-A2" },
+        { Brand: "HONDA", CC: "800", Model: "VFR 800", Year: "1998-2013", Battery_Code: "YTZ12S-WC" },
+        { Brand: "HONDA", CC: "900", Model: "CBR 900 RR", Year: "1992-1999", Battery_Code: "YTX9-4" },
+        { Brand: "HONDA", CC: "919", Model: "CB 900 Hornet", Year: "2002-2005", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "954", Model: "CBR 954 RR", Year: "2002-2003", Battery_Code: "YTZ10S-WC" },
+        { Brand: "HONDA", CC: "996", Model: "VTR 1000 Fire Storm", Year: "1998-2006", Battery_Code: "YTZ12S-WC" },
+        { Brand: "HONDA", CC: "998", Model: "CBR 1000 RR", Year: "2004-2007", Battery_Code: "YB14L-A2" },
+        { Brand: "HONDA", CC: "998", Model: "CBR 1000 RR", Year: "2008-2011", Battery_Code: "YB14L-A2" },
+        { Brand: "HONDA", CC: "998", Model: "CRF 1000 L", Year: "2016-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "HONDA", CC: "999", Model: "CBR 1000 RR", Year: "2014-", Battery_Code: "YB14L-A2" },
+        { Brand: "HONDA", CC: "1100", Model: "CB 1100 XX", Year: "1997-2003", Battery_Code: "YTX12-4" },
+        { Brand: "HONDA", CC: "1100", Model: "VFR 1200 F", Year: "2009-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KAWASAKI", CC: "125", Model: "KMX 125", Year: "1996-2003", Battery_Code: "YB4L-B" },
+        { Brand: "KAWASAKI", CC: "250", Model: "Ninja 250 R", Year: "2007-2012", Battery_Code: "YTX7A-4" },
+        { Brand: "KAWASAKI", CC: "250", Model: "KLX 250", Year: "1993-2005", Battery_Code: "YTX7-3" },
+        { Brand: "KAWASAKI", CC: "300", Model: "Ninja 300", Year: "2012-", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "300", Model: "Versys-X 300", Year: "2017-", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "400", Model: "Z 400", Year: "1978-1979", Battery_Code: "YB12A-A" },
+        { Brand: "KAWASAKI", CC: "400", Model: "ZXR 400", Year: "1989-1997", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "450", Model: "KLX 450 R", Year: "2007-2009", Battery_Code: "YTX5-3" },
+        { Brand: "KAWASAKI", CC: "500", Model: "GPZ 500 S", Year: "1987-2003", Battery_Code: "YB14L-A2" },
+        { Brand: "KAWASAKI", CC: "500", Model: "ER 5", Year: "1996-2003", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "550", Model: "Zephyr 550", Year: "1991-1999", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "600", Model: "Ninja ZX-6R", Year: "1994-1998", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "600", Model: "ZZ-R 600", Year: "1990-2005", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "636", Model: "Ninja ZX-6R", Year: "2002-2006", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "636", Model: "Ninja ZX-6R 636", Year: "2013-", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "649", Model: "ER 6F/N", Year: "2005-2013", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "649", Model: "Versys 650", Year: "2007-2013", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "649", Model: "Vulcan S", Year: "2015-", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "650", Model: "KLR 650", Year: "1987-2004", Battery_Code: "YB14L-A2" },
+        { Brand: "KAWASAKI", CC: "650", Model: "W 650", Year: "1999-2006", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "700", Model: "Z 750", Year: "2003-2012", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "700", Model: "Z 750 S", Year: "2005-2006", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "750", Model: "GPZ 750", Year: "1982-1987", Battery_Code: "YB14L-A2" },
+        { Brand: "KAWASAKI", CC: "750", Model: "Zephyr 750", Year: "1991-1999", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "750", Model: "ZR-7", Year: "1999-2004", Battery_Code: "YTX12-4" },
+        { Brand: "KAWASAKI", CC: "800", Model: "Z 800", Year: "2012-", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "800", Model: "VN 800", Year: "1994-2005", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "900", Model: "VN 900", Year: "2006-2013", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "900", Model: "Z 900", Year: "2017-", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "950", Model: "Z 1000", Year: "2003-2013", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "998", Model: "Ninja ZX-10R", Year: "2003-2007", Battery_Code: "YT12B-4" },
+        { Brand: "KAWASAKI", CC: "998", Model: "Ninja ZX-10R", Year: "2008-2010", Battery_Code: "YT12B-4" },
+        { Brand: "KAWASAKI", CC: "998", Model: "Ninja ZX-10R", Year: "2011-2015", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KAWASAKI", CC: "1043", Model: "Versys 1000", Year: "2012-", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "1043", Model: "Z 1000 SX", Year: "2010-2013", Battery_Code: "YTX9-4" },
+        { Brand: "KAWASAKI", CC: "1052", Model: "ZRX 1100", Year: "1996-2000", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "1052", Model: "ZZ-R 1100", Year: "1990-2001", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "1164", Model: "ZRX 1200", Year: "2001-2007", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "1164", Model: "ZZ-R 1200", Year: "2002-2005", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "1199", Model: "Ninja ZX-12R", Year: "2000-2006", Battery_Code: "YTX14-4" },
+        { Brand: "KAWASAKI", CC: "1352", Model: "GTR 1400", Year: "2007-2014", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KAWASAKI", CC: "1352", Model: "ZZ-R 1400", Year: "2006-2011", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KAWASAKI", CC: "1441", Model: "ZZ-R 1400", Year: "2012-", Battery_Code: "YTX14-4" },
+        { Brand: "KTM", CC: "125", Model: "Duke 125", Year: "2011-2012", Battery_Code: "YTX7-3" },
+        { Brand: "KTM", CC: "125", Model: "Duke 125", Year: "2013-", Battery_Code: "YTX7-3" },
+        { Brand: "KTM", CC: "125", Model: "RC 125", Year: "2014-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "200", Model: "Duke 200", Year: "2012-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "200", Model: "RC 200", Year: "2014-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "250", Model: "Duke 250", Year: "2015-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "250", Model: "EXC 250", Year: "1998-2007", Battery_Code: "YB4L-B" },
+        { Brand: "KTM", CC: "250", Model: "EXC-F 250", Year: "2006-2015", Battery_Code: "YTX5-3" },
+        { Brand: "KTM", CC: "300", Model: "EXC 300", Year: "2001-2010", Battery_Code: "YB4L-B" },
+        { Brand: "KTM", CC: "350", Model: "EXC-F 350", Year: "2011-2015", Battery_Code: "YB4L-B" },
+        { Brand: "KTM", CC: "390", Model: "Duke 390", Year: "2013-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "390", Model: "RC 390", Year: "2014-", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "450", Model: "EXC 450", Year: "2003-2007", Battery_Code: "YTX5-3" },
+        { Brand: "KTM", CC: "450", Model: "EXC-F 450", Year: "2015-", Battery_Code: "YTX5-3" },
+        { Brand: "KTM", CC: "500", Model: "EXC 500", Year: "2011-", Battery_Code: "YTX5-3" },
+        { Brand: "KTM", CC: "500", Model: "EXC-F 500", Year: "2016-", Battery_Code: "YTX5-3" },
+        { Brand: "KTM", CC: "625", Model: "640 LC4", Year: "1998-2006", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "625", Model: "640 LC4 Supermoto", Year: "1999-2007", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KTM", CC: "654", Model: "690 Duke", Year: "2008-2011", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KTM", CC: "654", Model: "690 SMC", Year: "2008-2011", Battery_Code: "YTX9-4" },
+        { Brand: "KTM", CC: "690", Model: "690 Duke", Year: "2012-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KTM", CC: "690", Model: "690 Enduro R", Year: "2009-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KTM", CC: "690", Model: "690 SMC R", Year: "2012-", Battery_Code: "YTZ10S-WC" },
+        { Brand: "KTM", CC: "950", Model: "950 Adventure", Year: "2002-2008", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "950", Model: "950 Supermoto", Year: "2005-2007", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "990", Model: "990 Adventure", Year: "2006-2011", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "990", Model: "990 Super Duke", Year: "2005-2012", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "1050", Model: "1050 Adventure", Year: "2015-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "1050", Model: "1090 Adventure", Year: "2016-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "1190", Model: "1190 RC8", Year: "2008-2010", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "1195", Model: "1190 Adventure", Year: "2013-", Battery_Code: "YTZ14S-WC" },
+        { Brand: "KTM", CC: "1290", Model: "1290 Super Adventure", Year: "2015-", Battery_Code: "YTX14-4" },
+        { Brand: "KTM", CC: "1290", Model: "1290 Super Duke R", Year: "2013-", Battery_Code: "YTX14-4" },
+        { Brand: "SUZUKI", CC: "125", Model: "DR 125 SE", Year: "1991-2000", Battery_Code: "YTX7-3" },
+        { Brand: "SUZUKI", CC: "125", Model: "GN 125", Year: "1989-1999", Battery_Code: "YB7-A" },
+        { Brand: "SUZUKI", CC: "125", Model: "GS 125", Year: "1991-1999", Battery_Code: "YB7-A" },
+        { Brand: "SUZUKI", CC: "125", Model: "VanVan 125", Year: "2002-2009", Battery_Code: "YTX7-3" },
+        { Brand: "SUZUKI", CC: "250", Model: "GN 250", Year: "1984-1999", Battery_Code: "YB10L-A2" },
+        { Brand: "SUZUKI", CC: "250", Model: "TU 250 X", Year: "2014-", Battery_Code: "YTX7-3" },
+        { Brand: "SUZUKI", CC: "250", Model: "VanVan 200", Year: "2016-", Battery_Code: "YTX7-3" },
+        { Brand: "SUZUKI", CC: "400", Model: "DR-Z 400", Year: "2000-2015", Battery_Code: "YT7B-4" },
+        { Brand: "SUZUKI", CC: "400", Model: "GS 500", Year: "1989-2008", Battery_Code: "YB10L-A2" },
+        { Brand: "SUZUKI", CC: "400", Model: "GSX-R 400", Year: "1984-1999", Battery_Code: "YTX9-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "GSX-R 600", Year: "1992-2010", Battery_Code: "YTX9-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "GSX 600 F", Year: "1988-2004", Battery_Code: "YTX9-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "GSF 600 Bandit", Year: "1994-2004", Battery_Code: "YTX9-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "GSR 600", Year: "2006-2011", Battery_Code: "YTX9-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "SV 650", Year: "1998-2009", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "600", Model: "DL 650 V-Strom", Year: "2004-2013", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "600", Model: "GSR 750", Year: "2011-", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "650", Model: "DR 650", Year: "1996-2000", Battery_Code: "YB10L-B2" },
+        { Brand: "SUZUKI", CC: "650", Model: "LS 650 Savage", Year: "1986-2000", Battery_Code: "YB14L-A2" },
+        { Brand: "SUZUKI", CC: "650", Model: "SV 1000", Year: "2003-2005", Battery_Code: "YTX14-4" },
+        { Brand: "SUZUKI", CC: "650", Model: "DL 1000 V-Strom", Year: "2002-2007", Battery_Code: "YTX14-4" },
+        { Brand: "SUZUKI", CC: "650", Model: "GSX 1250 FA", Year: "2010-2014", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "750", Model: "GSX-R 750", Year: "1985-2010", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "750", Model: "GSX 750 F", Year: "1989-1997", Battery_Code: "YB14L-A2" },
+        { Brand: "SUZUKI", CC: "800", Model: "Intruder C800", Year: "2005-2013", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "800", Model: "VZ 800", Year: "1997-2006", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "1000", Model: "GSX-R 1000", Year: "2001-2013", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "1000", Model: "GSX-S 1000", Year: "2015-", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "1000", Model: "TL 1000", Year: "1997-2000", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSX-R 1100", Year: "1986-1992", Battery_Code: "YB14L-A2" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSX 1100", Year: "1980-1984", Battery_Code: "YB14L-A2" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSF 1200 Bandit", Year: "1995-2006", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSF 1250 Bandit", Year: "2006-2010", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSX 1300 R Hayabusa", Year: "1999-2007", Battery_Code: "YTZ12S-WC" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSX 1300 R Hayabusa", Year: "2008-", Battery_Code: "YTX12-4" },
+        { Brand: "SUZUKI", CC: "1100", Model: "GSX 1400", Year: "2001-2006", Battery_Code: "YTX14-4" },
+        { Brand: "TRIUMPH", CC: "600", Model: "Daytona 600", Year: "2003-2004", Battery_Code: "YTX9-4" },
+        { Brand: "TRIUMPH", CC: "600", Model: "Speed Four", Year: "2002-2005", Battery_Code: "YTX9-4" },
+        { Brand: "TRIUMPH", CC: "600", Model: "TT 600", Year: "2000-2003", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "650", Model: "Daytona 650", Year: "2005", Battery_Code: "YTZ12S-WC" },
+        { Brand: "TRIUMPH", CC: "650", Model: "Bonneville 650", Year: "1959-1973", Battery_Code: "YB7L-B" },
+        { Brand: "TRIUMPH", CC: "675", Model: "Daytona 675", Year: "2006-2012", Battery_Code: "YT7B-4" },
+        { Brand: "TRIUMPH", CC: "675", Model: "Street Triple", Year: "2008-2012", Battery_Code: "YTX9-4" },
+        { Brand: "TRIUMPH", CC: "750", Model: "Bonneville 750", Year: "1973-1988", Battery_Code: "YB9B" },
+        { Brand: "TRIUMPH", CC: "750", Model: "Trident 750", Year: "1990-1998", Battery_Code: "YB7L-B" },
+        { Brand: "TRIUMPH", CC: "750", Model: "Speed Triple 750", Year: "1996-1997", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "750", Model: "Daytona 750", Year: "1992-1993", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "765", Model: "Street Triple", Year: "2017-", Battery_Code: "YTX9-4" },
+        { Brand: "TRIUMPH", CC: "790", Model: "Bonneville 800", Year: "2001-2006", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "790", Model: "America", Year: "2001-2006", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "799", Model: "Tiger 800", Year: "2011-2014", Battery_Code: "YB16B-A" },
+        { Brand: "TRIUMPH", CC: "800", Model: "Tiger 800 XC", Year: "2016-", Battery_Code: "YB16B-A" },
+        { Brand: "TRIUMPH", CC: "865", Model: "Bonneville 900", Year: "2007-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "865", Model: "America", Year: "2006-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "865", Model: "Scrambler", Year: "2006-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "865", Model: "Thruxton 900", Year: "2004-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "885", Model: "Trophy 900", Year: "1994-2001", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "885", Model: "Tiger 900", Year: "1993-2001", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "885", Model: "Speed Triple 900", Year: "1994-1998", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "885", Model: "Thunderbird 900", Year: "1995-2003", Battery_Code: "YTX14-4" },
+        { Brand: "TRIUMPH", CC: "900", Model: "Street Twin", Year: "2016-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "900", Model: "Street Scrambler", Year: "2016-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "955", Model: "Daytona 955i", Year: "1999-2006", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "955", Model: "Speed Triple 955i", Year: "1999-2004", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "955", Model: "Sprint RS/ST", Year: "1999-2004", Battery_Code: "YTX14-4" },
+        { Brand: "TRIUMPH", CC: "955", Model: "Tiger 955i", Year: "2001-2006", Battery_Code: "YTX14-4" },
+        { Brand: "TRIUMPH", CC: "998", Model: "Daytona 1000", Year: "1991-1992", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "1050", Model: "Speed Triple", Year: "2005-", Battery_Code: "YTX14-4" },
+        { Brand: "TRIUMPH", CC: "1050", Model: "Sprint GT/ST", Year: "2005-2010", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "1050", Model: "Tiger 1050", Year: "2007-2012", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "1180", Model: "Trophy 1200", Year: "1994-2003", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "1180", Model: "Daytona 1200", Year: "1993-1997", Battery_Code: "YB14L-A2" },
+        { Brand: "TRIUMPH", CC: "1200", Model: "Bonneville T120", Year: "2016-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "1200", Model: "Thruxton 1200", Year: "2016-", Battery_Code: "YTX12-4" },
+        { Brand: "TRIUMPH", CC: "1200", Model: "Bonneville Bobber", Year: "2017-", Battery_Code: "YTX9-4" },
+        { Brand: "TRIUMPH", CC: "1215", Model: "Tiger Explorer", Year: "2012-", Battery_Code: "GTX20-3" },
+        { Brand: "TRIUMPH", CC: "1215", Model: "Trophy SE", Year: "2013-", Battery_Code: "GTX20-3" },
+        { Brand: "TRIUMPH", CC: "1597", Model: "Thunderbird", Year: "2009-", Battery_Code: "GTX20-3" },
+        { Brand: "TRIUMPH", CC: "1699", Model: "Thunderbird Storm", Year: "2009-", Battery_Code: "GTX20-3" },
+        { Brand: "TRIUMPH", CC: "2294", Model: "Rocket III", Year: "2004-", Battery_Code: "GTX20-3" }
