@@ -3,262 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АВТОЗОНА 33 - Търсачка за Акумулатори</title>
+    <title>АВТОЗОНА 33 - Търсачка</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-        body { 
-            background-color: #000000; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .main-container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Стил за селекторите - Bold & Large */
-        select { 
-            background-color: #111111 !important; 
-            border: 2px solid #333333 !important; 
-            color: #ffffff !important; 
-            font-weight: 900 !important; 
-            font-size: 1.2rem !important; 
-            padding: 16px !important;
-            width: 100%;
-            border-radius: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        select:focus { border-color: #ff0000 !important; outline: none; background-color: #1a1a1a !important; }
-        select:disabled { opacity: 0.15; cursor: not-allowed; }
-
+        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; }
         .red-accent { color: #ff0000; }
-        
-        .card-glass { 
-            background: #111; 
-            border: 2px solid #222; 
-            border-radius: 8px;
-            transition: 0.3s;
-            cursor: pointer;
+        select { 
+            background: #111 !important; border: 2px solid #333 !important; color: #fff !important;
+            font-weight: 900 !important; font-size: 1.1rem !important; padding: 12px !important; width: 100%;
         }
-        .card-glass.active { border-color: #ff0000; background: #1a0000; }
-        
-        .tab-btn { 
-            cursor: pointer; padding: 20px 30px; font-weight: 900; font-size: 1.1rem;
-            text-transform: uppercase; border-bottom: 4px solid transparent; color: #555; transition: 0.3s;
-        }
-        .tab-btn.active { border-color: #ff0000; color: #fff; }
-        
-        .spec-label { color: #ff0000; font-size: 10px; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 2px; letter-spacing: 1px; }
-        .spec-value { font-weight: 800; font-size: 1.1rem; color: #fff; text-transform: uppercase; }
-        
-        .result-card {
-            background: linear-gradient(145deg, #111, #050505);
-            border-left: 8px solid #ff0000;
-        }
-
-        #loader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: black; display: flex; justify-content: center; align-items: center; z-index: 1000;
-        }
+        .tab-btn { cursor: pointer; padding: 15px; font-weight: 900; color: #555; border-bottom: 3px solid transparent; text-transform: uppercase; }
+        .tab-btn.active { color: #fff; border-color: #ff0000; }
+        .spec-label { color: #ff0000; font-size: 10px; font-weight: 900; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="text-2xl font-black italic animate-pulse uppercase">Зареждане на АВТОЗОНА 33...</div>
+<header class="p-6 border-b-2 border-red-600 text-center">
+    <h1 class="text-3xl font-black italic uppercase">АВТОЗОНА <span class="red-accent">33</span></h1>
+</header>
+
+<main class="max-w-4xl mx-auto p-4">
+    <div class="flex justify-center gap-4 mb-8">
+        <div id="t1" class="tab-btn active" onclick="switchTab(1)">По Мотор</div>
+        <div id="t2" class="tab-btn" onclick="switchTab(2)">Технически данни</div>
     </div>
 
-    <header class="bg-black border-b-2 border-red-600 p-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="text-4xl font-black tracking-tighter italic uppercase">
-                АВТОЗОНА <span class="red-accent">33</span> ЕООД
-            </div>
-            <div class="mt-2 text-xs font-bold text-zinc-500 uppercase tracking-widest italic">
-                Официален дистрибутор на YUASA за България
-            </div>
+    <div id="mode1" class="space-y-4">
+        <select id="brand" onchange="updateCC()"><option value="">МАРКА</option></select>
+        <div class="grid grid-cols-2 gap-4">
+            <select id="cc" onchange="updateModels()" disabled><option value="">CC</option></select>
+            <select id="model" onchange="updateYears()" disabled><option value="">МОДЕЛ</option></select>
         </div>
-    </header>
+        <select id="year" onchange="findMotor()" disabled><option value="">ГОДИНА</option></select>
+    </div>
 
-    <main class="main-container py-12">
-        
-        <div class="flex justify-center mb-12 border-b border-zinc-900">
-            <div id="tab1" class="tab-btn active" onclick="switchTab(1)">Търсене по Мотор</div>
-            <div id="tab2" class="tab-btn" onclick="switchTab(2)">По Характеристики</div>
+    <div id="mode2" class="hidden grid grid-cols-1 md:grid-cols-3 gap-4 bg-zinc-900 p-6 rounded">
+        <div><label class="spec-label">Волтаж</label><select id="s-v" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+        <div><label class="spec-label">Капацитет</label><select id="s-ah" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+        <div><label class="spec-label">Стартов ток</label><select id="s-cca" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+        <div><label class="spec-label">Дължина (L)</label><select id="s-l" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+        <div><label class="spec-label">Ширина (W)</label><select id="s-w" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+        <div><label class="spec-label">Височина (H)</label><select id="s-h" onchange="filterSpecs()"><option value="">Всички</option></select></div>
+    </div>
+
+    <div id="result" class="hidden mt-8 p-6 bg-zinc-800 border-l-4 border-red-600">
+        <h2 id="res-code" class="text-5xl font-black italic mb-4">--</h2>
+        <div id="res-details" class="grid grid-cols-2 gap-4 text-sm mb-6"></div>
+        <div class="text-right">
+            <span class="text-xs font-bold text-zinc-500 uppercase">Цена (RRP):</span>
+            <div id="res-price" class="text-3xl font-black red-accent">-- лв.</div>
         </div>
+    </div>
+</main>
 
-        <div id="mode-model" class="space-y-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="card-glass p-6 text-center active" onclick="selectCat('Moto', this)">
-                    <i class="fas fa-motorcycle text-3xl mb-2 red-accent"></i>
-                    <p class="font-black text-[10px] uppercase">Мотор</p>
-                </div>
-                <div class="card-glass p-6 text-center" onclick="selectCat('ATV', this)">
-                    <i class="fas fa-truck-monster text-3xl mb-2 red-accent"></i>
-                    <p class="font-black text-[10px] uppercase">ATV</p>
-                </div>
-                <div class="card-glass p-6 text-center" onclick="selectCat('Snow', this)">
-                    <i class="fas fa-snowflake text-3xl mb-2 red-accent"></i>
-                    <p class="font-black text-[10px] uppercase">Snow</p>
-                </div>
-                <div class="card-glass p-6 text-center" onclick="selectCat('Jet', this)">
-                    <i class="fas fa-water text-3xl mb-2 red-accent"></i>
-                    <p class="font-black text-[10px] uppercase">Jet</p>
-                </div>
-            </div>
+<script>
+    let catalog = [], products = [];
 
-            <div class="space-y-6">
-                <select id="brand" onchange="updateCC()"><option value="">Избери Марка</option></select>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <select id="cc" onchange="updateModels()" disabled><option value="">Кубатура (CC)</option></select>
-                    <select id="model" onchange="updateYears()" disabled><option value="">Модел</option></select>
-                </div>
-                <select id="year" onchange="findByMotor()" disabled><option value="">Година на производство</option></select>
-            </div>
-        </div>
+    window.onload = () => {
+        // Зареждане на каталога
+        Papa.parse('catalog.csv', { download: true, header: true, skipEmptyLines: true, 
+            complete: r => { catalog = r.data; fillBrands(); }
+        });
 
-        <div id="mode-specs" class="hidden space-y-6">
-            <div class="bg-zinc-950 p-8 rounded-xl border border-zinc-900 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div><label class="spec-label">Волтаж (V)</label><select id="s-volts" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Капацитет (Ah)</label><select id="s-ah" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Стартов ток (CCA)</label><select id="s-cca" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Дължина (L)</label><select id="s-length" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Ширина (W)</label><select id="s-width" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                <div><label class="spec-label">Височина (H)</label><select id="s-height" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-            </div>
-        </div>
-
-        <div id="result" class="hidden mt-12 p-8 rounded-lg result-card shadow-2xl">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-10">
-                <div class="flex-1">
-                    <p class="text-red-500 font-black uppercase text-xs italic mb-2 tracking-widest">ПРЕПОРЪЧАН МОДЕЛ:</p>
-                    <h2 id="res-code" class="text-6xl font-black italic tracking-tighter mb-8">--</h2>
-                    <div id="res-details" class="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-4 border-t border-white/10 pt-6">
-                        </div>
-                </div>
-                <div class="w-full md:w-auto text-center md:text-right">
-                    <p class="text-zinc-500 font-bold uppercase text-[10px] mb-1 italic">ЦЕНА С ДДС (RRP)</p>
-                    <div id="res-price" class="text-5xl font-black red-accent italic tracking-tighter mb-8">-- лв.</div>
-                    <button class="bg-red-600 text-white px-12 py-5 rounded-sm font-black text-xl hover:bg-red-700 transition uppercase italic">КУПИ СЕГА</button>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const csvCatalogUrl = 'catalog.csv';
-        const csvProductsUrl = 'products.csv';
-
-        let catalogData = [], productData = [];
-
-        window.onload = () => {
-            // Зареждаме каталога
-            Papa.parse(csvCatalogUrl, { download: true, header: true, skipEmptyLines: true, complete: res => { 
-                catalogData = res.data; 
-                populateMotorBrands(); 
-            }});
-
-            // Зареждаме продуктите (Автоматично намиране на старт ред)
-            Papa.parse(csvProductsUrl, { download: true, header: false, skipEmptyLines: true, complete: res => {
-                const startIndex = res.data.findIndex(row => row.includes("GS Yuasa Article No."));
-                if (startIndex !== -1) {
-                    const rawRows = res.data.slice(startIndex + 2); 
-                    productData = rawRows.map(row => ({
-                        Article_No: row[0], Part_No: row[2], Case_Type: row[3], Origin: row[4],
-                        Voltage: row[5], Ah: row[6], CCA: row[7],
-                        L: row[9], W: row[10], H: row[11],
-                        Weight: row[13], EAN: row[14], RRP: row[15]
-                    })).filter(i => i.Part_No);
-                    
-                    populateSpecFilters();
-                    document.getElementById('loader').style.display = 'none';
+        // Зареждане на продуктите (прескачаме заглавните редове автоматично)
+        Papa.parse('products.csv', { download: true, header: false, skipEmptyLines: true, 
+            complete: r => {
+                const start = r.data.findIndex(row => row.includes("Part No."));
+                if(start !== -1) {
+                    const rows = r.data.slice(start + 2);
+                    products = rows.map(row => ({
+                        code: row[2], v: row[5], ah: row[6], cca: row[7],
+                        l: row[9], w: row[10], h: row[11], rrp: row[15]
+                    })).filter(i => i.code);
+                    fillSpecs();
                 }
-            }});
+            }
+        });
+    };
+
+    function showResult(code) {
+        const p = products.find(i => i.code.trim() === code.trim());
+        if(!p) return;
+        document.getElementById('res-code').innerText = p.code;
+        document.getElementById('res-price').innerText = p.rrp + ' лв.';
+        document.getElementById('res-details').innerHTML = `
+            <div><span class="red-accent font-bold">V/Ah:</span> ${p.v}V / ${p.ah}Ah</div>
+            <div><span class="red-accent font-bold">CCA:</span> ${p.cca}A</div>
+            <div><span class="red-accent font-bold">L/W/H:</span> ${p.l}x${p.w}x${p.h}</div>
+        `;
+        document.getElementById('result').classList.remove('hidden');
+    }
+
+    function fillBrands() {
+        const b = [...new Set(catalog.map(i => i.Brand))].filter(Boolean).sort();
+        const s = document.getElementById('brand');
+        b.forEach(x => s.add(new Option(x, x)));
+    }
+
+    function updateCC() {
+        const b = document.getElementById('brand').value;
+        const s = document.getElementById('cc'); s.innerHTML = '<option value="">CC</option>';
+        s.disabled = !b;
+        if(b) {
+            const list = [...new Set(catalog.filter(i => i.Brand === b).map(i => i.CC))].sort((a,b)=>a-b);
+            list.forEach(x => s.add(new Option(x, x)));
+        }
+    }
+
+    function updateModels() {
+        const b = document.getElementById('brand').value, c = document.getElementById('cc').value;
+        const s = document.getElementById('model'); s.innerHTML = '<option value="">МОДЕЛ</option>';
+        s.disabled = !c;
+        if(c) {
+            const list = [...new Set(catalog.filter(i => i.Brand === b && i.CC === c).map(i => i.Model))].sort();
+            list.forEach(x => s.add(new Option(x, x)));
+        }
+    }
+
+    function updateYears() {
+        const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value;
+        const s = document.getElementById('year'); s.innerHTML = '<option value="">ГОДИНА</option>';
+        s.disabled = !m;
+        if(m) {
+            const list = [...new Set(catalog.filter(i => i.Brand === b && i.CC === c && i.Model === m).map(i => i.Year))].sort((a,b)=>b-a);
+            list.forEach(x => s.add(new Option(x, x)));
+        }
+    }
+
+    function findMotor() {
+        const b = document.getElementById('brand').value, c = document.getElementById('cc').value, 
+              m = document.getElementById('model').value, y = document.getElementById('year').value;
+        const match = catalog.find(i => i.Brand === b && i.CC === c && i.Model === m && i.Year === y);
+        if(match) showResult(match.Battery_Code);
+    }
+
+    function fillSpecs() {
+        const f = (id, key) => {
+            const v = [...new Set(products.map(i => i[key]))].filter(x => x && !isNaN(x)).sort((a,b)=>a-b);
+            const s = document.getElementById(id);
+            v.forEach(x => s.add(new Option(x, x)));
         };
+        f('s-v', 'v'); f('s-ah', 'ah'); f('s-cca', 'cca'); f('s-l', 'l'); f('s-w', 'w'); f('s-h', 'h');
+    }
 
-        function showFinalResult(code) {
-            const d = productData.find(i => i.Part_No.trim() === code.trim());
-            if(!d) return;
+    function filterSpecs() {
+        const v = document.getElementById('s-v').value, ah = document.getElementById('s-ah').value,
+              cca = document.getElementById('s-cca').value, l = document.getElementById('s-l').value,
+              w = document.getElementById('s-w').value, h = document.getElementById('s-h').value;
+        const match = products.find(i => (!v || i.v === v) && (!ah || i.ah === ah) && (!cca || i.cca === cca) && (!l || i.l === l) && (!w || i.w === w) && (!h || i.h === h));
+        match ? showResult(match.code) : document.getElementById('result').classList.add('hidden');
+    }
 
-            document.getElementById('res-code').innerText = d.Part_No;
-            document.getElementById('res-price').innerText = d.RRP + " лв.";
-            document.getElementById('res-details').innerHTML = `
-                <div><span class="spec-label">Волтаж</span><span class="spec-value">${d.Voltage}V</span></div>
-                <div><span class="spec-label">Капацитет</span><span class="spec-value">${d.Ah}Ah</span></div>
-                <div><span class="spec-label">Стартов ток</span><span class="spec-value">${d.CCA}A</span></div>
-                <div><span class="spec-label">Размери</span><span class="spec-value">${d.L}x${d.W}x${d.H}</span></div>
-                <div><span class="spec-label">Тип кутия</span><span class="spec-value">${d.Case_Type}</span></div>
-                <div><span class="spec-label">Произход</span><span class="spec-value">${d.Origin}</span></div>
-            `;
-            document.getElementById('result').classList.remove('hidden');
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function populateSpecFilters() {
-            const fill = (id, field) => {
-                const vals = [...new Set(productData.map(i => i[field]))].filter(v => v && !isNaN(v)).sort((a,b) => a-b);
-                const sel = document.getElementById(id);
-                vals.forEach(v => sel.add(new Option(v, v)));
-            };
-            fill('s-volts', 'Voltage'); fill('s-ah', 'Ah'); fill('s-cca', 'CCA');
-            fill('s-length', 'L'); fill('s-width', 'W'); fill('s-height', 'H');
-        }
-
-        function filterBySpecs() {
-            const v = document.getElementById('s-volts').value, cap = document.getElementById('s-ah').value,
-                  cca = document.getElementById('s-cca').value, l = document.getElementById('s-length').value,
-                  w = document.getElementById('s-width').value, h = document.getElementById('s-height').value;
-
-            const match = productData.find(i => (!v || i.Voltage === v) && (!cap || i.Ah === cap) && (!cca || i.CCA === cca) && (!l || i.L === l) && (!w || i.W === w) && (!h || i.H === h));
-            match ? showFinalResult(match.Part_No) : document.getElementById('result').classList.add('hidden');
-        }
-
-        // --- ЛОГИКА ЗА МЕНЮТАТА ---
-        function populateMotorBrands() { 
-            const brands = [...new Set(catalogData.map(i => i.Brand))].filter(Boolean).sort(); 
-            const sel = document.getElementById('brand'); brands.forEach(b => sel.add(new Option(b, b))); 
-        }
-        function updateCC() { 
-            const b = document.getElementById('brand').value; 
-            const sel = document.getElementById('cc'); sel.innerHTML = '<option value="">CC</option>'; sel.disabled = !b;
-            if(b) { const ccs = [...new Set(catalogData.filter(i => i.Brand === b).map(i => i.CC))].filter(Boolean).sort((a,b)=>a-b); ccs.forEach(c => sel.add(new Option(c, c))); }
-        }
-        function updateModels() { 
-            const b = document.getElementById('brand').value, c = document.getElementById('cc').value;
-            const sel = document.getElementById('model'); sel.innerHTML = '<option value="">Модел</option>'; sel.disabled = !c;
-            if(c) { const ms = [...new Set(catalogData.filter(i => i.Brand === b && i.CC === c).map(i => i.Model))].filter(Boolean).sort(); ms.forEach(m => sel.add(new Option(m, m))); }
-        }
-        function updateYears() { 
-            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value;
-            const sel = document.getElementById('year'); sel.innerHTML = '<option value="">Година</option>'; sel.disabled = !m;
-            if(m) { const ys = [...new Set(catalogData.filter(i => i.Brand === b && i.CC === c && i.Model === m).map(i => i.Year))].filter(Boolean).sort((a,b)=>b-a); ys.forEach(y => sel.add(new Option(y, y))); }
-        }
-        function findByMotor() { 
-            const b = document.getElementById('brand').value, c = document.getElementById('cc').value, m = document.getElementById('model').value, y = document.getElementById('year').value;
-            const match = catalogData.find(i => i.Brand === b && i.CC === c && i.Model === m && i.Year === y);
-            if(match) showFinalResult(match.Battery_Code);
-        }
-        function switchTab(id) {
-            document.getElementById('mode-model').classList.toggle('hidden', id !== 1);
-            document.getElementById('mode-specs').classList.toggle('hidden', id !== 2);
-            document.getElementById('tab1').classList.toggle('active', id === 1);
-            document.getElementById('tab2').classList.toggle('active', id === 2);
-            document.getElementById('result').classList.add('hidden');
-        }
-        function selectCat(cat, el) { 
-            document.querySelectorAll('.card-glass').forEach(i => i.classList.remove('active')); 
-            el.classList.add('active'); 
-        }
-    </script>
+    function switchTab(n) {
+        document.getElementById('mode1').classList.toggle('hidden', n !== 1);
+        document.getElementById('mode2').classList.toggle('hidden', n !== 2);
+        document.getElementById('t1').classList.toggle('active', n === 1);
+        document.getElementById('t2').classList.toggle('active', n === 2);
+    }
+</script>
 </body>
 </html>
