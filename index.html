@@ -9,89 +9,186 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; }
-        select { background-color: #111111 !important; border: 2px solid #333333 !important; color: #ffffff !important; font-weight: 900 !important; font-size: 1.25rem !important; padding: 18px !important; width: 100%; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
-        select:focus { border-color: #ff0000 !important; }
+        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        select { background-color: #111111 !important; border: 2px solid #333333 !important; color: #ffffff !important; font-weight: 900 !important; font-size: 1.25rem !important; padding: 18px !important; width: 100%; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        select:focus { border-color: #ff0000 !important; background-color: #1a1a1a !important; }
+        select:disabled { opacity: 0.15; cursor: not-allowed; }
         .red-accent { color: #ff0000; }
+        .bg-red-accent { background-color: #ff0000; }
         .card-glass { background: #111; border: 2px solid #222; transition: 0.3s; border-radius: 8px; cursor: pointer; }
         .card-glass.active { border-color: #ff0000; background: #1a0000; }
-        .tab-btn { cursor: pointer; padding: 20px 40px; font-weight: 900; border-bottom: 4px solid transparent; color: #444; transition: 0.3s; }
+        .tab-btn { cursor: pointer; padding: 20px 40px; font-weight: 900; font-size: 1.1rem; text-transform: uppercase; border-bottom: 4px solid transparent; color: #444; transition: 0.3s; }
         .tab-btn.active { border-color: #ff0000; color: #fff; }
-        .step-circle { background: #ff0000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+        .step-circle { background: #ff0000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; }
+        h2.step-title { font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: -0.5px; }
+        .result-title { font-family: 'Archivo Black', sans-serif; }
     </style>
 </head>
 <body>
-    <header class="bg-black border-b-2 border-red-600 p-6 sticky top-0 z-50">
+
+    <header class="bg-black border-b-2 border-red-600 p-6 sticky top-0 z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="text-4xl font-black italic">АВТОЗОНА <span class="red-accent">33</span> ЕООД</div>
-            <div class="flex gap-8 mt-4 md:mt-0 font-black text-sm uppercase">
-                <a href="tel:+359888333333" class="hover:text-red-500"><i class="fas fa-phone red-accent mr-2"></i> 0888 33 33 33</a>
-                <a href="mailto:office@autozona33.com" class="hover:text-red-500"><i class="fas fa-envelope red-accent mr-2"></i> OFFICE@AUTOZONA33.COM</a>
+            <div class="text-4xl font-black tracking-tighter italic">
+                АВТОЗОНА <span class="red-accent">33</span> ЕООД
+            </div>
+            <div class="flex gap-8 mt-4 md:mt-0 font-black text-sm uppercase italic">
+                <a href="tel:+359888333333" class="hover:text-red-500 transition"><i class="fas fa-phone red-accent mr-2"></i> 0888 33 33 33</a>
+                <a href="mailto:office@autozona33.com" class="hover:text-red-500 transition"><i class="fas fa-envelope red-accent mr-2"></i> OFFICE@AUTOZONA33.COM</a>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto py-12 px-4">
+        
         <div class="flex justify-center mb-12 border-b border-zinc-900">
             <div id="tab1" class="tab-btn active" onclick="switchTab(1)">Търсене по Мотор</div>
             <div id="tab2" class="tab-btn" onclick="switchTab(2)">Търсене по Характеристики</div>
         </div>
 
-        <!-- ТЪРСЕНЕ ПО МОТОР -->
+        <!-- РЕЖИМ 1: ТЪРСЕНЕ ПО МОТОР -->
         <div id="mode-model" class="space-y-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="card-glass p-8 text-center active" data-cat="Moto" onclick="selectCat('Moto', this)"><i class="fas fa-motorcycle text-4xl mb-3 red-accent"></i><p class="font-black text-sm uppercase">Мотор</p></div>
-                <div class="card-glass p-8 text-center" data-cat="ATV" onclick="selectCat('ATV', this)"><i class="fas fa-truck-monster text-4xl mb-3 red-accent"></i><p class="font-black text-sm uppercase">ATV</p></div>
-                <div class="card-glass p-8 text-center" data-cat="Snow" onclick="selectCat('Snow', this)"><i class="fas fa-snowflake text-4xl mb-3 red-accent"></i><p class="font-black text-sm uppercase">Сноумобил</p></div>
-                <div class="card-glass p-8 text-center" data-cat="Jet" onclick="selectCat('Jet', this)"><i class="fas fa-water text-4xl mb-3 red-accent"></i><p class="font-black text-sm uppercase">Джет</p></div>
+            <div class="section-container">
+                <div class="flex items-center mb-8">
+                    <div class="step-circle mr-4">1</div>
+                    <h2 class="step-title">Избери категория</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="card-glass p-8 text-center cursor-pointer active" data-cat="Moto" onclick="selectCat('Moto', this)">
+                        <i class="fas fa-motorcycle text-4xl mb-3 red-accent"></i>
+                        <p class="font-black text-sm uppercase">Мотор</p>
+                    </div>
+                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="ATV" onclick="selectCat('ATV', this)">
+                        <i class="fas fa-truck-monster text-4xl mb-3 red-accent"></i>
+                        <p class="font-black text-sm uppercase">ATV</p>
+                    </div>
+                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Snow" onclick="selectCat('Snow', this)">
+                        <i class="fas fa-snowflake text-4xl mb-3 red-accent"></i>
+                        <p class="font-black text-sm uppercase">Сноумобил</p>
+                    </div>
+                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Jet" onclick="selectCat('Jet', this)">
+                        <i class="fas fa-water text-4xl mb-3 red-accent"></i>
+                        <p class="font-black text-sm uppercase">Джет</p>
+                    </div>
+                </div>
             </div>
-            <div><label class="text-red-600 font-black">Марка</label><select id="brand" onchange="updateCC()"><option value="">Избери Марка</option></select></div>
-            <div class="grid grid-cols-2 gap-4"><div><label class="text-red-600 font-black">Кубатура (CC)</label><select id="cc" onchange="updateModels()" disabled><option value="">Кубатура</option></select></div>
-            <div><label class="text-red-600 font-black">Модел</label><select id="model" onchange="updateYears()" disabled><option value="">Модел</option></select></div></div>
-            <div><label class="text-red-600 font-black">Година</label><select id="year" onchange="findByMotor()" disabled><option value="">Година</option></select></div>
+
+            <div class="space-y-10">
+                <div>
+                    <div class="flex items-center mb-4"><div class="step-circle mr-4">2</div> <h2 class="step-title">Марка</h2></div>
+                    <select id="brand" onchange="updateCC()"><option value="">Избери Марка (Brand)</option></select>
+                </div>
+
+                <div>
+                    <div class="flex items-center mb-4"><div class="step-circle mr-4">3</div> <h2 class="step-title">Кубатура и Модел</h2></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <select id="cc" onchange="updateModels()" disabled><option value="">Кубатура (CC)</option></select>
+                        <select id="model" onchange="updateYears()" disabled><option value="">Модел (Model)</option></select>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center mb-4"><div class="step-circle mr-4">4</div> <h2 class="step-title">Година</h2></div>
+                    <select id="year" onchange="findByMotor()" disabled><option value="">Година (Year)</option></select>
+                </div>
+            </div>
         </div>
 
-        <!-- ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ -->
+        <!-- РЕЖИМ 2: ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ -->
         <div id="mode-specs" class="hidden space-y-10">
             <div class="bg-zinc-950 p-10 rounded-xl border border-zinc-900">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div><label class="text-red-600 font-black">Дължина (mm)</label><select id="s-length" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                    <div><label class="text-red-600 font-black">Ширина (mm)</label><select id="s-width" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                    <div><label class="text-red-600 font-black">Височина (mm)</label><select id="s-height" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Дължина (mm)</label>
+                        <select id="s-length" onchange="filterBySpecs()"><option value="">Всички</option></select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Височина (mm)</label>
+                        <select id="s-height" onchange="filterBySpecs()"><option value="">Всички</option></select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Поляритет</label>
+                        <select id="s-polarity" onchange="filterBySpecs()">
+                            <option value="">Всички</option>
+                            <option value="L+">Ляв (+)</option>
+                            <option value="R+">Десен (+)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div><label class="text-red-600 font-black">Полюс</label><select id="s-pole" onchange="filterBySpecs()"><option value="">Всички</option><option value="L+">Ляв (+)</option><option value="R+">Десен (+)</option></select></div>
-                    <div><label class="text-red-600 font-black">Ah</label><select id="s-ah" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
-                    <div><label class="text-red-600 font-black">CCA (A)</label><select id="s-cca" onchange="filterBySpecs()"><option value="">Всички</option></select></div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Капацитет (Ah)</label>
+                        <select id="s-ah" onchange="filterBySpecs()"><option value="">Всички</option></select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Стартов ток (A) / CCA</label>
+                        <select id="s-cca" onchange="filterBySpecs()"><option value="">Всички</option></select>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- РЕЗУЛТАТ -->
-        <div id="result" class="hidden mt-16 p-10 rounded-lg border-l-8 border-red-600 bg-zinc-900">
+        <!-- РЕЗУЛТАТЕН БЛОК -->
+        <div id="result" class="hidden mt-16 p-10 rounded-lg border-l-8 border-red-600 bg-zinc-900 shadow-2xl">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div>
-                    <p class="text-red-500 font-black uppercase text-sm">ПОДХОДЯЩ АКУМУЛАТОР:</p>
-                    <h2 id="res-code" class="text-7xl font-black italic">--</h2>
-                    <div id="res-dims" class="text-gray-400 text-lg mt-4 font-bold"></div>
+                <div class="text-center md:text-left">
+                    <p class="text-red-500 font-black uppercase text-sm italic tracking-widest mb-2">ПОДХОДЯЩ АКУМУЛАТОР:</p>
+                    <h2 id="res-code" class="text-7xl font-black italic tracking-tighter result-title">--</h2>
+                    <div id="res-dims" class="text-gray-400 text-lg mt-4 font-bold uppercase tracking-tight border-t border-white/10 pt-4"></div>
+                    <div id="res-price" class="text-green-500 text-xl mt-2 font-black"></div>
                 </div>
-                <button class="bg-red-600 text-white px-16 py-6 rounded-sm font-black text-xl hover:bg-red-700">КУПИ СЕГА</button>
+                <div class="flex flex-col items-center gap-4">
+                    <button class="bg-red-600 text-white px-16 py-6 rounded-sm font-black text-xl hover:bg-red-700 transition uppercase italic shadow-lg">КУПИ СЕГА</button>
+                    <p class="text-xs text-zinc-500 font-bold italic uppercase tracking-widest">Проверено от Автозона 33</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-32">
+            <h3 class="text-center text-zinc-700 font-black uppercase text-xs tracking-[0.6em] mb-12">ОФИЦИАЛНИ МАРКИ</h3>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-10 grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                <div class="text-center font-black italic text-2xl">YUASA</div>
+                <div class="text-center font-black italic text-2xl text-red-600 uppercase tracking-tighter">BS-Battery</div>
+                <div class="text-center font-black italic text-2xl text-blue-700">VARTA</div>
+                <div class="text-center font-black italic text-2xl text-yellow-600 uppercase">Exide</div>
+                <div class="text-center font-black italic text-2xl">BOSCH</div>
+                <div class="text-center font-black italic text-2xl text-orange-600 uppercase">Unibat</div>
             </div>
         </div>
     </main>
 
-    <script>
-        let catalogData = []; // от catalog.csv
-        let productData = []; // от products.csv
+    <footer class="py-12 border-t border-zinc-900 text-center text-zinc-800 font-black uppercase text-xs tracking-widest">
+        &copy; 2026 АВТОЗОНА 33 ЕООД. Всички права запазени.
+    </footer>
 
-        // Зареждане на двата CSV файла
+    <script>
+        // Данни от CSV файловете
+        let catalogData = [];
+        let productData = [];
+
+        // Зареждане на CSV файловете
         window.onload = () => {
-            Papa.parse("catalog.csv", { download: true, header: true, complete: function(results) {
-                catalogData = results.data.filter(row => row.Brand && row.Battery_Code);
-                populateMotorBrands();
+            // Зареждане на каталога с мотори (ако съществува)
+            Papa.parse("catalog.csv", { download: true, header: true, skipEmptyLines: true, complete: function(results) {
+                if(results.data && results.data.length > 0 && results.data[0].Brand) {
+                    catalogData = results.data.filter(row => row.Brand && row.Battery_Code);
+                    populateMotorBrands();
+                } else {
+                    // Ако няма catalog.csv, показваме демо данни
+                    catalogData = [
+                        { Brand: "HONDA", CC: "125", Model: "CBR125R", Year: "2018", Battery_Code: "YTZ7S-WC" },
+                        { Brand: "YAMAHA", CC: "250", Model: "YZF-R3", Year: "2019", Battery_Code: "YTZ10S-WC" },
+                        { Brand: "KAWASAKI", CC: "650", Model: "Ninja 650", Year: "2020", Battery_Code: "YTX14H-WC" },
+                        { Brand: "SUZUKI", CC: "600", Model: "GSX-R600", Year: "2019", Battery_Code: "YTZ12S-WC" },
+                        { Brand: "KTM", CC: "390", Model: "Duke 390", Year: "2020", Battery_Code: "YTZ7S-WC" }
+                    ];
+                    populateMotorBrands();
+                }
             }});
-            Papa.parse("products.csv", { download: true, header: true, complete: function(results) {
-                productData = results.data.filter(row => row.Battery_Code);
+            
+            // Зареждане на продуктите (акумулатори) от products.csv
+            Papa.parse("products.csv", { download: true, header: true, skipEmptyLines: true, complete: function(results) {
+                console.log("Заредени продукти:", results.data.length);
+                productData = results.data.filter(row => row.Battery_Code && row.Battery_Code !== "Battery_Code");
                 populateSpecFilters();
             }});
         };
@@ -99,22 +196,22 @@
         function populateMotorBrands() {
             let brands = [...new Set(catalogData.map(i => i.Brand))].filter(Boolean).sort();
             let sel = document.getElementById('brand');
-            sel.innerHTML = '<option value="">Избери Марка</option>';
+            sel.innerHTML = '<option value="">Избери Марка (Brand)</option>';
             brands.forEach(b => sel.add(new Option(b, b)));
         }
 
         function updateCC() {
             let brand = document.getElementById('brand').value;
             let sel = document.getElementById('cc');
-            sel.innerHTML = '<option value="">Кубатура</option>';
+            sel.innerHTML = '<option value="">Кубатура (CC)</option>';
             sel.disabled = !brand;
             if(brand) {
                 let ccs = [...new Set(catalogData.filter(i => i.Brand === brand).map(i => i.CC))].filter(Boolean).sort((a,b)=>Number(a)-Number(b));
                 ccs.forEach(c => sel.add(new Option(c, c)));
             }
-            document.getElementById('model').innerHTML = '<option value="">Модел</option>';
+            document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
             document.getElementById('model').disabled = true;
-            document.getElementById('year').innerHTML = '<option value="">Година</option>';
+            document.getElementById('year').innerHTML = '<option value="">Година (Year)</option>';
             document.getElementById('year').disabled = true;
             document.getElementById('result').classList.add('hidden');
         }
@@ -123,13 +220,13 @@
             let brand = document.getElementById('brand').value;
             let cc = document.getElementById('cc').value;
             let sel = document.getElementById('model');
-            sel.innerHTML = '<option value="">Модел</option>';
+            sel.innerHTML = '<option value="">Модел (Model)</option>';
             sel.disabled = !cc;
             if(cc) {
                 let models = [...new Set(catalogData.filter(i => i.Brand === brand && i.CC === cc).map(i => i.Model))].filter(Boolean).sort();
                 models.forEach(m => sel.add(new Option(m, m)));
             }
-            document.getElementById('year').innerHTML = '<option value="">Година</option>';
+            document.getElementById('year').innerHTML = '<option value="">Година (Year)</option>';
             document.getElementById('year').disabled = true;
             document.getElementById('result').classList.add('hidden');
         }
@@ -139,7 +236,7 @@
             let cc = document.getElementById('cc').value;
             let model = document.getElementById('model').value;
             let sel = document.getElementById('year');
-            sel.innerHTML = '<option value="">Година</option>';
+            sel.innerHTML = '<option value="">Година (Year)</option>';
             sel.disabled = !model;
             if(model) {
                 let years = [...new Set(catalogData.filter(i => i.Brand === brand && i.CC === cc && i.Model === model).map(i => i.Year))].filter(Boolean).sort((a,b)=>b-a);
@@ -153,52 +250,91 @@
             let cc = document.getElementById('cc').value;
             let model = document.getElementById('model').value;
             let year = document.getElementById('year').value;
+            if(!brand || !cc || !model || !year) return;
             let match = catalogData.find(i => i.Brand === brand && i.CC === cc && i.Model === model && i.Year === year);
-            if(match) showFinalResult(match.Battery_Code);
-            else alert("Няма намерен акумулатор за тази комбинация.");
+            if(match) {
+                showFinalResult(match.Battery_Code);
+            } else {
+                document.getElementById('result').classList.add('hidden');
+                alert("Няма намерен акумулатор за тази комбинация.");
+            }
         }
 
         function populateSpecFilters() {
             if(!productData.length) return;
+            
             let fill = (id, col) => {
-                let vals = [...new Set(productData.map(i => i[col]).filter(v => v && v !== ""))].sort((a,b)=>Number(a)-Number(b));
+                let vals = [...new Set(productData.map(i => i[col]).filter(v => v && v !== "" && v !== "NULL"))];
+                vals = vals.sort((a,b)=> {
+                    let na = parseFloat(a), nb = parseFloat(b);
+                    if(!isNaN(na) && !isNaN(nb)) return na - nb;
+                    return String(a).localeCompare(String(b));
+                });
                 let sel = document.getElementById(id);
-                sel.innerHTML = '<option value="">Всички</option>';
-                vals.forEach(v => sel.add(new Option(v, v)));
+                if(sel) {
+                    sel.innerHTML = '<option value="">Всички</option>';
+                    vals.forEach(v => sel.add(new Option(v, v)));
+                }
             };
-            fill('s-length', 'Length');
-            fill('s-width', 'Width');
-            fill('s-height', 'Height');
-            fill('s-ah', 'Capacity');
-            fill('s-cca', 'CCA');
+            
+            fill('s-length', 'Length (mm)');
+            fill('s-height', 'Height (mm)');
+            fill('s-ah', 'Capacity (Ah)');
+            fill('s-cca', 'CCA (A)');
+            
+            // Поляритет
+            let polaritySel = document.getElementById('s-polarity');
+            if(polaritySel) {
+                let polarities = [...new Set(productData.map(i => i.Polarity).filter(v => v && v !== ""))];
+                polaritySel.innerHTML = '<option value="">Всички</option>';
+                polarities.forEach(v => polaritySel.add(new Option(v, v)));
+            }
         }
 
         function filterBySpecs() {
             let length = document.getElementById('s-length').value;
-            let width = document.getElementById('s-width').value;
             let height = document.getElementById('s-height').value;
-            let pole = document.getElementById('s-pole').value;
+            let polarity = document.getElementById('s-polarity').value;
             let ah = document.getElementById('s-ah').value;
             let cca = document.getElementById('s-cca').value;
 
-            let match = productData.find(b => 
-                (!length || Number(b.Length) === Number(length)) &&
-                (!width || Number(b.Width) === Number(width)) &&
-                (!height || Number(b.Height) === Number(height)) &&
-                (!pole || b.Pole === pole) &&
-                (!ah || Number(b.Capacity) === Number(ah)) &&
-                (!cca || Number(b.CCA) === Number(cca))
-            );
-            if(match) showFinalResult(match.Battery_Code);
-            else alert("Няма акумулатор с тези параметри.");
+            let match = productData.find(b => {
+                if(length && String(b['Length (mm)']) !== String(length)) return false;
+                if(height && String(b['Height (mm)']) !== String(height)) return false;
+                if(polarity && b.Polarity !== polarity) return false;
+                if(ah && String(b['Capacity (Ah)']) !== String(ah)) return false;
+                if(cca && String(b['CCA (A)']) !== String(cca)) return false;
+                return true;
+            });
+            
+            if(match) {
+                showFinalResult(match.Battery_Code);
+            } else {
+                document.getElementById('result').classList.add('hidden');
+                alert("Няма акумулатор с тези параметри. Опитайте с по-общи критерии.");
+            }
         }
 
         function showFinalResult(code) {
             let details = productData.find(p => p.Battery_Code === code);
             if(details) {
                 document.getElementById('res-code').innerText = details.Battery_Code;
-                document.getElementById('res-dims').innerHTML = `Размер: ${details.Length}×${details.Width}×${details.Height} mm | Полюс: ${details.Pole || "стандартен"} | ${details.Capacity}Ah | ${details.CCA} CCA`;
+                let length = details['Length (mm)'] || "?";
+                let height = details['Height (mm)'] || "?";
+                let ah = details['Capacity (Ah)'] || "?";
+                let cca = details['CCA (A)'] || "?";
+                let polarity = details.Polarity || "стандартен";
+                let price = details.Price || "";
+                
+                document.getElementById('res-dims').innerHTML = `Размер: ${length}×?×${height} mm | Поляритет: ${polarity} | ${ah}Ah | ${cca} CCA`;
+                if(price) {
+                    document.getElementById('res-price').innerHTML = `Цена: ${price}`;
+                } else {
+                    document.getElementById('res-price').innerHTML = "";
+                }
                 document.getElementById('result').classList.remove('hidden');
+            } else {
+                document.getElementById('result').classList.add('hidden');
             }
         }
 
@@ -213,6 +349,9 @@
             document.getElementById('tab1').classList.toggle('active', id === 1);
             document.getElementById('tab2').classList.toggle('active', id === 2);
             document.getElementById('result').classList.add('hidden');
+            if(id === 2 && productData.length) {
+                populateSpecFilters();
+            }
         }
     </script>
 </body>
