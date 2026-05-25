@@ -6,7 +6,7 @@
     <title>АВТОЗОНА 33 - Търсачка за Акумулатори</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap');
         body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -168,22 +168,21 @@
         let catalogData = [];
         let currentCategory = 'Motorcycles';
 
-        // Автоматично зареждане на данните от същата папка в GitHub
         window.addEventListener('DOMContentLoaded', () => {
-            Papa.parse("yuasa bike csv.csv", {
+            // Директен линк за експортиране на таблицата от Google Drive с твоето ID
+            const googleDriveUrl = "https://docs.google.com/spreadsheets/d/1kEAsB9X63LclS3mE_fMepB_E5VbK3i3p/export?format=csv";
+
+            Papa.parse(googleDriveUrl, {
                 download: true,
-                header: false, // Файлът няма заглавен ред на първия ред
+                header: false, 
                 skipEmptyLines: true,
-                delimiter: ";", // Ползваме точка и запетая спрямо оригиналния CSV файл
                 complete: function(results) {
-                    // Мапваме редовете към структуриран обект
                     catalogData = results.data.map(row => {
-                        // Намираме първия реален наличен код за акумулатор в колони от 5 нататък
                         let batteryCode = "";
                         for(let i = 5; i < row.length; i++) {
                             if(row[i] && row[i].trim() !== "-" && row[i].trim() !== "") {
                                 batteryCode = row[i].trim();
-                                break;
+                                break; 
                             }
                         }
                         
@@ -195,7 +194,7 @@
                             Year: row[4] ? row[4].trim() : "",
                             Battery_Code: batteryCode
                         };
-                    }).filter(item => item.Brand && item.Brand !== "Brand"); // Махаме празни или заглавни редове
+                    }).filter(item => item.Brand && item.Brand !== "Brand");
                     
                     initFilters();
                 },
@@ -206,7 +205,11 @@
         });
 
         function initFilters() {
-            let filtered = catalogData.filter(i => i.Category.toLowerCase() === currentCategory.toLowerCase() || currentCategory === 'Motorcycles');
+            // Мотоциклети покриват както 'Motorcycles', така и редовете без изрично зададена категория в базата
+            let filtered = catalogData.filter(i => 
+                i.Category.toLowerCase() === currentCategory.toLowerCase() || 
+                (currentCategory === 'Motorcycles' && i.Category === '')
+            );
             let brands = [...new Set(filtered.map(i => i.Brand))].sort();
             
             let brandSel = document.getElementById('brand');
@@ -230,7 +233,7 @@
                 return;
             }
 
-            let filtered = catalogData.filter(i => i.Brand === brand);
+            let filtered = catalogData.filter(i => i.Brand === brand && (i.Category.toLowerCase() === currentCategory.toLowerCase() || (currentCategory === 'Motorcycles' && i.Category === '')));
             let ccs = [...new Set(filtered.map(i => i.CC))].sort((a, b) => parseInt(a) - parseInt(b));
 
             ccSel.innerHTML = '<option value="">Изберете кубатура</option>';
@@ -253,7 +256,7 @@
                 return;
             }
 
-            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc);
+            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc && (i.Category.toLowerCase() === currentCategory.toLowerCase() || (currentCategory === 'Motorcycles' && i.Category === '')));
             let models = [...new Set(filtered.map(i => i.Model))].sort();
 
             modelSel.innerHTML = '<option value="">Изберете модел</option>';
@@ -276,7 +279,7 @@
                 return;
             }
 
-            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc && i.Model === model);
+            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc && i.Model === model && (i.Category.toLowerCase() === currentCategory.toLowerCase() || (currentCategory === 'Motorcycles' && i.Category === '')));
             let years = [...new Set(filtered.map(i => i.Year))].sort();
 
             yearSel.innerHTML = '<option value="">Изберете година</option>';
@@ -298,7 +301,7 @@
                 return;
             }
 
-            let match = catalogData.find(i => i.Brand === brand && i.CC === cc && i.Model === model && i.Year === year);
+            let match = catalogData.find(i => i.Brand === brand && i.CC === cc && i.Model === model && i.Year === year && (i.Category.toLowerCase() === currentCategory.toLowerCase() || (currentCategory === 'Motorcycles' && i.Category === '')));
             
             if(match && match.Battery_Code) {
                 showFinalResult(match.Battery_Code);
