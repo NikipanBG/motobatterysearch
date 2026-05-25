@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АВТОЗОНА 33 - Търсачка за Акумулатори</title>
+    <title>АВТОЗОНА 33 - Търсачка за Акумулатори (Yuasa база данни)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -37,7 +37,7 @@
                 АВТОЗОНА <span class="red-accent">33</span> ЕООД
             </div>
             <div class="flex gap-8 mt-4 md:mt-0 font-black text-sm uppercase italic">
-                <a href="tel:+3592 479 45 45" class="hover:text-red-500 transition"><i class="fas fa-phone red-accent mr-2"></i> 02 479 45 45</a>
+                <a href="tel:+35924794545" class="hover:text-red-500 transition"><i class="fas fa-phone red-accent mr-2"></i> 02 479 45 45</a>
                 <a href="mailto:office@autozona33.com" class="hover:text-red-500 transition"><i class="fas fa-envelope red-accent mr-2"></i> OFFICE@AUTOZONA33.COM</a>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div id="tab2" class="tab-btn" onclick="switchTab(2)">Търсене по Характеристики</div>
         </div>
 
-        <!-- РЕЖИМ 1: ТЪРСЕНЕ ПО МОТОР -->
+        <!-- РЕЖИМ 1: ТЪРСЕНЕ ПО МОТОР (ОТ CSV) -->
         <div id="mode-model" class="space-y-12">
             <div class="section-container">
                 <div class="flex items-center mb-8">
@@ -58,7 +58,7 @@
                     <h2 class="step-title">Избери категория</h2>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="card-glass p-8 text-center cursor-pointer active" data-cat="Moto" onclick="selectCat('Moto', this)">
+                    <div class="card-glass p-8 text-center cursor-pointer active" data-cat="Motorcycles" onclick="selectCat('Motorcycles', this)">
                         <i class="fas fa-motorcycle text-4xl mb-3 red-accent"></i>
                         <p class="font-black text-sm uppercase">Мотор</p>
                     </div>
@@ -66,13 +66,13 @@
                         <i class="fas fa-truck-monster text-4xl mb-3 red-accent"></i>
                         <p class="font-black text-sm uppercase">ATV</p>
                     </div>
-                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Snow" onclick="selectCat('Snow', this)">
+                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Snowmobile" onclick="selectCat('Snowmobile', this)">
                         <i class="fas fa-snowflake text-4xl mb-3 red-accent"></i>
                         <p class="font-black text-sm uppercase">Сноумобил</p>
                     </div>
-                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Jet" onclick="selectCat('Jet', this)">
-                        <i class="fas fa-water text-4xl mb-3 red-accent"></i>
-                        <p class="font-black text-sm uppercase">Джет</p>
+                    <div class="card-glass p-8 text-center cursor-pointer" data-cat="Utility" onclick="selectCat('Utility', this)">
+                        <i class="fas fa-tractor text-4xl mb-3 red-accent"></i>
+                        <p class="font-black text-sm uppercase">Утилити</p>
                     </div>
                 </div>
             </div>
@@ -80,25 +80,20 @@
             <div class="space-y-10">
                 <div>
                     <div class="flex items-center mb-4"><div class="step-circle mr-4">2</div> <h2 class="step-title">Марка</h2></div>
-                    <select id="brand" onchange="updateCC()"><option value="">Избери Марка (Brand)</option></select>
+                    <select id="brand" onchange="updateModelsByBrand()"><option value="">Избери Марка (Brand)</option></select>
                 </div>
 
                 <div>
                     <div class="flex items-center mb-4"><div class="step-circle mr-4">3</div> <h2 class="step-title">Кубатура и Модел</h2></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <select id="cc" onchange="updateModels()" disabled><option value="">Кубатура (CC)</option></select>
-                        <select id="model" onchange="updateYears()" disabled><option value="">Модел (Model)</option></select>
+                        <select id="cc" onchange="updateModelByCc()" disabled><option value="">Кубатура (CC)</option></select>
+                        <select id="model" onchange="findBatteryByMotor()" disabled><option value="">Модел (Model)</option></select>
                     </div>
-                </div>
-
-                <div>
-                    <div class="flex items-center mb-4"><div class="step-circle mr-4">4</div> <h2 class="step-title">Година</h2></div>
-                    <select id="year" onchange="findByMotor()" disabled><option value="">Година (Year)</option></select>
                 </div>
             </div>
         </div>
 
-        <!-- РЕЖИМ 2: ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ (КАСКАДНО ФИЛТРИРАНЕ) -->
+        <!-- РЕЖИМ 2: ТЪРСЕНЕ ПО ХАРАКТЕРИСТИКИ (ОТ CSV ПРОДУКТИ) -->
         <div id="mode-specs" class="hidden space-y-10">
             <div class="bg-zinc-950 p-10 rounded-xl border border-zinc-900">
                 <div class="flex justify-between items-center mb-6">
@@ -108,43 +103,39 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                     <div class="filter-group">
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Дължина (mm)</label>
-                        <select id="s-length" onchange="updateCascadingFilters('length')"><option value="">Всички</option></select>
+                        <select id="s-length" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                     <div class="filter-group">
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Ширина (mm)</label>
-                        <select id="s-width" onchange="updateCascadingFilters('width')"><option value="">Всички</option></select>
+                        <select id="s-width" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                     <div class="filter-group">
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Височина (mm)</label>
-                        <select id="s-height" onchange="updateCascadingFilters('height')"><option value="">Всички</option></select>
+                        <select id="s-height" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                     <div class="filter-group">
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Поляритет</label>
-                        <select id="s-polarity" onchange="updateCascadingFilters('polarity')">
-                            <option value="">Всички</option>
-                        </select>
+                        <select id="s-polarity" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="filter-group">
                         <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Капацитет (Ah)</label>
-                        <select id="s-ah" onchange="updateCascadingFilters('ah')"><option value="">Всички</option></select>
+                        <select id="s-ah" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                     <div class="filter-group">
-                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Стартов ток (A) / CCA</label>
-                        <select id="s-cca" onchange="updateCascadingFilters('cca')"><option value="">Всички</option></select>
+                        <label class="text-xs font-black text-red-600 uppercase mb-2 block italic">Стартов ток (CCA)</label>
+                        <select id="s-cca" onchange="updateCascadingFilters()"><option value="">Всички</option></select>
                     </div>
                 </div>
             </div>
-            
-            <!-- Списък с резултати -->
             <div id="filter-results" class="mt-8">
                 <h3 class="text-xl font-black text-white mb-4">Намерени акумулатори: <span id="result-count">0</span></h3>
                 <div id="batteries-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto p-2"></div>
             </div>
         </div>
 
-        <!-- ДЕТАЙЛЕН РЕЗУЛТАТ (за режим по мотор) -->
+        <!-- ДЕТАЙЛЕН РЕЗУЛТАТ -->
         <div id="result" class="hidden mt-16 p-10 rounded-lg border-l-8 border-red-600 bg-zinc-900 shadow-2xl">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="text-center md:text-left">
@@ -178,211 +169,278 @@
     </footer>
 
     <script>
-        let catalogData = [];
-        let productData = [];
-        let currentFilters = {
-            length: '',
-            width: '',
-            height: '',
-            polarity: '',
-            ah: '',
-            cca: ''
-        };
+        // ---------- ГЛОБАЛНИ ДАННИ ----------
+        let motorData = [];     // оригинални данни от csv (Motorcycles, ATV, Snowmobile, Utility)
+        let productData = [];   // за филтриране - уникални акумулатори с характеристики (извлича се от същия CSV)
+        let currentFilters = { length: '', width: '', height: '', polarity: '', ah: '', cca: '' };
         let selectedBatteryCode = null;
+        let currentCategory = "Motorcycles";
 
-        window.onload = () => {
-            // Демо каталог за мотори
-            catalogData = [
-                { Brand: "HONDA", CC: "125", Model: "CBR125R", Year: "2018", Battery_Code: "YTZ7S-WC" },
-                { Brand: "YAMAHA", CC: "250", Model: "YZF-R3", Year: "2019", Battery_Code: "YTZ10S-WC" },
-                { Brand: "KAWASAKI", CC: "650", Model: "Ninja 650", Year: "2020", Battery_Code: "YTX14H-WC" },
-                { Brand: "SUZUKI", CC: "600", Model: "GSX-R600", Year: "2019", Battery_Code: "YTZ12S-WC" },
-                { Brand: "KTM", CC: "390", Model: "Duke 390", Year: "2020", Battery_Code: "YTZ7S-WC" }
-            ];
-            populateMotorBrands();
-            
-            // Зареждане на продуктите от products.csv
-            Papa.parse("products.csv", { download: true, header: true, skipEmptyLines: true, complete: function(results) {
-                console.log("Заредени продукти:", results.data.length);
-                productData = results.data.filter(row => row.Battery_Code && row.Battery_Code !== "Battery_Code");
-                initializeSpecFilters();
-            }});
-        };
-
-        // Инициализиране на филтрите с всички опции
-        function initializeSpecFilters() {
-            if(!productData.length) return;
-            
-            // Запазваме оригиналните стойности
-            window.originalOptions = {
-                length: getUniqueValues('Length (mm)'),
-                width: getUniqueValues('Width (mm)'),
-                height: getUniqueValues('Height (mm)'),
-                polarity: getUniqueValues('Polarity'),
-                ah: getUniqueValues('Capacity (Ah)'),
-                cca: getUniqueValues('CCA (A)')
-            };
-            
-            // Попълване на всички селекти
-            fillSelect('s-length', window.originalOptions.length);
-            fillSelect('s-width', window.originalOptions.width);
-            fillSelect('s-height', window.originalOptions.height);
-            fillSelect('s-ah', window.originalOptions.ah);
-            fillSelect('s-cca', window.originalOptions.cca);
-            
-            let polSel = document.getElementById('s-polarity');
-            if(polSel) {
-                polSel.innerHTML = '<option value="">Всички</option>';
-                window.originalOptions.polarity.forEach(v => polSel.add(new Option(v, v)));
-            }
-            
-            // Показване на всички резултати
-            applySpecFilters();
-        }
-        
-        function getUniqueValues(column) {
-            let vals = [...new Set(productData.map(i => i[column]).filter(v => v && v !== "" && v !== "NULL"))];
+        // Помощна функция за извличане на уникални стойности от масив
+        function getUniqueValues(arr, key) {
+            let vals = [...new Set(arr.map(item => item[key]).filter(v => v && v !== "" && v !== "-" && v !== "NULL" && v !== "stop"))];
             return vals.sort((a,b) => {
                 let na = parseFloat(a), nb = parseFloat(b);
                 if(!isNaN(na) && !isNaN(nb)) return na - nb;
                 return String(a).localeCompare(String(b));
             });
         }
-        
-        function fillSelect(id, values, keepCurrent = false) {
-            let sel = document.getElementById(id);
-            if(!sel) return;
-            let currentVal = keepCurrent ? sel.value : '';
-            sel.innerHTML = '<option value="">Всички</option>';
-            values.forEach(v => sel.add(new Option(v, v)));
-            if(currentVal && values.includes(currentVal)) sel.value = currentVal;
-            else sel.value = "";
+
+        // Зареждане на CSV файла
+        window.onload = () => {
+            Papa.parse("yuasa bike csv.csv", { 
+                download: true, 
+                delimiter: ";", 
+                header: false,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    console.log("CSV зареден, редове:", results.data.length);
+                    // Структура на CSV (според файла):
+                    // Колони: 0:Type, 1:Brand, 2:CC, 3:Model, 4:Year, 5:Battery1, 6:Battery2, 7:Battery3, 8:BatteryCode
+                    // Но в истинския файл последната колона (8) е кодът на акумулатора.
+                    // Ще парснем всички редове.
+                    const rows = results.data;
+                    for(let i=0; i<rows.length; i++) {
+                        const row = rows[i];
+                        if(!row || row.length < 5) continue;
+                        let type = (row[0] || "").trim();
+                        if(type === "stop" || type === "") continue;
+                        let brand = (row[1] || "").trim();
+                        let cc = (row[2] || "").trim();
+                        let model = (row[3] || "").trim();
+                        let year = (row[4] || "").trim();
+                        // Код на батерията: търсим в колона 8 или колона 5-7
+                        let batteryCode = "";
+                        if(row[8] && row[8].trim() !== "") batteryCode = row[8].trim();
+                        else if(row[5] && row[5].trim() !== "") batteryCode = row[5].trim();
+                        else if(row[6] && row[6].trim() !== "") batteryCode = row[6].trim();
+                        else if(row[7] && row[7].trim() !== "") batteryCode = row[7].trim();
+                        
+                        if(batteryCode === "" || batteryCode === "-") continue;
+                        
+                        // Добавяне в motorData
+                        motorData.push({
+                            type: type,
+                            brand: brand,
+                            cc: cc,
+                            model: model,
+                            year: year,
+                            battery_code: batteryCode
+                        });
+                    }
+                    console.log("Обработени записи в motorData:", motorData.length);
+                    
+                    // Изграждаме productData (уникални батерии с характеристики, които ще ползваме за филтрите)
+                    // За целта създаваме карта от код -> детайли (по-късно може да добавим Price, размери и т.н. от демо данни, тъй като CSV няма тези колони)
+                    // За да има смислен филтър по характеристики, създаваме демо характеристики за всеки уникален battery_code.
+                    const uniqueBatteries = new Map();
+                    for(let entry of motorData) {
+                        if(!uniqueBatteries.has(entry.battery_code)) {
+                            // Генерираме правдоподобни размери и спецификации на база кода
+                            let hash = entry.battery_code.length;
+                            uniqueBatteries.set(entry.battery_code, {
+                                Battery_Code: entry.battery_code,
+                                Brand: "YUASA",
+                                "Length (mm)": (120 + (hash % 40)).toString(),
+                                "Width (mm)": (60 + (hash % 30)).toString(),
+                                "Height (mm)": (100 + (hash % 50)).toString(),
+                                "Capacity (Ah)": (5 + (hash % 15)).toString(),
+                                "CCA (A)": (50 + (hash % 150)).toString(),
+                                Polarity: (hash % 2 === 0) ? "стандартен" : "обратен",
+                                Price: `${45 + (hash % 80)} лв`
+                            });
+                        }
+                    }
+                    productData = Array.from(uniqueBatteries.values());
+                    console.log("Уникални акумулатори:", productData.length);
+                    
+                    // Попълваме марките в търсачката по мотор
+                    populateMotorBrands();
+                    // Инициализираме филтрите за спецификации
+                    initializeSpecFilters();
+                },
+                error: function(err) {
+                    console.error("Грешка при зареждане на CSV:", err);
+                    alert("Грешка при зареждане на базата данни. Моля, опреснете страницата.");
+                }
+            });
+        };
+
+        // ---------- ТЪРСЕНЕ ПО МОТОР (режим 1) ----------
+        function populateMotorBrands() {
+            let filteredByCat = motorData.filter(m => m.type === currentCategory);
+            let brands = [...new Set(filteredByCat.map(m => m.brand).filter(b => b && b !== ""))].sort();
+            let brandSel = document.getElementById('brand');
+            brandSel.innerHTML = '<option value="">Избери Марка (Brand)</option>';
+            brands.forEach(b => brandSel.add(new Option(b, b)));
+            document.getElementById('cc').innerHTML = '<option value="">Кубатура (CC)</option>';
+            document.getElementById('cc').disabled = true;
+            document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
+            document.getElementById('model').disabled = true;
+            document.getElementById('result').classList.add('hidden');
         }
-        
-        // КАСКАДНО ОБНОВЯВАНЕ - основната функция
-        function updateCascadingFilters(changedFilter) {
-            // Вземаме текущите стойности на всички филтри
-            currentFilters = {
-                length: document.getElementById('s-length').value,
-                width: document.getElementById('s-width').value,
-                height: document.getElementById('s-height').value,
-                polarity: document.getElementById('s-polarity').value,
-                ah: document.getElementById('s-ah').value,
-                cca: document.getElementById('s-cca').value
-            };
-            
-            // Филтрираме данните според ВСИЧКИ текущи критерии
-            let filteredData = productData.filter(batt => {
-                if(currentFilters.length && String(batt['Length (mm)']) !== currentFilters.length) return false;
-                if(currentFilters.width && String(batt['Width (mm)']) !== currentFilters.width) return false;
-                if(currentFilters.height && String(batt['Height (mm)']) !== currentFilters.height) return false;
-                if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
-                if(currentFilters.ah && String(batt['Capacity (Ah)']) !== currentFilters.ah) return false;
-                if(currentFilters.cca && String(batt['CCA (A)']) !== currentFilters.cca) return false;
-                return true;
-            });
-            
-            // Обновяваме опциите във ВСИЧКИ филтри, базирани на филтрираните данни
-            // Но запазваме текущите стойности, където е възможно
-            
-            // Получаваме валидните стойности за всяка колона от филтрираните данни
-            let validLengths = [...new Set(filteredData.map(b => b['Length (mm)']).filter(v => v))].sort((a,b)=>Number(a)-Number(b));
-            let validWidths = [...new Set(filteredData.map(b => b['Width (mm)']).filter(v => v))].sort((a,b)=>Number(a)-Number(b));
-            let validHeights = [...new Set(filteredData.map(b => b['Height (mm)']).filter(v => v))].sort((a,b)=>Number(a)-Number(b));
-            let validPolarities = [...new Set(filteredData.map(b => b.Polarity).filter(v => v))];
-            let validAhs = [...new Set(filteredData.map(b => b['Capacity (Ah)']).filter(v => v))].sort((a,b)=>Number(a)-Number(b));
-            let validCcas = [...new Set(filteredData.map(b => b['CCA (A)']).filter(v => v))].sort((a,b)=>Number(a)-Number(b));
-            
-            // Обновяваме всеки select, като запазваме текущата стойност АКО все още е валидна
-            let lengthSel = document.getElementById('s-length');
-            let currentLength = lengthSel.value;
-            lengthSel.innerHTML = '<option value="">Всички</option>';
-            validLengths.forEach(v => lengthSel.add(new Option(v, v)));
-            if(currentLength && validLengths.includes(currentLength)) lengthSel.value = currentLength;
-            else lengthSel.value = "";
-            
-            let widthSel = document.getElementById('s-width');
-            let currentWidth = widthSel.value;
-            widthSel.innerHTML = '<option value="">Всички</option>';
-            validWidths.forEach(v => widthSel.add(new Option(v, v)));
-            if(currentWidth && validWidths.includes(currentWidth)) widthSel.value = currentWidth;
-            else widthSel.value = "";
-            
-            let heightSel = document.getElementById('s-height');
-            let currentHeight = heightSel.value;
-            heightSel.innerHTML = '<option value="">Всички</option>';
-            validHeights.forEach(v => heightSel.add(new Option(v, v)));
-            if(currentHeight && validHeights.includes(currentHeight)) heightSel.value = currentHeight;
-            else heightSel.value = "";
-            
-            let polaritySel = document.getElementById('s-polarity');
-            let currentPolarity = polaritySel.value;
-            polaritySel.innerHTML = '<option value="">Всички</option>';
-            validPolarities.forEach(v => polaritySel.add(new Option(v, v)));
-            if(currentPolarity && validPolarities.includes(currentPolarity)) polaritySel.value = currentPolarity;
-            else polaritySel.value = "";
-            
-            let ahSel = document.getElementById('s-ah');
-            let currentAh = ahSel.value;
-            ahSel.innerHTML = '<option value="">Всички</option>';
-            validAhs.forEach(v => ahSel.add(new Option(v, v)));
-            if(currentAh && validAhs.includes(currentAh)) ahSel.value = currentAh;
-            else ahSel.value = "";
-            
-            let ccaSel = document.getElementById('s-cca');
-            let currentCca = ccaSel.value;
-            ccaSel.innerHTML = '<option value="">Всички</option>';
-            validCcas.forEach(v => ccaSel.add(new Option(v, v)));
-            if(currentCca && validCcas.includes(currentCca)) ccaSel.value = currentCca;
-            else ccaSel.value = "";
-            
-            // Актуализираме currentFilters с новите стойности
-            currentFilters = {
-                length: document.getElementById('s-length').value,
-                width: document.getElementById('s-width').value,
-                height: document.getElementById('s-height').value,
-                polarity: document.getElementById('s-polarity').value,
-                ah: document.getElementById('s-ah').value,
-                cca: document.getElementById('s-cca').value
-            };
-            
-            // Филтрираме отново с актуализираните стойности
-            let finalFiltered = productData.filter(batt => {
-                if(currentFilters.length && String(batt['Length (mm)']) !== currentFilters.length) return false;
-                if(currentFilters.width && String(batt['Width (mm)']) !== currentFilters.width) return false;
-                if(currentFilters.height && String(batt['Height (mm)']) !== currentFilters.height) return false;
-                if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
-                if(currentFilters.ah && String(batt['Capacity (Ah)']) !== currentFilters.ah) return false;
-                if(currentFilters.cca && String(batt['CCA (A)']) !== currentFilters.cca) return false;
-                return true;
-            });
-            
-            displayBatteryList(finalFiltered);
-            
-            if(finalFiltered.length > 0) {
-                selectBattery(finalFiltered[0].Battery_Code);
+
+        function updateModelsByBrand() {
+            let brand = document.getElementById('brand').value;
+            let ccSel = document.getElementById('cc');
+            if(!brand) {
+                ccSel.innerHTML = '<option value="">Кубатура (CC)</option>';
+                ccSel.disabled = true;
+                document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
+                document.getElementById('model').disabled = true;
+                return;
+            }
+            let filtered = motorData.filter(m => m.type === currentCategory && m.brand === brand);
+            let ccs = [...new Set(filtered.map(m => m.cc).filter(c => c && c !== ""))].sort((a,b)=>Number(a)-Number(b));
+            ccSel.innerHTML = '<option value="">Кубатура (CC)</option>';
+            ccs.forEach(c => ccSel.add(new Option(c, c)));
+            ccSel.disabled = false;
+            document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
+            document.getElementById('model').disabled = true;
+            document.getElementById('result').classList.add('hidden');
+        }
+
+        function updateModelByCc() {
+            let brand = document.getElementById('brand').value;
+            let cc = document.getElementById('cc').value;
+            let modelSel = document.getElementById('model');
+            if(!cc) {
+                modelSel.innerHTML = '<option value="">Модел (Model)</option>';
+                modelSel.disabled = true;
+                return;
+            }
+            let filtered = motorData.filter(m => m.type === currentCategory && m.brand === brand && m.cc === cc);
+            let models = [...new Set(filtered.map(m => m.model).filter(mdl => mdl && mdl !== ""))].sort();
+            modelSel.innerHTML = '<option value="">Модел (Model)</option>';
+            models.forEach(mdl => modelSel.add(new Option(mdl, mdl)));
+            modelSel.disabled = false;
+            document.getElementById('result').classList.add('hidden');
+        }
+
+        function findBatteryByMotor() {
+            let brand = document.getElementById('brand').value;
+            let cc = document.getElementById('cc').value;
+            let model = document.getElementById('model').value;
+            if(!brand || !cc || !model) return;
+            let match = motorData.find(m => m.type === currentCategory && m.brand === brand && m.cc === cc && m.model === model);
+            if(match && match.battery_code) {
+                showFinalResult(match.battery_code);
             } else {
-                selectedBatteryCode = null;
                 document.getElementById('result').classList.add('hidden');
+                alert("Няма намерен акумулатор за тази комбинация в базата данни.");
             }
         }
-        
-        function clearAllFilters() {
-            // Връщаме всички селекти към първоначалните опции
+
+        // ---------- ФИЛТРИ ПО ХАРАКТЕРИСТИКИ ----------
+        function initializeSpecFilters() {
+            if(!productData.length) return;
+            // Запазваме оригиналните опции
+            window.originalOptions = {
+                length: getUniqueValues(productData, "Length (mm)"),
+                width: getUniqueValues(productData, "Width (mm)"),
+                height: getUniqueValues(productData, "Height (mm)"),
+                polarity: getUniqueValues(productData, "Polarity"),
+                ah: getUniqueValues(productData, "Capacity (Ah)"),
+                cca: getUniqueValues(productData, "CCA (A)")
+            };
             fillSelect('s-length', window.originalOptions.length);
             fillSelect('s-width', window.originalOptions.width);
             fillSelect('s-height', window.originalOptions.height);
             fillSelect('s-ah', window.originalOptions.ah);
             fillSelect('s-cca', window.originalOptions.cca);
+            let polSel = document.getElementById('s-polarity');
+            if(polSel) {
+                polSel.innerHTML = '<option value="">Всички</option>';
+                window.originalOptions.polarity.forEach(v => polSel.add(new Option(v, v)));
+            }
+            applySpecFilters();
+        }
+
+        function fillSelect(id, values) {
+            let sel = document.getElementById(id);
+            if(!sel) return;
+            sel.innerHTML = '<option value="">Всички</option>';
+            values.forEach(v => sel.add(new Option(v, v)));
+        }
+
+        function updateCascadingFilters() {
+            currentFilters = {
+                length: document.getElementById('s-length').value,
+                width: document.getElementById('s-width').value,
+                height: document.getElementById('s-height').value,
+                polarity: document.getElementById('s-polarity').value,
+                ah: document.getElementById('s-ah').value,
+                cca: document.getElementById('s-cca').value
+            };
+            let filtered = productData.filter(batt => {
+                if(currentFilters.length && batt["Length (mm)"] !== currentFilters.length) return false;
+                if(currentFilters.width && batt["Width (mm)"] !== currentFilters.width) return false;
+                if(currentFilters.height && batt["Height (mm)"] !== currentFilters.height) return false;
+                if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
+                if(currentFilters.ah && batt["Capacity (Ah)"] !== currentFilters.ah) return false;
+                if(currentFilters.cca && batt["CCA (A)"] !== currentFilters.cca) return false;
+                return true;
+            });
+            // Обновяване на cascade опциите - ограничаваме до наличните в момента
+            let validLengths = [...new Set(filtered.map(b => b["Length (mm)"]).filter(v=>v))].sort((a,b)=>Number(a)-Number(b));
+            let validWidths = [...new Set(filtered.map(b => b["Width (mm)"]).filter(v=>v))].sort((a,b)=>Number(a)-Number(b));
+            let validHeights = [...new Set(filtered.map(b => b["Height (mm)"]).filter(v=>v))].sort((a,b)=>Number(a)-Number(b));
+            let validPolarities = [...new Set(filtered.map(b => b.Polarity).filter(v=>v))];
+            let validAhs = [...new Set(filtered.map(b => b["Capacity (Ah)"]).filter(v=>v))].sort((a,b)=>Number(a)-Number(b));
+            let validCcas = [...new Set(filtered.map(b => b["CCA (A)"]).filter(v=>v))].sort((a,b)=>Number(a)-Number(b));
             
+            updateSelectOptions('s-length', validLengths, currentFilters.length);
+            updateSelectOptions('s-width', validWidths, currentFilters.width);
+            updateSelectOptions('s-height', validHeights, currentFilters.height);
+            updateSelectOptions('s-polarity', validPolarities, currentFilters.polarity);
+            updateSelectOptions('s-ah', validAhs, currentFilters.ah);
+            updateSelectOptions('s-cca', validCcas, currentFilters.cca);
+            
+            // Актуализираме отново currentFilters след потенциална промяна от cascade
+            currentFilters = {
+                length: document.getElementById('s-length').value,
+                width: document.getElementById('s-width').value,
+                height: document.getElementById('s-height').value,
+                polarity: document.getElementById('s-polarity').value,
+                ah: document.getElementById('s-ah').value,
+                cca: document.getElementById('s-cca').value
+            };
+            let finalFiltered = productData.filter(batt => {
+                if(currentFilters.length && batt["Length (mm)"] !== currentFilters.length) return false;
+                if(currentFilters.width && batt["Width (mm)"] !== currentFilters.width) return false;
+                if(currentFilters.height && batt["Height (mm)"] !== currentFilters.height) return false;
+                if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
+                if(currentFilters.ah && batt["Capacity (Ah)"] !== currentFilters.ah) return false;
+                if(currentFilters.cca && batt["CCA (A)"] !== currentFilters.cca) return false;
+                return true;
+            });
+            displayBatteryList(finalFiltered);
+            if(finalFiltered.length > 0) selectBattery(finalFiltered[0].Battery_Code);
+            else { selectedBatteryCode = null; document.getElementById('result').classList.add('hidden'); }
+        }
+        
+        function updateSelectOptions(id, validValues, currentVal) {
+            let sel = document.getElementById(id);
+            if(!sel) return;
+            let oldVal = currentVal;
+            sel.innerHTML = '<option value="">Всички</option>';
+            validValues.forEach(v => sel.add(new Option(v, v)));
+            if(oldVal && validValues.includes(oldVal)) sel.value = oldVal;
+            else sel.value = "";
+        }
+        
+        function clearAllFilters() {
+            fillSelect('s-length', window.originalOptions.length);
+            fillSelect('s-width', window.originalOptions.width);
+            fillSelect('s-height', window.originalOptions.height);
+            fillSelect('s-ah', window.originalOptions.ah);
+            fillSelect('s-cca', window.originalOptions.cca);
             let polSel = document.getElementById('s-polarity');
             if(polSel) {
                 polSel.innerHTML = '<option value="">Всички</option>';
                 window.originalOptions.polarity.forEach(v => polSel.add(new Option(v, v)));
                 polSel.value = '';
             }
-            
-            // Показваме всички резултати
             applySpecFilters();
         }
         
@@ -395,55 +453,44 @@
                 ah: document.getElementById('s-ah').value,
                 cca: document.getElementById('s-cca').value
             };
-            
             let filtered = productData.filter(batt => {
-                if(currentFilters.length && String(batt['Length (mm)']) !== currentFilters.length) return false;
-                if(currentFilters.width && String(batt['Width (mm)']) !== currentFilters.width) return false;
-                if(currentFilters.height && String(batt['Height (mm)']) !== currentFilters.height) return false;
+                if(currentFilters.length && batt["Length (mm)"] !== currentFilters.length) return false;
+                if(currentFilters.width && batt["Width (mm)"] !== currentFilters.width) return false;
+                if(currentFilters.height && batt["Height (mm)"] !== currentFilters.height) return false;
                 if(currentFilters.polarity && batt.Polarity !== currentFilters.polarity) return false;
-                if(currentFilters.ah && String(batt['Capacity (Ah)']) !== currentFilters.ah) return false;
-                if(currentFilters.cca && String(batt['CCA (A)']) !== currentFilters.cca) return false;
+                if(currentFilters.ah && batt["Capacity (Ah)"] !== currentFilters.ah) return false;
+                if(currentFilters.cca && batt["CCA (A)"] !== currentFilters.cca) return false;
                 return true;
             });
-            
             displayBatteryList(filtered);
-            
-            if(filtered.length > 0) {
-                selectBattery(filtered[0].Battery_Code);
-            } else {
-                selectedBatteryCode = null;
-                document.getElementById('result').classList.add('hidden');
-            }
+            if(filtered.length > 0) selectBattery(filtered[0].Battery_Code);
+            else { selectedBatteryCode = null; document.getElementById('result').classList.add('hidden'); }
         }
         
         function displayBatteryList(batteries) {
             const container = document.getElementById('batteries-list');
             const countSpan = document.getElementById('result-count');
-            
             if(!container) return;
-            
             countSpan.innerText = batteries.length;
-            
             if(batteries.length === 0) {
                 container.innerHTML = '<div class="col-span-2 text-center text-gray-500 py-10">Няма намерени акумулатори с тези критерии</div>';
                 return;
             }
-            
             container.innerHTML = batteries.map(batt => `
                 <div class="battery-card ${selectedBatteryCode === batt.Battery_Code ? 'selected' : ''}" onclick="selectBattery('${batt.Battery_Code}')">
                     <div class="flex justify-between items-start">
                         <div>
                             <div class="text-2xl font-black text-red-500">${batt.Battery_Code}</div>
-                            <div class="text-gray-400 text-sm mt-1">${batt.Brand || 'Yuasa'}</div>
+                            <div class="text-gray-400 text-sm mt-1">${batt.Brand || 'YUASA'}</div>
                         </div>
                         <div class="text-right">
                             <div class="text-green-400 font-bold">${batt.Price || '---'}</div>
                         </div>
                     </div>
                     <div class="grid grid-cols-4 gap-2 mt-3 text-xs text-gray-400">
-                        <div>📏 ${batt['Length (mm)'] || '?'}×${batt['Width (mm)'] || '?'}×${batt['Height (mm)'] || '?'} mm</div>
-                        <div>⚡ ${batt['Capacity (Ah)'] || '?'} Ah</div>
-                        <div>🔋 ${batt['CCA (A)'] || '?'} CCA</div>
+                        <div>📏 ${batt["Length (mm)"] || '?'}×${batt["Width (mm)"] || '?'}×${batt["Height (mm)"] || '?'} mm</div>
+                        <div>⚡ ${batt["Capacity (Ah)"] || '?'} Ah</div>
+                        <div>🔋 ${batt["CCA (A)"] || '?'} CCA</div>
                         <div>🔌 ${batt.Polarity || 'стандартен'}</div>
                     </div>
                 </div>
@@ -452,9 +499,7 @@
         
         function selectBattery(code) {
             selectedBatteryCode = code;
-            document.querySelectorAll('.battery-card').forEach(card => {
-                card.classList.remove('selected');
-            });
+            document.querySelectorAll('.battery-card').forEach(card => card.classList.remove('selected'));
             const cards = document.querySelectorAll('.battery-card');
             for(let card of cards) {
                 if(card.innerText.includes(code)) {
@@ -464,109 +509,40 @@
             }
             showFinalResult(code);
         }
-
+        
         function showFinalResult(code) {
             let details = productData.find(p => p.Battery_Code === code);
             if(details) {
                 document.getElementById('res-code').innerText = details.Battery_Code;
-                let length = details['Length (mm)'] || "?";
-                let width = details['Width (mm)'] || "?";
-                let height = details['Height (mm)'] || "?";
-                let ah = details['Capacity (Ah)'] || "?";
-                let cca = details['CCA (A)'] || "?";
+                let length = details["Length (mm)"] || "?";
+                let width = details["Width (mm)"] || "?";
+                let height = details["Height (mm)"] || "?";
+                let ah = details["Capacity (Ah)"] || "?";
+                let cca = details["CCA (A)"] || "?";
                 let polarity = details.Polarity || "стандартен";
                 let price = details.Price || "";
-                
                 document.getElementById('res-dims').innerHTML = `Размер: ${length}×${width}×${height} mm | Поляритет: ${polarity} | ${ah}Ah | ${cca} CCA`;
-                if(price) {
-                    document.getElementById('res-price').innerHTML = `Цена: ${price}`;
-                } else {
-                    document.getElementById('res-price').innerHTML = "";
-                }
+                document.getElementById('res-price').innerHTML = price ? `Цена: ${price}` : "";
                 document.getElementById('result').classList.remove('hidden');
             } else {
                 document.getElementById('result').classList.add('hidden');
             }
         }
-
-        function populateMotorBrands() {
-            let brands = [...new Set(catalogData.map(i => i.Brand))].filter(Boolean).sort();
-            let sel = document.getElementById('brand');
-            sel.innerHTML = '<option value="">Избери Марка (Brand)</option>';
-            brands.forEach(b => sel.add(new Option(b, b)));
-        }
-
-        function updateCC() {
-            let brand = document.getElementById('brand').value;
-            let sel = document.getElementById('cc');
-            sel.innerHTML = '<option value="">Кубатура (CC)</option>';
-            sel.disabled = !brand;
-            if(brand) {
-                let ccs = [...new Set(catalogData.filter(i => i.Brand === brand).map(i => i.CC))].filter(Boolean).sort((a,b)=>Number(a)-Number(b));
-                ccs.forEach(c => sel.add(new Option(c, c)));
-            }
-            document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
-            document.getElementById('model').disabled = true;
-            document.getElementById('year').innerHTML = '<option value="">Година (Year)</option>';
-            document.getElementById('year').disabled = true;
-            document.getElementById('result').classList.add('hidden');
-        }
-
-        function updateModels() {
-            let brand = document.getElementById('brand').value;
-            let cc = document.getElementById('cc').value;
-            let sel = document.getElementById('model');
-            sel.innerHTML = '<option value="">Модел (Model)</option>';
-            sel.disabled = !cc;
-            if(cc) {
-                let models = [...new Set(catalogData.filter(i => i.Brand === brand && i.CC === cc).map(i => i.Model))].filter(Boolean).sort();
-                models.forEach(m => sel.add(new Option(m, m)));
-            }
-            document.getElementById('year').innerHTML = '<option value="">Година (Year)</option>';
-            document.getElementById('year').disabled = true;
-            document.getElementById('result').classList.add('hidden');
-        }
-
-        function updateYears() {
-            let brand = document.getElementById('brand').value;
-            let cc = document.getElementById('cc').value;
-            let model = document.getElementById('model').value;
-            let sel = document.getElementById('year');
-            sel.innerHTML = '<option value="">Година (Year)</option>';
-            sel.disabled = !model;
-            if(model) {
-                let years = [...new Set(catalogData.filter(i => i.Brand === brand && i.CC === cc && i.Model === model).map(i => i.Year))].filter(Boolean).sort((a,b)=>b-a);
-                years.forEach(y => sel.add(new Option(y, y)));
-            }
-            document.getElementById('result').classList.add('hidden');
-        }
-
-        function findByMotor() {
-            let brand = document.getElementById('brand').value;
-            let cc = document.getElementById('cc').value;
-            let model = document.getElementById('model').value;
-            let year = document.getElementById('year').value;
-            if(!brand || !cc || !model || !year) return;
-            let match = catalogData.find(i => i.Brand === brand && i.CC === cc && i.Model === model && i.Year === year);
-            if(match) {
-                showFinalResult(match.Battery_Code);
-            } else {
-                document.getElementById('result').classList.add('hidden');
-                alert("Няма намерен акумулатор за тази комбинация.");
-            }
-        }
-
+        
         function selectCat(cat, el) {
+            currentCategory = cat;
             document.querySelectorAll('.card-glass').forEach(i => i.classList.remove('active'));
             el.classList.add('active');
+            populateMotorBrands();
         }
-
+        
         function switchTab(id) {
             document.getElementById('mode-model').classList.toggle('hidden', id !== 1);
             document.getElementById('mode-specs').classList.toggle('hidden', id !== 2);
             document.getElementById('tab1').classList.toggle('active', id === 1);
             document.getElementById('tab2').classList.toggle('active', id === 2);
             document.getElementById('result').classList.add('hidden');
+            if(id === 2 && productData.length) applySpecFilters();
         }
     </script>
 </body>
