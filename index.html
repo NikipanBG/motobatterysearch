@@ -3,155 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АВТОЗОНА 33 - Търсачка за Акумулатори (Google Drive)</title>
+    <title>АВТОЗОНА 33 - Търсачка за Акумулатори</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></style>
     <style>
-        body{background:#000;color:#fff;font-family:'Inter',sans-serif}
-        select{background:#111!important;border:2px solid #333!important;color:#fff!important;font-weight:900!important;padding:14px!important;width:100%;border-radius:4px;cursor:pointer}
-        select:disabled{opacity:0.15}
-        .red-accent{color:#f00}
-        .card-glass{background:#111;border:2px solid #222;border-radius:8px;cursor:pointer;transition:.3s}
-        .card-glass.active{border-color:#f00;background:#1a0000}
-        .tab-btn{cursor:pointer;padding:20px 40px;font-weight:900;border-bottom:4px solid transparent;color:#444;transition:.3s}
-        .tab-btn.active{border-color:#f00;color:#fff}
-        .step-circle{background:#f00;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900}
-        .battery-card{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:16px;transition:.2s;cursor:pointer}
-        .battery-card:hover,.battery-card.selected{border-color:#f00;background:#2a1a1a}
-        .clear-btn{background:#333;color:#fff;padding:12px 24px;border-radius:8px;font-weight:700;cursor:pointer;border:none}
-        .clear-btn:hover{background:#f00}
-        .loading{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
-        .loading-spinner{width:50px;height:50px;border:4px solid #333;border-top-color:#f00;border-radius:50%;animation:spin 1s linear infinite}
-        @keyframes spin{to{transform:rotate(360deg)}}
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        select { background-color: #111111 !important; border: 2px solid #333333 !important; color: #ffffff !important; font-weight: 900 !important; font-size: 1.25rem !important; padding: 18px !important; width: 100%; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; }
+        select:focus { border-color: #ff0000 !important; outline: none; box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+        .font-headline { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: -1px; }
+        .card-glass { background: rgba(10, 10, 10, 0.75); border: 1px solid #222222; backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card-glass:hover { border-color: #444444; background: rgba(15, 15, 15, 0.9); transform: translateY(-2px); }
+        .card-glass.active { border-color: #ff0000; box-shadow: 0 0 25px rgba(255,0,0,0.15); background: rgba(20, 10, 10, 0.8); }
+        .tab-btn { position: relative; font-weight: 900; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; color: #666666; }
+        .tab-btn.active { color: #ffffff; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 4px; background: #ff0000; }
+        .btn-action { background: #ffffff; color: #000000; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .btn-action:hover { background: #ff0000; color: #ffffff; transform: scale(1.02); box-shadow: 0 10px 20px rgba(255,0,0,0.2); }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #000000; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #ff0000; }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-8">
 
-<div id="loadingOverlay" class="loading" style="display:flex">
-    <div class="loading-spinner"></div>
-    <p class="mt-4 text-red-500 font-bold">Зареждане на базата данни от Google Drive...</p>
-</div>
-
-<header class="bg-black border-b-2 border-red-600 p-6 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div class="text-4xl font-black italic">АВТОЗОНА <span class="red-accent">33</span> ЕООД</div>
-        <div class="flex gap-8 mt-4 md:mt-0 font-black text-sm uppercase">
-            <a href="tel:+35924794545" class="hover:text-red-500"><i class="fas fa-phone red-accent mr-2"></i> 02 479 45 45</a>
-            <a href="mailto:office@autozona33.com" class="hover:text-red-500"><i class="fas fa-envelope red-accent mr-2"></i> OFFICE@AUTOZONA33.COM</a>
-        </div>
-    </div>
-</header>
-
-<main class="max-w-6xl mx-auto py-12 px-4">
-    <div class="flex justify-center mb-12 border-b border-zinc-900">
-        <div id="tab1" class="tab-btn active" onclick="switchTab(1)">Търсене по Мотор</div>
-        <div id="tab2" class="tab-btn" onclick="switchTab(2)">Търсене по Характеристики</div>
-    </div>
-
-    <div id="mode-model" class="space-y-12">
-        <div>
-            <div class="flex items-center mb-8"><div class="step-circle mr-4">1</div><h2 class="text-xl font-black">Избери категория</h2></div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="card-glass p-8 text-center cursor-pointer active" data-cat="Motorcycles" onclick="selectCat('Motorcycles',this)"><i class="fas fa-motorcycle text-4xl mb-3 red-accent"></i><p class="font-black text-sm">Мотор</p></div>
-                <div class="card-glass p-8 text-center cursor-pointer" data-cat="ATV" onclick="selectCat('ATV',this)"><i class="fas fa-truck-monster text-4xl mb-3 red-accent"></i><p class="font-black text-sm">ATV</p></div>
-                <div class="card-glass p-8 text-center cursor-pointer" data-cat="Snowmobile" onclick="selectCat('Snowmobile',this)"><i class="fas fa-snowflake text-4xl mb-3 red-accent"></i><p class="font-black text-sm">Сноумобил</p></div>
-                <div class="card-glass p-8 text-center cursor-pointer" data-cat="Utility" onclick="selectCat('Utility',this)"><i class="fas fa-tractor text-4xl mb-3 red-accent"></i><p class="font-black text-sm">Утилити</p></div>
+    <header class="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 border-b border-zinc-900 pb-6 mb-8">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-red-600 flex items-center justify-center font-headline text-2xl text-black font-black">33</div>
+            <div>
+                <h1 class="font-headline text-2xl md:text-3xl tracking-tighter leading-none">АВТОЗОНА 33</h1>
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">ПРОФЕСИОНАЛНИ АКУМУЛАТОРИ ЗА МОТОЦИКЛЕТИ</p>
             </div>
         </div>
-        <div class="space-y-6">
-            <div><div class="flex items-center mb-4"><div class="step-circle mr-4">2</div><h2 class="text-xl font-black">Марка</h2></div><select id="brand" onchange="updateModelsByBrand()"><option value="">Избери Марка</option></select></div>
-            <div><div class="flex items-center mb-4"><div class="step-circle mr-4">3</div><h2 class="text-xl font-black">Кубатура и Модел</h2></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><select id="cc" onchange="updateModelByCc()" disabled><option value="">Кубатура (CC)</option></select><select id="model" onchange="findBatteryByMotor()" disabled><option value="">Модел</option></select></div></div>
+        <div class="flex gap-8">
+            <button id="tab1" onclick="switchTab(1)" class="tab-btn active">ТЪРСЕНЕ ПО МОДЕЛ</button>
+            <button id="tab2" onclick="switchTab(2)" class="tab-btn">ПО СПЕЦИФИКАЦИИ</button>
         </div>
-    </div>
+    </header>
 
-    <div id="mode-specs" class="hidden space-y-10">
-        <div class="bg-zinc-950 p-8 rounded-xl border border-zinc-900">
-            <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-black">Филтриране</h3><button class="clear-btn" onclick="clearAllFilters()">🗑️ Изчисти</button></div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div><label class="text-xs text-red-600 uppercase">Дължина (mm)</label><select id="s-length" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
-                <div><label class="text-xs text-red-600 uppercase">Ширина (mm)</label><select id="s-width" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
-                <div><label class="text-xs text-red-600 uppercase">Височина (mm)</label><select id="s-height" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
-                <div><label class="text-xs text-red-600 uppercase">Поляритет</label><select id="s-polarity" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
-                <div><label class="text-xs text-red-600 uppercase">Капацитет (Ah)</label><select id="s-ah" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
-                <div><label class="text-xs text-red-600 uppercase">Стартов ток (CCA)</label><select id="s-cca" onchange="updateCascadingFilters()"><option value="">Всички</option></select></div>
+    <main class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-auto">
+        
+        <div class="lg:col-span-4 grid grid-cols-1 gap-4">
+            <div onclick="selectCat('Motorcycles', this)" class="card-glass active p-6 flex items-center justify-between cursor-pointer rounded">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-motorcycle text-2xl text-zinc-400"></i>
+                    <div>
+                        <h3 class="font-headline text-lg">МОТОЦИКЛЕТИ</h3>
+                        <p class="text-xs text-zinc-500 uppercase">Пътни и пистови</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-zinc-600 text-sm"></i>
+            </div>
+
+            <div onclick="selectCat('ATV', this)" class="card-glass p-6 flex items-center justify-between cursor-pointer rounded">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-trailer text-2xl text-zinc-400"></i>
+                    <div>
+                        <h3 class="font-headline text-lg">ATV / UTV</h3>
+                        <p class="text-xs text-zinc-500 uppercase">Четириколки и бъгита</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-zinc-600 text-sm"></i>
+            </div>
+
+            <div onclick="selectCat('Scooter', this)" class="card-glass p-6 flex items-center justify-between cursor-pointer rounded">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-moped text-2xl text-zinc-400"></i>
+                    <div>
+                        <h3 class="font-headline text-lg">СКУТЕРИ</h3>
+                        <p class="text-xs text-zinc-500 uppercase">Градска мобилност</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-zinc-600 text-sm"></i>
             </div>
         </div>
-        <div><h3 class="text-xl font-black text-white mb-4">Намерени: <span id="result-count">0</span></h3><div id="batteries-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto p-2"></div></div>
-    </div>
 
-    <div id="result" class="hidden mt-16 p-10 rounded-lg border-l-8 border-red-600 bg-zinc-900">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div><p class="text-red-500 font-black uppercase text-sm">ПОДХОДЯЩ АКУМУЛАТОР:</p><h2 id="res-code" class="text-6xl font-black italic">--</h2><div id="res-dims" class="text-gray-400 mt-4"></div><div id="res-price" class="text-green-500 text-xl mt-2"></div></div>
-            <div><button class="bg-red-600 text-white px-16 py-6 rounded-sm font-black text-xl">КУПИ СЕГА</button></div>
+        <div class="lg:col-span-8 bg-[#0a0a0a] border border-zinc-900 p-6 md:p-10 rounded flex flex-col justify-between min-h-[480px]">
+            
+            <div id="mode-model" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">1. Марка</label>
+                    <select id="brand" onchange="updateCC()">
+                        <option value="">Изберете марка</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">2. Кубатура (CC)</label>
+                    <select id="cc" onchange="updateModel()" disabled>
+                        <option value="">Изберете първо марка</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">3. Модел</label>
+                    <select id="model" onchange="updateYear()" disabled>
+                        <option value="">Изберете първо кубатура</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">4. Година</label>
+                    <select id="year" disabled>
+                        <option value="">Изберете първо модел</option>
+                    </select>
+                </div>
+
+                <div class="md:col-span-2 mt-4">
+                    <button onclick="findByMotor()" class="btn-action w-full py-5 rounded text-center">НАМЕРИ АКУМУЛАТОР</button>
+                </div>
+            </div>
+
+            <div id="mode-specs" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Капацитет (Ah)</label>
+                    <select id="spec-ah">
+                        <option value="">Всички</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Волтаж (V)</label>
+                    <select id="spec-v">
+                        <option value="">Всички</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Поляритет</label>
+                    <select id="spec-pol">
+                        <option value="">Всички</option>
+                    </select>
+                </div>
+                <div class="md:col-span-3 mt-4">
+                    <button class="btn-action w-full py-5 rounded text-center">ФИЛТРИРАЙ</button>
+                </div>
+            </div>
+
+            <div id="result" class="mt-8 pt-8 border-t border-zinc-950 hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[#111] p-6 border-l-4 border-red-600">
+                    <div>
+                        <span class="text-xs text-zinc-500 uppercase tracking-widest font-bold">Препоръчителен модел акумулатор</span>
+                        <h2 id="result-code" class="font-headline text-3xl md:text-4xl text-white mt-1">YTX9-BS</h2>
+                    </div>
+                    <button class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-black px-8 py-4 rounded text-sm uppercase tracking-wider transition-all">
+                        Виж цена и наличност
+                    </button>
+                </div>
+            </div>
+
         </div>
-    </div>
-</main>
+    </main>
 
-<footer class="py-12 border-t border-zinc-900 text-center text-zinc-800 font-black uppercase text-xs">&copy; 2026 АВТОЗОНА 33 ЕООД</footer>
+    <footer class="w-full max-w-6xl mx-auto border-t border-zinc-900 pt-6 mt-8 flex flex-col md:flex-row justify-between text-xs text-zinc-600 uppercase tracking-wider gap-4">
+        <div>© 2026 АВТОЗОНА 33. ВСИЧКИ ПРАВА ЗАПАЗЕНИ.</div>
+        <div class="flex gap-6">
+            <a href="#" class="hover:text-zinc-400">Контакти</a>
+            <a href="#" class="hover:text-zinc-400">Магазини</a>
+            <a href="#" class="hover:text-zinc-400">Условия за ползване</a>
+        </div>
+    </footer>
 
-<script>
-// ==================== 🔴 СЛОЖИ ТВОЕТО ID ОТ GOOGLE DRIVE ТУК 🔴 ====================
-const GOOGLE_DRIVE_FILE_ID = https://docs.google.com/spreadsheets/d/15Vq4AR7joy7I9zk43rvBm4j6XnP7nXbfYPiF33ZW4lY/edit?usp=sharing;  // <-- ЗАМЕНИ С ТВОЕТО ID (напр. "1ABC123xyz")
+    <script>
+        let catalogData = [];
+        let currentCategory = 'Motorcycles';
 
-const CSV_URL = `https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`;
-
-let motorData = [], productData = [], batterySpecs = new Map();
-let currentCategory = "Motorcycles", currentFilters = { length: '', width: '', height: '', polarity: '', ah: '', cca: '' }, selectedBatteryCode = null;
-
-window.onload = () => {
-    if (GOOGLE_DRIVE_FILE_ID === "ВАШЕТО_ID_ТУК") {
-        document.getElementById('loadingOverlay').innerHTML = '<div class="text-center"><div class="text-red-500 text-2xl">⚠️ НЕ Е НАСТРОЕНО ID</div><p class="mt-4">Сложете вашето Google Drive ID на ред с "GOOGLE_DRIVE_FILE_ID"</p></div>';
-        return;
-    }
-    Papa.parse(CSV_URL, { download: true, delimiter: ";", header: false, skipEmptyLines: true,
-        complete: function(results) {
-            for (let row of results.data) {
-                if (!row || row.length < 5) continue;
-                let type = (row[0] || "").trim();
-                if (type === "stop" || !type) continue;
-                let brand = (row[1] || "").trim(), cc = (row[2] || "").trim(), model = (row[3] || "").trim();
-                let batteryCode = row[8]?.trim() || row[5]?.trim() || row[6]?.trim() || row[7]?.trim();
-                if (!batteryCode || batteryCode === "-") continue;
-                motorData.push({ type, brand, cc, model, battery_code: batteryCode });
-                if (!batterySpecs.has(batteryCode)) {
-                    let h = (batteryCode.length + brand.length) % 100;
-                    batterySpecs.set(batteryCode, {
-                        Battery_Code: batteryCode, Brand: brand || "YUASA",
-                        "Length (mm)": (100 + h % 60).toString(), "Width (mm)": (50 + h % 40).toString(),
-                        "Height (mm)": (80 + h % 70).toString(), "Capacity (Ah)": (4 + h % 25).toString(),
-                        "CCA (A)": (40 + h % 200).toString(), Polarity: h % 2 === 0 ? "стандартен" : "обратен",
-                        Price: `${40 + h % 100} лв`
-                    });
+        // Автоматично зареждане на данните от същата папка в GitHub
+        window.addEventListener('DOMContentLoaded', () => {
+            Papa.parse("yuasa bike csv.csv", {
+                download: true,
+                header: false, // Файлът няма заглавен ред на първия ред
+                skipEmptyLines: true,
+                delimiter: ";", // Ползваме точка и запетая спрямо оригиналния CSV файл
+                complete: function(results) {
+                    // Мапваме редовете към структуриран обект
+                    catalogData = results.data.map(row => {
+                        // Намираме първия реален наличен код за акумулатор в колони от 5 нататък
+                        let batteryCode = "";
+                        for(let i = 5; i < row.length; i++) {
+                            if(row[i] && row[i].trim() !== "-" && row[i].trim() !== "") {
+                                batteryCode = row[i].trim();
+                                break;
+                            }
+                        }
+                        
+                        return {
+                            Category: row[0] ? row[0].trim() : "",
+                            Brand: row[1] ? row[1].trim() : "",
+                            CC: row[2] ? row[2].trim() : "",
+                            Model: row[3] ? row[3].trim() : "",
+                            Year: row[4] ? row[4].trim() : "",
+                            Battery_Code: batteryCode
+                        };
+                    }).filter(item => item.Brand && item.Brand !== "Brand"); // Махаме празни или заглавни редове
+                    
+                    initFilters();
+                },
+                error: function(err) {
+                    console.error("Грешка при зареждане на CSV файла:", err);
                 }
-            }
-            productData = Array.from(batterySpecs.values());
-            document.getElementById('loadingOverlay').style.display = 'none';
-            populateMotorBrands();
-            initializeSpecFilters();
-        },
-        error: () => { document.getElementById('loadingOverlay').innerHTML = '<div class="text-center text-red-500">❌ Грешка при зареждане<br>Проверете ID-то и споделянето на файла</div>'; }
-    });
-};
+            });
+        });
 
-function getUniqueValues(arr, key) { return [...new Set(arr.map(i => i[key]).filter(v=>v))].sort((a,b)=>isNaN(a)?String(a).localeCompare(b):a-b); }
-function fillSelect(id, vals) { let s=document.getElementById(id); if(s){s.innerHTML='<option value="">Всички</option>'; vals.forEach(v=>s.add(new Option(v,v)));} }
-function updateSelectOptions(id, valid, cur) { let s=document.getElementById(id); if(!s)return; let old=cur; s.innerHTML='<option value="">Всички</option>'; valid.forEach(v=>s.add(new Option(v,v))); s.value=(old&&valid.includes(old))?old:""; }
-function displayBatteryList(batts) { let c=document.getElementById('batteries-list'), cnt=document.getElementById('result-count'); if(!c)return; cnt.innerText=batts.length; if(!batts.length){c.innerHTML='<div class="col-span-2 text-center text-gray-500 py-10">Няма резултати</div>';return;}
-    c.innerHTML=batts.map(b=>`<div class="battery-card ${selectedBatteryCode===b.Battery_Code?'selected':''}" onclick="selectBattery('${b.Battery_Code}')"><div class="flex justify-between"><div><div class="text-2xl font-black text-red-500">${b.Battery_Code}</div><div class="text-gray-400 text-sm">${b.Brand}</div></div><div class="text-green-400 font-bold">${b.Price}</div></div><div class="grid grid-cols-4 gap-2 mt-3 text-xs text-gray-400"><div>📏 ${b["Length (mm)"]}×${b["Width (mm)"]}×${b["Height (mm)"]} mm</div><div>⚡ ${b["Capacity (Ah)"]} Ah</div><div>🔋 ${b["CCA (A)"]} CCA</div><div>🔌 ${b.Polarity}</div></div></div>`).join('');
-}
-function selectBattery(code) { selectedBatteryCode=code; document.querySelectorAll('.battery-card').forEach(c=>c.classList.remove('selected')); for(let c of document.querySelectorAll('.battery-card')) if(c.innerText.includes(code)){c.classList.add('selected');break;} showFinalResult(code); }
-function showFinalResult(code) { let d=productData.find(p=>p.Battery_Code===code); if(d){ document.getElementById('res-code').innerText=d.Battery_Code; document.getElementById('res-dims').innerHTML=`📏 ${d["Length (mm)"]}×${d["Width (mm)"]}×${d["Height (mm)"]} mm | ${d.Polarity} | ${d["Capacity (Ah)"]}Ah | ${d["CCA (A)"]} CCA`; document.getElementById('res-price').innerHTML=`💰 ${d.Price}`; document.getElementById('result').classList.remove('hidden'); } else document.getElementById('result').classList.add('hidden'); }
-function populateMotorBrands() { let f=motorData.filter(m=>m.type===currentCategory), b=[...new Set(f.map(m=>m.brand).filter(b=>b))].sort(), s=document.getElementById('brand'); s.innerHTML='<option value="">Избери Марка</option>'; b.forEach(b=>s.add(new Option(b,b))); document.getElementById('cc').innerHTML='<option value="">Кубатура (CC)</option>'; document.getElementById('cc').disabled=true; document.getElementById('model').innerHTML='<option value="">Модел</option>'; document.getElementById('model').disabled=true; document.getElementById('result').classList.add('hidden'); }
-function updateModelsByBrand() { let b=document.getElementById('brand').value, cs=document.getElementById('cc'); if(!b){ cs.innerHTML='<option value="">Кубатура (CC)</option>'; cs.disabled=true; document.getElementById('model').innerHTML='<option value="">Модел</option>'; document.getElementById('model').disabled=true; return; } let f=motorData.filter(m=>m.type===currentCategory&&m.brand===b), ccs=[...new Set(f.map(m=>m.cc).filter(c=>c))].sort((a,b)=>Number(a)-Number(b)); cs.innerHTML='<option value="">Кубатура (CC)</option>'; ccs.forEach(c=>cs.add(new Option(c,c))); cs.disabled=false; document.getElementById('model').innerHTML='<option value="">Модел</option>'; document.getElementById('model').disabled=true; document.getElementById('result').classList.add('hidden'); }
-function updateModelByCc() { let b=document.getElementById('brand').value, cc=document.getElementById('cc').value, ms=document.getElementById('model'); if(!cc){ ms.innerHTML='<option value="">Модел</option>'; ms.disabled=true; return; } let f=motorData.filter(m=>m.type===currentCategory&&m.brand===b&&m.cc===cc), models=[...new Set(f.map(m=>m.model).filter(m=>m))].sort(); ms.innerHTML='<option value="">Модел</option>'; models.forEach(m=>ms.add(new Option(m,m))); ms.disabled=false; document.getElementById('result').classList.add('hidden'); }
-function findBatteryByMotor() { let b=document.getElementById('brand').value, cc=document.getElementById('cc').value, m=document.getElementById('model').value; if(!b||!cc||!m)return; let match=motorData.find(md=>md.type===currentCategory&&md.brand===b&&md.cc===cc&&md.model===m); match?showFinalResult(match.battery_code):(document.getElementById('result').classList.add('hidden'),alert("Няма намерен акумулатор")); }
-function initializeSpecFilters() { if(!productData.length)return; window.orig={length:getUniqueValues(productData,"Length (mm)"), width:getUniqueValues(productData,"Width (mm)"), height:getUniqueValues(productData,"Height (mm)"), polarity:getUniqueValues(productData,"Polarity"), ah:getUniqueValues(productData,"Capacity (Ah)"), cca:getUniqueValues(productData,"CCA (A)")}; fillSelect('s-length',window.orig.length); fillSelect('s-width',window.orig.width); fillSelect('s-height',window.orig.height); fillSelect('s-ah',window.orig.ah); fillSelect('s-cca',window.orig.cca); let p=document.getElementById('s-polarity'); if(p){p.innerHTML='<option value="">Всички</option>'; window.orig.polarity.forEach(v=>p.add(new Option(v,v)));} applySpecFilters(); }
-function updateCascadingFilters() { let fl={length:document.getElementById('s-length').value,width:document.getElementById('s-width').value,height:document.getElementById('s-height').value,polarity:document.getElementById('s-polarity').value,ah:document.getElementById('s-ah').value,cca:document.getElementById('s-cca').value}; let filtered=productData.filter(b=>!(fl.length&&b["Length (mm)"]!==fl.length)&&!(fl.width&&b["Width (mm)"]!==fl.width)&&!(fl.height&&b["Height (mm)"]!==fl.height)&&!(fl.polarity&&b.Polarity!==fl.polarity)&&!(fl.ah&&b["Capacity (Ah)"]!==fl.ah)&&!(fl.cca&&b["CCA (A)"]!==fl.cca)); updateSelectOptions('s-length',[...new Set(filtered.map(b=>b["Length (mm)"]))].sort((a,b)=>a-b),fl.length); updateSelectOptions('s-width',[...new Set(filtered.map(b=>b["Width (mm)"]))].sort((a,b)=>a-b),fl.width); updateSelectOptions('s-height',[...new Set(filtered.map(b=>b["Height (mm)"]))].sort((a,b)=>a-b),fl.height); updateSelectOptions('s-polarity',[...new Set(filtered.map(b=>b.Polarity))],fl.polarity); updateSelectOptions('s-ah',[...new Set(filtered.map(b=>b["Capacity (Ah)"]))].sort((a,b)=>a-b),fl.ah); updateSelectOptions('s-cca',[...new Set(filtered.map(b=>b["CCA (A)"]))].sort((a,b)=>a-b),fl.cca); let fin=productData.filter(b=>!((fl.length=document.getElementById('s-length').value)&&b["Length (mm)"]!==fl.length)&&!((fl.width=document.getElementById('s-width').value)&&b["Width (mm)"]!==fl.width)&&!((fl.height=document.getElementById('s-height').value)&&b["Height (mm)"]!==fl.height)&&!((fl.polarity=document.getElementById('s-polarity').value)&&b.Polarity!==fl.polarity)&&!((fl.ah=document.getElementById('s-ah').value)&&b["Capacity (Ah)"]!==fl.ah)&&!((fl.cca=document.getElementById('s-cca').value)&&b["CCA (A)"]!==fl.cca)); displayBatteryList(fin); fin.length?selectBattery(fin[0].Battery_Code):(selectedBatteryCode=null,document.getElementById('result').classList.add('hidden')); }
-function clearAllFilters() { fillSelect('s-length',window.orig.length); fillSelect('s-width',window.orig.width); fillSelect('s-height',window.orig.height); fillSelect('s-ah',window.orig.ah); fillSelect('s-cca',window.orig.cca); let p=document.getElementById('s-polarity'); if(p){p.innerHTML='<option value="">Всички</option>'; window.orig.polarity.forEach(v=>p.add(new Option(v,v))); p.value='';} applySpecFilters(); }
-function applySpecFilters() { let fl={length:document.getElementById('s-length').value,width:document.getElementById('s-width').value,height:document.getElementById('s-height').value,polarity:document.getElementById('s-polarity').value,ah:document.getElementById('s-ah').value,cca:document.getElementById('s-cca').value}; let f=productData.filter(b=>!(fl.length&&b["Length (mm)"]!==fl.length)&&!(fl.width&&b["Width (mm)"]!==fl.width)&&!(fl.height&&b["Height (mm)"]!==fl.height)&&!(fl.polarity&&b.Polarity!==fl.polarity)&&!(fl.ah&&b["Capacity (Ah)"]!==fl.ah)&&!(fl.cca&&b["CCA (A)"]!==fl.cca)); displayBatteryList(f); f.length?selectBattery(f[0].Battery_Code):(selectedBatteryCode=null,document.getElementById('result').classList.add('hidden')); }
-function selectCat(cat,el) { currentCategory=cat; document.querySelectorAll('.card-glass').forEach(i=>i.classList.remove('active')); el.classList.add('active'); populateMotorBrands(); }
-function switchTab(id) { document.getElementById('mode-model').classList.toggle('hidden',id!==1); document.getElementById('mode-specs').classList.toggle('hidden',id!==2); document.getElementById('tab1').classList.toggle('active',id===1); document.getElementById('tab2').classList.toggle('active',id===2); document.getElementById('result').classList.add('hidden'); if(id===2&&productData.length) applySpecFilters(); }
-</script>
+        function initFilters() {
+            let filtered = catalogData.filter(i => i.Category.toLowerCase() === currentCategory.toLowerCase() || currentCategory === 'Motorcycles');
+            let brands = [...new Set(filtered.map(i => i.Brand))].sort();
+            
+            let brandSel = document.getElementById('brand');
+            brandSel.innerHTML = '<option value="">Изберете марка</option>';
+            brands.forEach(b => {
+                brandSel.innerHTML += `<option value="${b}">${b}</option>`;
+            });
+
+            document.getElementById('cc').disabled = true;
+            document.getElementById('model').disabled = true;
+            document.getElementById('year').disabled = true;
+            document.getElementById('result').classList.add('hidden');
+        }
+
+        function updateCC() {
+            let brand = document.getElementById('brand').value;
+            let ccSel = document.getElementById('cc');
+            
+            if(!brand) {
+                ccSel.disabled = true;
+                return;
+            }
+
+            let filtered = catalogData.filter(i => i.Brand === brand);
+            let ccs = [...new Set(filtered.map(i => i.CC))].sort((a, b) => parseInt(a) - parseInt(b));
+
+            ccSel.innerHTML = '<option value="">Изберете кубатура</option>';
+            ccs.forEach(c => {
+                ccSel.innerHTML += `<option value="${c}">${c} cc</option>`;
+            });
+
+            ccSel.disabled = false;
+            document.getElementById('model').disabled = true;
+            document.getElementById('year').disabled = true;
+        }
+
+        function updateModel() {
+            let brand = document.getElementById('brand').value;
+            let cc = document.getElementById('cc').value;
+            let modelSel = document.getElementById('model');
+
+            if(!cc) {
+                modelSel.disabled = true;
+                return;
+            }
+
+            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc);
+            let models = [...new Set(filtered.map(i => i.Model))].sort();
+
+            modelSel.innerHTML = '<option value="">Изберете модел</option>';
+            models.forEach(m => {
+                modelSel.innerHTML += `<option value="${m}">${m}</option>`;
+            });
+
+            modelSel.disabled = false;
+            document.getElementById('year').disabled = true;
+        }
+
+        function updateYear() {
+            let brand = document.getElementById('brand').value;
+            let cc = document.getElementById('cc').value;
+            let model = document.getElementById('model').value;
+            let yearSel = document.getElementById('year');
+
+            if(!model) {
+                yearSel.disabled = true;
+                return;
+            }
+
+            let filtered = catalogData.filter(i => i.Brand === brand && i.CC === cc && i.Model === model);
+            let years = [...new Set(filtered.map(i => i.Year))].sort();
+
+            yearSel.innerHTML = '<option value="">Изберете година</option>';
+            years.forEach(y => {
+                yearSel.innerHTML += `<option value="${y}">${y}</option>`;
+            });
+
+            yearSel.disabled = false;
+        }
+
+        function findByMotor() {
+            let brand = document.getElementById('brand').value;
+            let cc = document.getElementById('cc').value;
+            let model = document.getElementById('model').value;
+            let year = document.getElementById('year').value;
+
+            if(!brand || !cc || !model || !year) {
+                alert("Моля, изберете всички полета.");
+                return;
+            }
+
+            let match = catalogData.find(i => i.Brand === brand && i.CC === cc && i.Model === model && i.Year === year);
+            
+            if(match && match.Battery_Code) {
+                showFinalResult(match.Battery_Code);
+            } else {
+                document.getElementById('result').classList.add('hidden');
+                alert("Няма намерен съвместим акумулатор в базата данни.");
+            }
+        }
+
+        function showFinalResult(code) {
+            document.getElementById('result-code').innerText = code;
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        function selectCat(cat, el) {
+            document.querySelectorAll('.card-glass').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+            currentCategory = cat;
+            initFilters();
+        }
+
+        function switchTab(id) {
+            document.getElementById('mode-model').classList.toggle('hidden', id !== 1);
+            document.getElementById('mode-specs').classList.toggle('hidden', id !== 2);
+            document.getElementById('tab1').classList.toggle('active', id === 1);
+            document.getElementById('tab2').classList.toggle('active', id === 2);
+            document.getElementById('result').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
