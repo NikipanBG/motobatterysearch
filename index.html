@@ -113,8 +113,18 @@
                     </div>
 
                     <div>
-                        <div class="flex items-center mb-4"><div class="step-circle mr-4">4</div> <h2 class="step-title">Период</h2></div>
-                        <select id="year" onchange="findByMotor()" disabled><option value="">Период / Year</option></select>
+                        <div class="flex items-center mb-4"><div class="step-circle mr-4">4</div> <h2 class="step-title">Период от години</h2></div>
+                        <select id="year" onchange="findByMotor()" disabled><option value="">-- Избери --</option></select>
+                    </div>
+
+                    <!-- БУТОНИ ЗА ДЕЙСТВИЕ -->
+                    <div class="flex flex-col md:flex-row gap-4 pt-4">
+                        <button id="find-btn" onclick="findByMotor()" class="bg-red-600 hover:bg-red-700 disabled:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 text-white px-8 py-5 rounded font-black uppercase italic tracking-wider transition flex-1 text-lg" disabled>
+                            <i class="fas fa-search mr-2"></i> Намери акумулатор
+                        </button>
+                        <button onclick="clearMotorFlow()" class="bg-zinc-800 hover:bg-red-600 text-white px-8 py-5 rounded font-black uppercase italic tracking-wider transition">
+                            <i class="fas fa-rotate-left mr-2"></i> Изчисти
+                        </button>
                     </div>
                 </div>
 
@@ -241,9 +251,34 @@
             document.getElementById('cc').disabled = true;
             document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
             document.getElementById('model').disabled = true;
-            document.getElementById('year').innerHTML = '<option value="">Период / Year</option>';
+            document.getElementById('year').innerHTML = '<option value="">-- Избери --</option>';
             document.getElementById('year').disabled = true;
             document.getElementById('result').classList.add('hidden');
+            updateFindButtonState();
+        }
+
+        function clearMotorFlow() {
+            // Reset category back to Motorcycles (default)
+            const defaultCard = document.querySelector('#mode-model .card-glass[data-cat="Motorcycles"]');
+            if(defaultCard) {
+                document.querySelectorAll('#mode-model .card-glass').forEach(i => i.classList.remove('active'));
+                defaultCard.classList.add('active');
+                currentCategory = 'Motorcycles';
+            }
+            resetMotorFlow();
+            populateMotorBrands();
+            // Scroll back to top of search
+            document.getElementById('mode-model').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateFindButtonState() {
+            const btn = document.getElementById('find-btn');
+            if(!btn) return;
+            const ready = document.getElementById('brand').value &&
+                          document.getElementById('cc').value &&
+                          document.getElementById('model').value &&
+                          document.getElementById('year').value;
+            btn.disabled = !ready;
         }
 
         function populateMotorBrands() {
@@ -275,9 +310,10 @@
             }
             document.getElementById('model').innerHTML = '<option value="">Модел (Model)</option>';
             document.getElementById('model').disabled = true;
-            document.getElementById('year').innerHTML = '<option value="">Период / Year</option>';
+            document.getElementById('year').innerHTML = '<option value="">-- Избери --</option>';
             document.getElementById('year').disabled = true;
             document.getElementById('result').classList.add('hidden');
+            updateFindButtonState();
         }
 
         function updateModels() {
@@ -293,9 +329,10 @@
                     .filter(Boolean).sort();
                 models.forEach(m => sel.add(new Option(m, m)));
             }
-            document.getElementById('year').innerHTML = '<option value="">Период / Year</option>';
+            document.getElementById('year').innerHTML = '<option value="">-- Избери --</option>';
             document.getElementById('year').disabled = true;
             document.getElementById('result').classList.add('hidden');
+            updateFindButtonState();
         }
 
         function updateYears() {
@@ -303,7 +340,7 @@
             const cc = document.getElementById('cc').value;
             const model = document.getElementById('model').value;
             const sel = document.getElementById('year');
-            sel.innerHTML = '<option value="">Период / Year</option>';
+            sel.innerHTML = '<option value="">-- Избери --</option>';
             sel.disabled = !model;
             if(model) {
                 const years = [...new Set(catalogData
@@ -321,13 +358,16 @@
                     sel.add(new Option(label, y));
                 });
 
-                // If only one period option, auto-select it
+                // If only one period option, auto-select it AND search immediately
                 if(years.length === 1) {
                     sel.value = years[0];
+                    updateFindButtonState();
                     findByMotor();
+                    return;
                 }
             }
             document.getElementById('result').classList.add('hidden');
+            updateFindButtonState();
         }
 
         function findByMotor() {
@@ -335,6 +375,7 @@
             const cc = document.getElementById('cc').value;
             const model = document.getElementById('model').value;
             const year = document.getElementById('year').value;
+            updateFindButtonState();
             if(!brand || !cc || !model || !year) return;
 
             const match = catalogData.find(i =>
