@@ -292,12 +292,22 @@
         // ===== MODE 1: Search by Motor =====
 
         function selectCat(cat, el) {
-            document.querySelectorAll('#mode-model .card-glass').forEach(i => i.classList.remove('active'));
-            el.classList.add('active');
-            currentCategory = cat;
-            resetMotorFlow();
-            populateMotorBrands();
+    document.querySelectorAll('#mode-model .card-glass').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    currentCategory = cat;
+    resetMotorFlow();
+    populateMotorBrands();
+
+    // Автоматичен плавен скрол до стъпка 2 (Марка)
+    setTimeout(() => {
+        const brandSection = document.getElementById('brand')?.closest('.space-y-10');
+        if (brandSection) {
+            const rect = brandSection.getBoundingClientRect();
+            const scrollTop = window.pageYOffset + rect.top - 120;
+            window.scrollTo({ top: scrollTop, behavior: 'smooth' });
         }
+    }, 150);
+}
 
         function resetMotorFlow() {
             document.getElementById('brand').innerHTML = '<option value="">Избери Марка (Brand)</option>';
